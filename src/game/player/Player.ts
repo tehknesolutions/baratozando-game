@@ -24,7 +24,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
   private deathAt = Number.NEGATIVE_INFINITY;
   private respawnScheduled = false;
 
-  constructor(scene: any, x: number, y: number, private readonly input: InputController) {
+  constructor(scene: any, x: number, y: number, private readonly inputController: InputController) {
     super(scene, x, y, 'player-idle-01');
     scene.add.existing(this);
     scene.physics.add.existing(this);
@@ -60,7 +60,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   updatePlayer(nowMs: number, deltaMs: number): void {
-    const intent = this.input.sample();
+    const intent = this.inputController.sample();
     const body = this.body as any;
     const grounded = Boolean(body.blocked.down || body.touching.down);
 
