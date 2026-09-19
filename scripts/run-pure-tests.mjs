@@ -22,6 +22,7 @@ const tests = [
   '.test-dist/game/player/MobilityConfig.test.js',
   '.test-dist/game/player/WingMobilityController.test.js',
   '.test-dist/game/player/WallMobilityController.test.js',
+  '.test-dist/game/player/WallContactSensor.test.js',
   '.test-dist/game/player/MovementTimers.test.js',
   '.test-dist/game/player/PlayerStateMachine.test.js',
   '.test-dist/game/player/PlayerDamageController.test.js',
