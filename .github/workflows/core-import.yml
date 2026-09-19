@@ -5,14 +5,14 @@ on:
     branches:
       - import/m0-canonical
     paths:
-      - '.coreimport/chunk-15.txt'
+      - '.coreimport/chunk-10.txt'
 
 permissions:
   contents: write
 
 jobs:
   import:
-    if: github.event.head_commit.message == 'chore: stage core payload 16/16'
+    if: github.event.head_commit.message == 'chore: stage core payload 11/11'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,7 +25,7 @@ jobs:
           set -euo pipefail
           cat .coreimport/chunk-*.txt > /tmp/baratozando-core.b64
           base64 --decode /tmp/baratozando-core.b64 > /tmp/baratozando-core.tar.xz
-          echo "39e32225a3d5ddbca7188e36420f3c9785dc543dead58bc3099ab494a02ddb99  /tmp/baratozando-core.tar.xz" | sha256sum -c -
+          echo "d3a258523978dabd0c30f23a7e3785be94d1dbd8b557bb0b8391f4b7270afa48  /tmp/baratozando-core.tar.xz" | sha256sum -c -
           xz -t /tmp/baratozando-core.tar.xz
           tar -tJf /tmp/baratozando-core.tar.xz > /tmp/core-files.txt
           echo "Canonical core entries: $(wc -l < /tmp/core-files.txt)"
