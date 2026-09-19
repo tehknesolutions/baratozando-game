@@ -4,6 +4,7 @@ import { Player, type WallContact } from '../player/Player.js';
 import { MOBILITY_LAB_V2, type MobilitySurface } from '../world/MobilityLabV2Layout.js';
 import { MobilityLabArtDirector } from '../visual/MobilityLabArtDirector.js';
 import { resolveMobilityTutorial } from '../visual/MobilityTutorial.js';
+import { resolveWallContactFromGeometry } from '../player/WallContactSensor.js';
 
 export class MobilityLabV2Scene extends Phaser.Scene {
   private player!: Player;
@@ -57,8 +58,10 @@ export class MobilityLabV2Scene extends Phaser.Scene {
     if (this.player.y > MOBILITY_LAB_V2.height - 8) this.player.requestRespawn();
 
     this.prompt.setText(resolveMobilityTutorial(this.player.x, this.player.y));
-    const climb = this.resolveWallContact().surface ?? '—';
-    this.hud.setText(`MOBILITY LAB V2   ${this.player.state}   ASAS ${this.player.flapsRemaining}/2   ${climb}`);
+    const contact = this.resolveWallContact();
+    const side = contact.touchingLeft ? 'L' : contact.touchingRight ? 'R' : '—';
+    const climb = contact.surface ?? '—';
+    this.hud.setText(`MOBILITY LAB V2   ${this.player.state}   ASAS ${this.player.flapsRemaining}/2   PAREDE ${side} ${climb}`);
 
     const vy = (this.player.body as any)?.velocity?.y ?? 0;
     const yBias = this.player.state === 'WALL_CLIMB' ? -70 : vy > 170 ? 55 : 0;
@@ -67,26 +70,15 @@ export class MobilityLabV2Scene extends Phaser.Scene {
 
   private resolveWallContact(): WallContact {
     const body = this.player.body as any;
-    const touchingLeft = Boolean(body?.blocked?.left || body?.touching?.left);
-    const touchingRight = Boolean(body?.blocked?.right || body?.touching?.right);
-    if (!touchingLeft && !touchingRight) return { touchingLeft: false, touchingRight: false, surface: null };
-
-    const left = Number(body.left ?? (this.player.x - 15));
-    const right = Number(body.right ?? (this.player.x + 15));
-    const top = Number(body.top ?? (this.player.y - 18));
-    const bottom = Number(body.bottom ?? this.player.y);
-
-    for (const { spec } of this.surfaces) {
-      const verticalOverlap = bottom > spec.y + 2 && top < spec.y + spec.height - 2;
-      if (!verticalOverlap) continue;
-      if (touchingLeft && Math.abs(left - (spec.x + spec.width)) <= 5) {
-        return { touchingLeft: true, touchingRight: false, surface: spec.surface };
-      }
-      if (touchingRight && Math.abs(right - spec.x) <= 5) {
-        return { touchingLeft: false, touchingRight: true, surface: spec.surface };
-      }
-    }
-
-    return { touchingLeft, touchingRight, surface: null };
+    return resolveWallContactFromGeometry(
+      {
+        left: Number(body?.left ?? (this.player.x - 15)),
+        right: Number(body?.right ?? (this.player.x + 15)),
+        top: Number(body?.top ?? (this.player.y - 18)),
+        bottom: Number(body?.bottom ?? this.player.y),
+      },
+      MOBILITY_LAB_V2.surfaces,
+      7,
+    );
   }
 }
