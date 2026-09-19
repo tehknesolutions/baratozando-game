@@ -11,7 +11,7 @@ const DEFS: Record<PlayerState, { frames: readonly string[]; fps: number; loop: 
   WING_FLAP: { frames: PLAYER_FRAMES.jump, fps: 14, loop: false },
   GLIDE: { frames: PLAYER_FRAMES.fall, fps: 6, loop: true },
   WALL_CLING: { frames: PLAYER_FRAMES.idle, fps: 6, loop: true },
-  WALL_CLIMB: { frames: PLAYER_FRAMES.walk, fps: 10, loop: true },
+  WALL_CLIMB: { frames: PLAYER_FRAMES.wallClimb, fps: 10, loop: true },
   WALL_JUMP: { frames: PLAYER_FRAMES.jump, fps: 12, loop: false },
   DODGE: { frames: PLAYER_FRAMES.dodge, fps: 14, loop: false },
   HURT: { frames: PLAYER_FRAMES.hurt, fps: 8, loop: false },
