@@ -2,6 +2,8 @@ import { spawnSync } from 'node:child_process';
 import { rmSync } from 'node:fs';
 
 rmSync('.test-dist', { recursive: true, force: true });
+const inheritanceContract = spawnSync(process.execPath, ['scripts/player-inheritance-contract.test.mjs'], { stdio: 'inherit' });
+if (inheritanceContract.status !== 0) process.exit(inheritanceContract.status ?? 1);
 const compile = spawnSync('tsc', ['-p', 'tsconfig.pure.json'], { stdio: 'inherit', shell: process.platform === 'win32' });
 if (compile.status !== 0) process.exit(compile.status ?? 1);
 
