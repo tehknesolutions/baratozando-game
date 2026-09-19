@@ -25,7 +25,12 @@ Transforms M1 First Threat from procedural greybox into the first BARATOZANDO ce
 - deterministic danger lighting response
 - explicit player / overlay / foreground depth contract
 
+## Whole-branch review
+- self-review completed (no independent subagent tool available)
+- no movement/chase/layout drift found in branch diff
+- visual review found one Important asset issue: `fork.png` was a cardboard crop
+- issue fixed before PR by replacing it with the real fork from the approved source atlas
+
 ## Remaining gate
 1. Browser playtest checklist must be reviewed.
-2. Whole-branch code review must complete.
-3. Merge only after explicit browser approval.
+2. Merge only after explicit browser approval.
