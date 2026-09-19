@@ -3,6 +3,7 @@ import './style.css';
 import { BootScene } from './game/scenes/BootScene.js';
 import { MovementLabScene } from './game/scenes/MovementLabScene.js';
 import { FirstThreatScene } from './game/scenes/FirstThreatScene.js';
+import { MobilityLabV2Scene } from './game/scenes/MobilityLabV2Scene.js';
 
 new Phaser.Game({
   type: Phaser.AUTO,
@@ -21,5 +22,5 @@ new Phaser.Game({
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
-  scene: [BootScene, MovementLabScene, FirstThreatScene],
+  scene: [BootScene, MovementLabScene, FirstThreatScene, MobilityLabV2Scene],
 });

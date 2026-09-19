@@ -2,6 +2,7 @@ export type AxisDirection = -1 | 0 | 1;
 
 export type PlayerIntent = {
   moveX: AxisDirection;
+  moveY: AxisDirection;
   run: boolean;
   jumpHeld: boolean;
   jumpPressed: boolean;
