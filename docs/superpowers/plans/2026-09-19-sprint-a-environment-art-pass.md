@@ -617,7 +617,7 @@ export function resolveDangerVisual(state: ThreatChaseState, gap: number) {
 
 Replace the inline danger-overlay math in `updateDangerOverlay()` with `resolveDangerVisual`.
 
-Keep `dangerOverlay` below UI depth and below the player.
+Set explicit depths in `FirstThreatScene`: `this.player.setDepth(50)`, `this.dangerOverlay.setDepth(40)`, and keep HUD/warning UI at depth `100+`. This guarantees danger tint is visible without covering the protagonist. Foreground art remains at depth `28`.
 
 Do not alter camera shake durations or chase timings in this task.
 
