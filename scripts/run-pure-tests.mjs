@@ -28,6 +28,7 @@ const tests = [
   '.test-dist/game/world/MovementLabLayout.test.js',
   '.test-dist/game/world/MobilityLabV2Layout.test.js',
   '.test-dist/game/visual/MobilityLabVisualConfig.test.js',
+  '.test-dist/game/visual/MobilityTutorial.test.js',
   '.test-dist/game/threat/ThreatChaseController.test.js',
   '.test-dist/game/world/FirstThreatLayout.test.js',
   '.test-dist/game/visual/SprintAFreezeContract.test.js',

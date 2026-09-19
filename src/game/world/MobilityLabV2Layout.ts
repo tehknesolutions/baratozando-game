@@ -21,7 +21,7 @@ export const MOBILITY_LAB_V2: MobilityLabV2Layout = {
   tileSize: 32,
   width: 1792,
   height: 928,
-  spawn: { x: 104, y: 832 },
+  spawn: { x: 104, y: 690 },
   goal: { x: 1660, y: 112 },
   surfaces: [
     { id: 'recovery-floor', x: 0, y: 880, width: 1792, height: 48, surface: 'GROUND', role: 'recovery' },

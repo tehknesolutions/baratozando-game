@@ -4,11 +4,13 @@ export class WingMobilityController {
   private remaining: number;
   private nextFlapAt = Number.NEGATIVE_INFINITY;
   private wallGripStartedAt = Number.NEGATIVE_INFINITY;
-  private glideStartedAt = Number.NEGATIVE_INFINITY;
+  private glideRemainingMs: number;
+  private lastGlideTickAt = Number.NEGATIVE_INFINITY;
   private gliding = false;
 
   constructor(private readonly config: MobilityConfig) {
     this.remaining = config.wingFlaps;
+    this.glideRemainingMs = config.glideBudgetMs;
   }
 
   get flapsRemaining(): number { return this.remaining; }
@@ -18,14 +20,16 @@ export class WingMobilityController {
     this.remaining = this.config.wingFlaps;
     this.nextFlapAt = Number.NEGATIVE_INFINITY;
     this.wallGripStartedAt = Number.NEGATIVE_INFINITY;
-    this.glideStartedAt = Number.NEGATIVE_INFINITY;
+    this.glideRemainingMs = this.config.glideBudgetMs;
+    this.lastGlideTickAt = Number.NEGATIVE_INFINITY;
     this.gliding = false;
   }
 
   noteGrounded(_nowMs: number): void {
     this.remaining = this.config.wingFlaps;
     this.wallGripStartedAt = Number.NEGATIVE_INFINITY;
-    this.glideStartedAt = Number.NEGATIVE_INFINITY;
+    this.glideRemainingMs = this.config.glideBudgetMs;
+    this.lastGlideTickAt = Number.NEGATIVE_INFINITY;
     this.gliding = false;
   }
 
@@ -37,6 +41,8 @@ export class WingMobilityController {
     if (!Number.isFinite(this.wallGripStartedAt)) this.wallGripStartedAt = nowMs;
     if (nowMs - this.wallGripStartedAt >= this.config.stableWallGripResetMs) {
       this.remaining = this.config.wingFlaps;
+      this.glideRemainingMs = this.config.glideBudgetMs;
+      this.lastGlideTickAt = Number.NEGATIVE_INFINITY;
     }
   }
 
@@ -45,20 +51,23 @@ export class WingMobilityController {
     this.remaining -= 1;
     this.nextFlapAt = nowMs + this.config.wingFlapCooldownMs;
     this.gliding = false;
-    this.glideStartedAt = Number.NEGATIVE_INFINITY;
+    this.lastGlideTickAt = Number.NEGATIVE_INFINITY;
     return true;
   }
 
   flapVelocity(): number { return this.config.wingFlapVelocity; }
 
   updateGlide(nowMs: number, jumpHeld: boolean, descending: boolean): boolean {
-    if (!jumpHeld || !descending) {
+    if (!jumpHeld || !descending || this.glideRemainingMs <= 0) {
       this.gliding = false;
-      this.glideStartedAt = Number.NEGATIVE_INFINITY;
+      this.lastGlideTickAt = Number.NEGATIVE_INFINITY;
       return false;
     }
-    if (!Number.isFinite(this.glideStartedAt)) this.glideStartedAt = nowMs;
-    this.gliding = nowMs - this.glideStartedAt <= this.config.glideBudgetMs;
+    if (Number.isFinite(this.lastGlideTickAt)) {
+      this.glideRemainingMs = Math.max(0, this.glideRemainingMs - (nowMs - this.lastGlideTickAt));
+    }
+    this.lastGlideTickAt = nowMs;
+    this.gliding = this.glideRemainingMs > 0;
     return this.gliding;
   }
 

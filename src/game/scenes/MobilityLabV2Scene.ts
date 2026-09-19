@@ -3,6 +3,7 @@ import { KeyboardInputAdapter } from '../input/KeyboardInputAdapter.js';
 import { Player, type WallContact } from '../player/Player.js';
 import { MOBILITY_LAB_V2, type MobilitySurface } from '../world/MobilityLabV2Layout.js';
 import { MobilityLabArtDirector } from '../visual/MobilityLabArtDirector.js';
+import { resolveMobilityTutorial } from '../visual/MobilityTutorial.js';
 
 export class MobilityLabV2Scene extends Phaser.Scene {
   private player!: Player;
@@ -42,21 +43,20 @@ export class MobilityLabV2Scene extends Phaser.Scene {
     }).setScrollFactor(0).setDepth(100);
 
     this.prompt = this.add.text(480, 470,
-      'A/D mover · SHIFT correr · SPACE pular / bater asas / planar · W/S escalar', {
+      resolveMobilityTutorial(this.player.x, this.player.y), {
         fontFamily: 'monospace', fontSize: '12px', color: '#c6aa85', backgroundColor: '#090807cc', padding: { x: 8, y: 6 },
       }).setOrigin(0.5).setScrollFactor(0).setDepth(100);
 
     this.add.text(L.goal.x, L.goal.y - 18, 'TOPO', {
       fontFamily: 'monospace', fontSize: '12px', color: '#ffb45e',
     }).setOrigin(0.5).setDepth(20);
-
-    this.time.delayedCall(9500, () => this.prompt.setAlpha(0.25));
   }
 
   update(time: number, delta: number): void {
     this.player.updatePlayer(time, delta);
     if (this.player.y > MOBILITY_LAB_V2.height - 8) this.player.requestRespawn();
 
+    this.prompt.setText(resolveMobilityTutorial(this.player.x, this.player.y));
     const climb = this.resolveWallContact().surface ?? '—';
     this.hud.setText(`MOBILITY LAB V2   ${this.player.state}   ASAS ${this.player.flapsRemaining}/2   ${climb}`);
 

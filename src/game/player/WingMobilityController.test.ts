@@ -27,6 +27,7 @@ ok(w.updateGlide(2500, true, true), 'glide stays active within budget');
 equal(w.clampFallSpeed(300), MOBILITY_V2.glideMaxFallSpeed, 'active glide clamps fall speed');
 ok(!w.updateGlide(2700, true, true), 'glide stops after budget');
 ok(!w.updateGlide(2800, false, true), 'releasing jump exits glide');
+ok(!w.updateGlide(2810, true, true), 'exhausted glide cannot be refreshed by releasing and holding again');
 
 w.reset();
 equal(w.flapsRemaining, 2, 'reset restores flaps');

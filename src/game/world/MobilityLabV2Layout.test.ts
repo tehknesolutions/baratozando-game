@@ -4,6 +4,8 @@ function ok(v: unknown, m: string): void { if (!v) throw new Error(m); }
 const L = MOBILITY_LAB_V2;
 ok(L.width === 1792 && L.height === 928, 'approved lab envelope');
 ok(L.spawn.x >= 0 && L.spawn.x <= L.width && L.spawn.y >= 0 && L.spawn.y <= L.height, 'spawn inside bounds');
+const spawnEmbedded = L.surfaces.some(s => L.spawn.x >= s.x && L.spawn.x <= s.x + s.width && L.spawn.y >= s.y && L.spawn.y <= s.y + s.height);
+ok(!spawnEmbedded, 'spawn must not be embedded inside a collision surface');
 ok(L.goal.x >= 0 && L.goal.x <= L.width && L.goal.y >= 0 && L.goal.y <= L.height, 'goal inside bounds');
 for (const s of L.surfaces) {
   ok(s.x >= 0 && s.y >= 0 && s.x + s.width <= L.width && s.y + s.height <= L.height, `surface ${s.id} inside bounds`);
