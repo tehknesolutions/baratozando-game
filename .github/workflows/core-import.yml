@@ -1,0 +1,50 @@
+name: Import BARATOZANDO canonical core
+
+on:
+  push:
+    branches:
+      - import/m0-canonical
+    paths:
+      - '.coreimport/chunk-39.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    if: github.event.head_commit.message == 'chore: stage core payload 40/40'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Reconstruct and verify canonical core
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .coreimport/chunk-*.txt > /tmp/baratozando-core.b64
+          base64 --decode /tmp/baratozando-core.b64 > /tmp/baratozando-core.tar.xz
+          echo "39e32225a3d5ddbca7188e36420f3c9785dc543dead58bc3099ab494a02ddb99  /tmp/baratozando-core.tar.xz" | sha256sum -c -
+          xz -t /tmp/baratozando-core.tar.xz
+          tar -tJf /tmp/baratozando-core.tar.xz > /tmp/core-files.txt
+          echo "Canonical core entries: $(wc -l < /tmp/core-files.txt)"
+
+      - name: Import canonical core and clean bootstrap
+        shell: bash
+        run: |
+          set -euo pipefail
+          tar -xJf /tmp/baratozando-core.tar.xz -C .
+          rm -rf .bootstrap .bootstrap2 .coreimport
+          rm -f .github/workflows/bootstrap-import.yml
+          rm -f .github/workflows/core-import.yml
+
+      - name: Commit canonical snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "feat: import BARATOZANDO M0 canonical core"
+          git push origin HEAD:import/m0-canonical
