@@ -1,0 +1,14 @@
+{
+  "sourceMaster": "art/source/player/roach_master.svg",
+  "rig": "side-view-v2",
+  "canvas": { "width": 256, "height": 256 },
+  "pivotPx": { "x": 128, "y": 218 },
+  "runtimeCompatibility": { "width": 64, "height": 64 },
+  "animation": {
+    "wallClimb": {
+      "frames": ["wall_climb_01","wall_climb_02","wall_climb_03","wall_climb_04"],
+      "fps": 10,
+      "loop": true
+    }
+  }
+}
