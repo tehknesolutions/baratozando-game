@@ -27,6 +27,15 @@ export class PlayerDamageController {
     return 'HURT';
   }
 
+  kill(nowMs: number): DamageResult {
+    if (this.dead || this.respawning) return 'IGNORED';
+    this.hp = 0;
+    this.dead = true;
+    this.hurtUntil = nowMs;
+    this.protectedUntil = nowMs;
+    return 'DEATH';
+  }
+
   isHurt(nowMs: number): boolean {
     return !this.dead && !this.respawning && nowMs < this.hurtUntil;
   }

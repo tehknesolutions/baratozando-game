@@ -22,7 +22,7 @@ writeFileSync('dist/index.html', `<!doctype html>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#080706" />
-  <title>BARATOZANDO — Roachin' Around | M0</title>
+  <title>BARATOZANDO — Roachin' Around | M1</title>
   <link rel="stylesheet" href="./style.css" />
   <script type="importmap">
     {"imports":{"phaser":"https://unpkg.com/phaser@3.90.0/dist/phaser.esm.min.js"}}

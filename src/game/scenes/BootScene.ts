@@ -9,6 +9,6 @@ export class BootScene extends Phaser.Scene {
   }
 
   create(): void {
-    this.scene.start('movement-lab');
+    this.scene.start('first-threat');
   }
 }

@@ -13,6 +13,8 @@ const tests = [
   '.test-dist/game/player/PlayerStateMachine.test.js',
   '.test-dist/game/player/PlayerDamageController.test.js',
   '.test-dist/game/world/MovementLabLayout.test.js',
+  '.test-dist/game/threat/ThreatChaseController.test.js',
+  '.test-dist/game/world/FirstThreatLayout.test.js',
 ];
 
 for (const file of tests) {

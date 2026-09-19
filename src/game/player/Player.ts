@@ -51,6 +51,14 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     if (result === 'DEATH') this.deathAt = nowMs;
   }
 
+  kill(nowMs: number, sourceX: number): void {
+    const result = this.damage.kill(nowMs);
+    if (result === 'IGNORED') return;
+    const knockDirection = this.x < sourceX ? -1 : 1;
+    this.setVelocity(knockDirection * 180, -165);
+    this.deathAt = nowMs;
+  }
+
   updatePlayer(nowMs: number, deltaMs: number): void {
     const intent = this.inputController.sample();
     const body = this.body as any;
