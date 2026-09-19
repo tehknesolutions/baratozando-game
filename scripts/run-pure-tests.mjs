@@ -4,6 +4,10 @@ import { rmSync } from 'node:fs';
 rmSync('.test-dist', { recursive: true, force: true });
 const inheritanceContract = spawnSync(process.execPath, ['scripts/player-inheritance-contract.test.mjs'], { stdio: 'inherit' });
 if (inheritanceContract.status !== 0) process.exit(inheritanceContract.status ?? 1);
+const environmentAssets = spawnSync(process.execPath, ['scripts/environment-assets-contract.test.mjs'], { stdio: 'inherit' });
+if (environmentAssets.status !== 0) process.exit(environmentAssets.status ?? 1);
+const cellarRenderer = spawnSync(process.execPath, ['scripts/cellar-renderer-contract.test.mjs'], { stdio: 'inherit' });
+if (cellarRenderer.status !== 0) process.exit(cellarRenderer.status ?? 1);
 const compile = spawnSync('tsc', ['-p', 'tsconfig.pure.json'], { stdio: 'inherit', shell: process.platform === 'win32' });
 if (compile.status !== 0) process.exit(compile.status ?? 1);
 
@@ -16,6 +20,9 @@ const tests = [
   '.test-dist/game/threat/ThreatChaseController.test.js',
   '.test-dist/game/world/FirstThreatLayout.test.js',
   '.test-dist/game/visual/SprintAFreezeContract.test.js',
+  '.test-dist/game/visual/FirstThreatVisualConfig.test.js',
+  '.test-dist/game/threat/SirChinellusVisualConfig.test.js',
+  '.test-dist/game/visual/DangerVisualController.test.js',
 ];
 
 for (const file of tests) {
