@@ -7,7 +7,7 @@ Transforms M1 First Threat from procedural greybox into the first BARATOZANDO ce
 - local pure/source/asset suite: PASS — 11/11 test files
 - local `npm run build:offline`: PASS
 - GitHub remote core commit: `51d0d4d9351a9e59e9232578e9e2fa0243f96a82`
-- Vercel production-stack preview: PENDING
+- Vercel production-stack preview: PASS — GitHub status `Vercel: success`
 
 ## Gameplay freeze
 - Movement constants: unchanged by freeze contract
@@ -26,7 +26,6 @@ Transforms M1 First Threat from procedural greybox into the first BARATOZANDO ce
 - explicit player / overlay / foreground depth contract
 
 ## Remaining gate
-1. Vercel build status must become PASS.
-2. Browser playtest checklist must be reviewed.
-3. Whole-branch code review must complete.
-4. Merge only after explicit browser approval.
+1. Browser playtest checklist must be reviewed.
+2. Whole-branch code review must complete.
+3. Merge only after explicit browser approval.
