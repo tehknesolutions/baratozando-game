@@ -1,6 +1,6 @@
 {
-  "name": "baratozando-m0-movement-lab",
-  "version": "0.1.0",
+  "name": "baratozando-game",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "scripts": {

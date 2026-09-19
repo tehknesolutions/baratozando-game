@@ -38,4 +38,15 @@ test('lethal damage enters death and complete respawn clears stale lifecycle', (
   eq(d.isProtected(1400), false, 'protection timer cleared');
 });
 
+
+test('kill bypasses protection and enters death immediately', () => {
+  const d = new PlayerDamageController();
+  d.damage(1000);
+  eq(d.hp, 2, 'precondition hp');
+  eq(d.kill(1100), 'DEATH', 'kill result');
+  eq(d.hp, 0, 'hp zero');
+  eq(d.dead, true, 'dead immediately');
+  eq(d.kill(1110), 'IGNORED', 'repeat kill ignored');
+});
+
 console.log(`PASS ${passed}/${passed} PlayerDamageController tests`);
