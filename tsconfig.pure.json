@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": ".test-dist",
+    "rootDir": "src"
+  },
+  "include": ["src/game/**/*.test.ts", "src/game/player/*.ts", "src/game/input/*.ts", "src/game/world/MovementLabLayout.ts"],
+  "exclude": ["src/game/scenes/**", "src/game/player/Player.ts", "src/game/player/PlayerAnimationController.ts", "src/game/input/KeyboardInputAdapter.ts", "src/game/world/Hazard.ts", "src/game/world/Checkpoint.ts"]
+}

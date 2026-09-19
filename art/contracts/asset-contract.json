@@ -1,0 +1,47 @@
+{
+  "project": "BARATOZANDO / Roachin' Around",
+  "version": "0.1",
+  "status": "PROTOTYPE_ASSET_CONTRACT",
+  "rendering": {
+    "pixelArt": true,
+    "phaserPixelArt": true,
+    "antialias": false,
+    "roundPixels": true,
+    "background": "transparent RGBA"
+  },
+  "world": {
+    "tileGrid": [
+      32,
+      32
+    ],
+    "tiledMapFormat": "JSON",
+    "collisionLayer": "Collision"
+  },
+  "player": {
+    "frameCanvas": [
+      64,
+      64
+    ],
+    "visualTargetApprox": [
+      48,
+      32
+    ],
+    "origin": [
+      0.5,
+      1.0
+    ],
+    "prototypeHitbox": {
+      "width": 30,
+      "height": 18,
+      "offsetX": 17,
+      "offsetY": 42
+    },
+    "note": "64x64 canvas preserves antenna overflow while the world remains on a 32x32 tile grid."
+  },
+  "naming": {
+    "animations": "player_<state>_<nn>.png",
+    "enemies": "enemy_<type>_<state>_<nn>.png",
+    "tiles": "tile_<family>_<variant>.png",
+    "ui": "ui_<system>_<state>.png"
+  }
+}

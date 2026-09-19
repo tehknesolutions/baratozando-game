@@ -1,0 +1,21 @@
+{
+  "name": "baratozando-m0-movement-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "node scripts/run-pure-tests.mjs",
+    "build:offline": "node scripts/build-offline.mjs",
+    "verify:offline": "npm test && npm run build:offline"
+  },
+  "dependencies": {
+    "phaser": "3.90.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2",
+    "vite": "^7.1.5"
+  }
+}
