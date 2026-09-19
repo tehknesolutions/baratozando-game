@@ -6,6 +6,8 @@ import { Hazard } from '../world/Hazard.js';
 import { Checkpoint } from '../world/Checkpoint.js';
 import { ThreatChaseController } from '../threat/ThreatChaseController.js';
 import { AncientPredator } from '../threat/AncientPredator.js';
+import { CellarArtDirector, type CellarArtHandles } from '../visual/CellarArtDirector.js';
+import { resolveDangerVisual } from '../visual/DangerVisualController.js';
 
 export class FirstThreatScene extends Phaser.Scene {
   private player!: Player;
@@ -14,6 +16,7 @@ export class FirstThreatScene extends Phaser.Scene {
   private hpText!: any;
   private warningText!: any;
   private dangerOverlay!: any;
+  private art!: CellarArtHandles;
   private wasRespawning = false;
 
   constructor() { super('first-threat'); }
@@ -24,18 +27,20 @@ export class FirstThreatScene extends Phaser.Scene {
     this.cameras.main.setBounds(0, 0, L.width, L.height);
     this.cameras.main.setBackgroundColor('#050505');
 
-    this.createAtmosphere();
+    this.art = CellarArtDirector.build(this, L);
 
     const platforms: any[] = [];
     for (const p of L.platforms) {
       const block = this.add.rectangle(p.x + p.width / 2, p.y + p.height / 2, p.width, p.height, 0x151210, 1)
-        .setStrokeStyle(1, 0x4e3b30, 0.58);
+        .setStrokeStyle(1, 0x4e3b30, 0.58)
+        .setVisible(false);
       this.physics.add.existing(block, true);
       platforms.push(block);
     }
 
     const input = new KeyboardInputAdapter(this);
     this.player = new Player(this, L.spawn.x, L.spawn.y, input);
+    this.player.setDepth(50);
     for (const platform of platforms) this.physics.add.collider(this.player, platform);
 
     const checkpoint = new Checkpoint(this, L.checkpoint.x, L.checkpoint.y);
@@ -72,7 +77,7 @@ export class FirstThreatScene extends Phaser.Scene {
     }).setOrigin(0.5).setScrollFactor(0).setDepth(120).setAlpha(0);
 
     this.dangerOverlay = this.add.rectangle(480, 270, 960, 540, 0x5f100b, 0)
-      .setScrollFactor(0).setDepth(90);
+      .setScrollFactor(0).setDepth(40);
 
     this.add.text(L.chase.escapeX - 36, 370, 'SAFE', {
       fontFamily: 'monospace', fontSize: '10px', color: '#b79068',
@@ -121,7 +126,7 @@ export class FirstThreatScene extends Phaser.Scene {
     if (respawning && !this.wasRespawning) this.resetChase();
     this.wasRespawning = respawning;
 
-    this.updateDangerOverlay();
+    this.updateDangerVisual();
     this.cameras.main.setFollowOffset(-this.player.facing * 82, 34);
 
     const hearts = '♥'.repeat(this.player.damage.hp) + '♡'.repeat(this.player.damage.maxHp - this.player.damage.hp);
@@ -136,34 +141,16 @@ export class FirstThreatScene extends Phaser.Scene {
     this.dangerOverlay.setAlpha(0);
   }
 
-  private updateDangerOverlay(): void {
-    if (this.chase.state !== 'CHASING') {
-      if (this.chase.state !== 'CAUGHT') this.dangerOverlay.setAlpha(0);
-      return;
-    }
+  private updateDangerVisual(): void {
     const gap = Math.max(0, this.player.x - this.chase.threatX);
-    const intensity = Math.max(0, Math.min(0.22, (220 - gap) / 900));
-    this.dangerOverlay.setAlpha(intensity);
+    const visual = resolveDangerVisual(this.chase.state, gap);
+    this.dangerOverlay.setAlpha(visual.overlayAlpha);
+    this.art.amberGlow.setAlpha(visual.amberAlpha);
+
+    for (let i = 0; i < this.art.dust.length; i++) {
+      const base = 0.055 + (i % 4) * 0.018;
+      this.art.dust[i].setAlpha(Math.min(0.28, base + visual.dustBoost * 0.11));
+    }
   }
 
-  private createAtmosphere(): void {
-    const W = FIRST_THREAT_LAYOUT.width;
-    const H = FIRST_THREAT_LAYOUT.height;
-    this.add.rectangle(W / 2, H / 2, W, H, 0x050505, 1).setDepth(-20);
-
-    for (let i = 0; i < 17; i++) {
-      const x = 90 + i * 150;
-      const height = 120 + (i % 5) * 45;
-      this.add.rectangle(x, H - 185, 42 + (i % 4) * 22, height, 0x0c0d0e, 0.82)
-        .setOrigin(0.5, 1).setScrollFactor(0.28).setDepth(-16);
-    }
-
-    for (let i = 0; i < 78; i++) {
-      this.add.circle((i * 137) % W, 70 + ((i * 83) % 400), 1 + (i % 2), 0xc09a76, 0.07 + (i % 4) * 0.025)
-        .setScrollFactor(0.5 + (i % 3) * 0.1).setDepth(-8);
-    }
-
-    this.add.ellipse(470, 250, 360, 140, 0x020202, 0.92).setRotation(-0.1).setScrollFactor(0.22).setDepth(-14);
-    this.add.rectangle(530, 365, 250, 18, 0x2a1712, 0.08).setScrollFactor(0.18).setDepth(-13);
-  }
 }
