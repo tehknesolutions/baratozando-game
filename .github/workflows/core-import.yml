@@ -5,14 +5,14 @@ on:
     branches:
       - import/m0-canonical
     paths:
-      - '.coreimport/chunk-39.txt'
+      - '.coreimport/chunk-15.txt'
 
 permissions:
   contents: write
 
 jobs:
   import:
-    if: github.event.head_commit.message == 'chore: stage core payload 40/40'
+    if: github.event.head_commit.message == 'chore: stage core payload 16/16'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
