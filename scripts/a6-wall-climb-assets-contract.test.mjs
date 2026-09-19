@@ -3,6 +3,10 @@ import { existsSync, readFileSync } from 'node:fs';
 const required = [
   'art/source/player/roach_master.svg',
   'art/source/player/roach_master.manifest.json',
+  'art/source/player/wall_climb_01.svg',
+  'art/source/player/wall_climb_02.svg',
+  'art/source/player/wall_climb_03.svg',
+  'art/source/player/wall_climb_04.svg',
   'public/assets/player/wall_climb_01.png',
   'public/assets/player/wall_climb_02.png',
   'public/assets/player/wall_climb_03.png',
@@ -37,4 +41,12 @@ if (meta.canvas?.width !== 256 || meta.canvas?.height !== 256) throw new Error('
 if (meta.pivotPx?.x !== 128 || meta.pivotPx?.y !== 218) throw new Error('master pivot changed unexpectedly');
 if (meta.animation?.wallClimb?.frames?.length !== 4) throw new Error('wall climb pilot must contain exactly 4 frames');
 
-console.log('PASS A6.1 wall climb asset contract');
+for (let i=1;i<=4;i++) {
+  const source = readFileSync(`art/source/player/wall_climb_0${i}.svg`, 'utf8');
+  if (!source.includes('"contactPlaneX":188')) throw new Error(`wall climb ${i} must target collider contact plane x=188`);
+  if (!source.includes('id="legs-contact"')) throw new Error(`wall climb ${i} must contain explicit wall-contact legs`);
+  if (!source.includes('id="abdomen"')) throw new Error(`wall climb ${i} must retain filled abdomen mass`);
+  if (source.includes('id="wall"')) throw new Error(`wall climb ${i} must not embed wall artwork`);
+}
+
+console.log('PASS A6.1b calibrated wall climb asset contract');
