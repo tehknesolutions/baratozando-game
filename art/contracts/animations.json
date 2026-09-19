@@ -1,0 +1,52 @@
+{
+  "idle": {
+    "fps": 6,
+    "loop": true,
+    "targetFrames": 4
+  },
+  "walk": {
+    "fps": 8,
+    "loop": true,
+    "targetFrames": 6
+  },
+  "run": {
+    "fps": 12,
+    "loop": true,
+    "targetFrames": 8
+  },
+  "jump": {
+    "fps": 10,
+    "loop": false,
+    "targetFrames": 4
+  },
+  "fall": {
+    "fps": 8,
+    "loop": true,
+    "targetFrames": 2
+  },
+  "dodge": {
+    "fps": 14,
+    "loop": false,
+    "targetFrames": 5
+  },
+  "attack": {
+    "fps": 12,
+    "loop": false,
+    "targetFrames": 6
+  },
+  "hurt": {
+    "fps": 8,
+    "loop": false,
+    "targetFrames": 3
+  },
+  "death": {
+    "fps": 8,
+    "loop": false,
+    "targetFrames": 6
+  },
+  "climb": {
+    "fps": 8,
+    "loop": true,
+    "targetFrames": 6
+  }
+}
