@@ -1,3 +1,15 @@
+export const HD_PLAYER_BENCHMARK = {
+  idle: 'player-hd-master',
+  wing: 'player-hd-wing',
+  wall: 'player-hd-wall',
+} as const;
+
+export const HD_PLAYER_ASSET_PATHS: Record<string, string> = {
+  [HD_PLAYER_BENCHMARK.idle]: 'assets/player/hd-v2/roach_master_hd_v1_1024.png',
+  [HD_PLAYER_BENCHMARK.wing]: 'assets/player/hd-v2/roach_wing_hd_v1_1024.png',
+  [HD_PLAYER_BENCHMARK.wall]: 'assets/player/hd-v2/roach_wall_hd_v1_1024.png',
+};
+
 export const PLAYER_FRAMES = {
   idle: ['player-idle-01', 'player-idle-02', 'player-idle-01', 'player-idle-02'],
   walk: ['player-walk-01', 'player-walk-02', 'player-walk-03', 'player-walk-04', 'player-walk-05', 'player-walk-03'],

@@ -12,6 +12,7 @@ const contracts = [
   'scripts/mobility-lab-scene-contract.test.mjs',
   'scripts/a6-wall-climb-assets-contract.test.mjs',
   'scripts/a6-wall-climb-integration-contract.test.mjs',
+  'scripts/hd-character-benchmark-contract.test.mjs',
 ];
 
 for (const file of contracts) {
