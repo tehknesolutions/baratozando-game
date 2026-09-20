@@ -1,34 +1,251 @@
 {
+  "project": "BARATOZANDO / Roachin' Around",
   "assetSet": "ROACH_PLAYER_DARK_HORROR_V1",
-  "status": "APPROVED_PRODUCTION_EXTRACTION",
-  "approved": "2026-09-20",
   "frameCanvas": [
     64,
     64
   ],
-  "origin": [
-    0.5,
-    1
-  ],
-  "states": {
-    "idle": 4,
-    "walk": 6,
-    "run": 8,
-    "jump": 4,
-    "fall": 2,
-    "dodge": 5,
-    "attack": 6,
-    "hurt": 3,
-    "death": 6,
-    "climb": 6
-  },
-  "sourceBoards": [
-    "84d42048-ae51-4bf2-8f36-773da59539a8.png",
-    "272b2550-0f53-4ab0-b044-53e3aeb0a9a1.png",
-    "40243ddd-2bd9-48ca-828b-0e1e8ad15c17.png",
-    "485abe9f-cd8b-4948-9b5f-a992aacf8600.png",
-    "a_high_resolution_dark_game_asset_sheet_image_s.png"
-  ],
-  "runtimeContract": "art/contracts/asset-contract.json",
-  "note": "50 production RGBA frames extracted from the approved Dark/Horror V1 boards. Binary pack generated in the ChatGPT artifact workspace; repository connector write path is text-only except low-level blob creation."
+  "source": "a_high_resolution_dark_game_asset_sheet_image_s.png",
+  "animations": {
+    "idle": {
+      "frames": [
+        {
+          "file": "idle_01.png",
+          "sha256": "c562f24fee6194c70e8085b849dadaf325eeccf1f11d3dabc4e6df4c7e8b6823"
+        },
+        {
+          "file": "idle_02.png",
+          "sha256": "c369afc483603e063035338aae3e5f916279d6a65e14b2263dcef82033c52da9"
+        },
+        {
+          "file": "idle_03.png",
+          "sha256": "66f80c73240cb83b8c4ba35d64af7d4d75480b024c1e7ca9d6c77b40fd8584d4"
+        },
+        {
+          "file": "idle_04.png",
+          "sha256": "3b17ddbffb3a2b55c9f648536c56741c7c258da80f5749d669b95cc501207d5f"
+        }
+      ]
+    },
+    "walk": {
+      "frames": [
+        {
+          "file": "walk_01.png",
+          "sha256": "e55828d20f86f4bbec78688698afdefc4b417c8e804781bcb7d4b709a62435ce"
+        },
+        {
+          "file": "walk_02.png",
+          "sha256": "289ca2e41f593ff53757baa35572d3b91fcb4d2efcd73f460ce1b3be20a77c38"
+        },
+        {
+          "file": "walk_03.png",
+          "sha256": "89f3a706a2a597068cf0a7c36e00ed595043edc787147bfb13652e8dfdbca576"
+        },
+        {
+          "file": "walk_04.png",
+          "sha256": "4c08d1dab477f395acabcc556ff915fb8543dea61271941b3ac67abcdc94492f"
+        },
+        {
+          "file": "walk_05.png",
+          "sha256": "4f9e439b8995f4f0a22d2e30f3584006d19e2a4895c511bfaad0afd69728c922"
+        },
+        {
+          "file": "walk_06.png",
+          "sha256": "791269aa2398b89de45111e4a12606328877137b60d3c2dc5cc8a4e26441e413"
+        }
+      ]
+    },
+    "run": {
+      "frames": [
+        {
+          "file": "run_01.png",
+          "sha256": "462162b4820ba9650c12518ce0be7dfaada001bd8ab6a2908b236ee8b656a3ae"
+        },
+        {
+          "file": "run_02.png",
+          "sha256": "f9367b483d6cae684d96f1c5345b38da04dc104900dfc2babf6a0187768e0455"
+        },
+        {
+          "file": "run_03.png",
+          "sha256": "59cef0b283250de833dab2efe77430d2776b60a0c52107061da7d12115d1b228"
+        },
+        {
+          "file": "run_04.png",
+          "sha256": "83fb2a08d330614206c90e05bad9d9c9cb687e21fa919db14d26628d609ab0c6"
+        },
+        {
+          "file": "run_05.png",
+          "sha256": "26d842f3452654ae7a9912a4500510b31c094f83710cc38c6d50b2562af454ee"
+        },
+        {
+          "file": "run_06.png",
+          "sha256": "f64e3d5a591d1cfa05a7e933260567914a3b2f4a458792e299189c755de68803"
+        },
+        {
+          "file": "run_07.png",
+          "sha256": "a6af3d4ec77d25d528332f5802930e5dd0a442bf440776a9ea90088c26281bc9"
+        },
+        {
+          "file": "run_08.png",
+          "sha256": "97a05227b6f9d0c8e7ed737c1dfb996e9cc8c36d372f472a3e7e3873dcbd8060"
+        }
+      ]
+    },
+    "jump": {
+      "frames": [
+        {
+          "file": "jump_01.png",
+          "sha256": "2e8363f361c8c0a8e9c9f22090e0ed46795151dff5090140a2729926c513646a"
+        },
+        {
+          "file": "jump_02.png",
+          "sha256": "f369388650c050d4f6ab61a61c7af2c90811ebc17a6a515169f64d3abaca6918"
+        },
+        {
+          "file": "jump_03.png",
+          "sha256": "d7bc13c7dec23f64fed5567ef8c630046a6fa8b8bacbb236f024ba328303063c"
+        },
+        {
+          "file": "jump_04.png",
+          "sha256": "f1f9534469b601790dd6b2d72e1eb5f9c57e82b92be4a24e4e4ba10cca554f41"
+        }
+      ]
+    },
+    "fall": {
+      "frames": [
+        {
+          "file": "fall_01.png",
+          "sha256": "f1f9534469b601790dd6b2d72e1eb5f9c57e82b92be4a24e4e4ba10cca554f41"
+        },
+        {
+          "file": "fall_02.png",
+          "sha256": "5a5d9cbbcfbbfe3459a5e25570c97000b41773b52dc9603b8e97300aee977d6a"
+        }
+      ]
+    },
+    "dodge": {
+      "frames": [
+        {
+          "file": "dodge_01.png",
+          "sha256": "f41d4f1e3f1aac404042cd10ea6784bdf9b2149ec87d2b19c17cd63ee0e44386"
+        },
+        {
+          "file": "dodge_02.png",
+          "sha256": "428078d15396a6fcfedc1922118787283e58ee4060e0079e2c8c6730a55f50d5"
+        },
+        {
+          "file": "dodge_03.png",
+          "sha256": "5a5eb864d4d5ea11de29d658c62ba3ceb0979ebfd910a348928298fea649f1f9"
+        },
+        {
+          "file": "dodge_04.png",
+          "sha256": "a377284588459919df51ad77e78c215727655b6bd86f242986b4c1ea90c9fe65"
+        },
+        {
+          "file": "dodge_05.png",
+          "sha256": "428078d15396a6fcfedc1922118787283e58ee4060e0079e2c8c6730a55f50d5"
+        }
+      ]
+    },
+    "attack": {
+      "frames": [
+        {
+          "file": "attack_01.png",
+          "sha256": "04c143053ff9e336405f717b7128c53d9ec426387fb21a6a827edc121ba12b5b"
+        },
+        {
+          "file": "attack_02.png",
+          "sha256": "47f2cbcc95e660d9147e30d6a53f403b80b1deaec626749ca8ba931a016d86b7"
+        },
+        {
+          "file": "attack_03.png",
+          "sha256": "8a8c9f1b33a23160b1f6e9fa576dc630ee16e0855ca799a9df04fe5a50ec0cb2"
+        },
+        {
+          "file": "attack_04.png",
+          "sha256": "5ff914368e41cd9281843e647614aa5c5cf98373912c0b90c48184b6eefcc545"
+        },
+        {
+          "file": "attack_05.png",
+          "sha256": "3f0e4dda45fb2882fa66445efe1c5febcba2c172a8203cf76cb77bdc918c8744"
+        },
+        {
+          "file": "attack_06.png",
+          "sha256": "8214463bc0b0116a2bbba19c84ff1f48207654e01cee5a17d6b1c7a5414307b2"
+        }
+      ]
+    },
+    "hurt": {
+      "frames": [
+        {
+          "file": "hurt_01.png",
+          "sha256": "ef2eeadbbaa1ba61468a59249554a8c4cba6d22a899ba7c4d7b2044dfada6ef3"
+        },
+        {
+          "file": "hurt_02.png",
+          "sha256": "4e6121c23e6389708385f12e595a671a875a6ba9c5426c66b178087cd79997a6"
+        },
+        {
+          "file": "hurt_03.png",
+          "sha256": "c2b125f74eebf3e43f022d6bb4ecffd4f6f90d74cccfad1791952ccc1513368e"
+        }
+      ]
+    },
+    "death": {
+      "frames": [
+        {
+          "file": "death_01.png",
+          "sha256": "5b383c1a409983d771d865795bc8a98cc46b913b38418407ac3563d6215c881d"
+        },
+        {
+          "file": "death_02.png",
+          "sha256": "815478057901758797bef060a4401471555182b14dfb9a1dc4defa536601c346"
+        },
+        {
+          "file": "death_03.png",
+          "sha256": "3ad7ff21a51e0a323bd5d56ab3d2c9f9b75a180f7b8252ffb7d00e979e8b3d47"
+        },
+        {
+          "file": "death_04.png",
+          "sha256": "203de7b1432b3ab1edf23ce6fac90f6c0514b7f1d532e01b3a6427db9256b559"
+        },
+        {
+          "file": "death_05.png",
+          "sha256": "af2655e38a3738477c1cfef3f503df20aef4b5cb169c28ce584802127cf9dc17"
+        },
+        {
+          "file": "death_06.png",
+          "sha256": "8f0e33687e5e149f274a061185046788074f1da66f6ed9ddfc086b44a1a58b42"
+        }
+      ]
+    },
+    "climb": {
+      "frames": [
+        {
+          "file": "climb_01.png",
+          "sha256": "de9932a1052303913653794e82389774a760e12da6475c015aea871add26df28"
+        },
+        {
+          "file": "climb_02.png",
+          "sha256": "075caaf4556faf5e0b45f3723ffc5f051e664e711173ba705f727278a995e739"
+        },
+        {
+          "file": "climb_03.png",
+          "sha256": "8e98fd71692b4203ff84e19decf4e78f0dc9c9b4f911c07a7fe578a8597fd1fe"
+        },
+        {
+          "file": "climb_04.png",
+          "sha256": "dae1ebd44433f58015c581a61ef2da00d4b60a3ae0d2925497c6387c0b5fb38d"
+        },
+        {
+          "file": "climb_05.png",
+          "sha256": "b16651f44a6cc1fc2f521d2912c6ac8275bac8d60585798d0606338bde4d74fc"
+        },
+        {
+          "file": "climb_06.png",
+          "sha256": "4774b5e429203a4847cac380d782ce522850d34aece3091faf727173b6f8bc17"
+        }
+      ]
+    }
+  }
 }
