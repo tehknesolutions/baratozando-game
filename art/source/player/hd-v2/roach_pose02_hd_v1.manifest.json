@@ -1,0 +1,14 @@
+{
+  "id": "BARATOZANDO-ROACH-POSE02-HD-V1",
+  "status": "CANDIDATE_DERIVATION",
+  "source_lock_parent": "BARATOZANDO-ROACH-MASTER-HD-V1",
+  "orientation": "right-facing side/three-quarter",
+  "source_file": "roach_pose02_hd_v1.png",
+  "runtime_reference": "roach_pose02_hd_v1_1024.png",
+  "source_dimensions": [1812, 1163],
+  "runtime_reference_dimensions": [1024, 657],
+  "format": "PNG RGBA",
+  "alpha": true,
+  "sha256": "241691aded4c4ca615fa15d0faea5e29ba5134c407698255c2e080df9c7fa8b2",
+  "source_lock_rule": "MASTER-01 remains immutable; this is a derivative candidate until visual and in-game approval."
+}
