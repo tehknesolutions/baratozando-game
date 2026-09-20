@@ -31,7 +31,7 @@ export class MobilityLabV2Scene extends Phaser.Scene {
     }
 
     const input = new KeyboardInputAdapter(this);
-    this.player = new Player(this, L.spawn.x, L.spawn.y, input, { mobilityV2: true });
+    this.player = new Player(this, L.spawn.x, L.spawn.y, input, { mobilityV2: true, hdCharacterBenchmark: true });
     this.player.setDepth(50);
     for (const { block } of this.surfaces) this.physics.add.collider(this.player, block);
     this.player.setWallContactProvider(() => this.resolveWallContact());
