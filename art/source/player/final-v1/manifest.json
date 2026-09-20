@@ -1,0 +1,34 @@
+{
+  "assetSet": "ROACH_PLAYER_DARK_HORROR_V1",
+  "status": "APPROVED_PRODUCTION_EXTRACTION",
+  "approved": "2026-09-20",
+  "frameCanvas": [
+    64,
+    64
+  ],
+  "origin": [
+    0.5,
+    1
+  ],
+  "states": {
+    "idle": 4,
+    "walk": 6,
+    "run": 8,
+    "jump": 4,
+    "fall": 2,
+    "dodge": 5,
+    "attack": 6,
+    "hurt": 3,
+    "death": 6,
+    "climb": 6
+  },
+  "sourceBoards": [
+    "84d42048-ae51-4bf2-8f36-773da59539a8.png",
+    "272b2550-0f53-4ab0-b044-53e3aeb0a9a1.png",
+    "40243ddd-2bd9-48ca-828b-0e1e8ad15c17.png",
+    "485abe9f-cd8b-4948-9b5f-a992aacf8600.png",
+    "a_high_resolution_dark_game_asset_sheet_image_s.png"
+  ],
+  "runtimeContract": "art/contracts/asset-contract.json",
+  "note": "50 production RGBA frames extracted from the approved Dark/Horror V1 boards. Binary pack generated in the ChatGPT artifact workspace; repository connector write path is text-only except low-level blob creation."
+}
