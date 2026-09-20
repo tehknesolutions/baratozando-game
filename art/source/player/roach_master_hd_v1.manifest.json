@@ -1,0 +1,19 @@
+{
+  "id": "BARATOZANDO-ROACH-MASTER-HD-V1",
+  "status": "SOURCE_LOCK",
+  "orientation": "right-facing side/three-quarter",
+  "source_file": "roach_master_hd_v1.png",
+  "runtime_reference": "roach_master_hd_v1_1024.png",
+  "source_dimensions": [
+    1812,
+    1163
+  ],
+  "runtime_reference_dimensions": [
+    1024,
+    657
+  ],
+  "format": "PNG RGBA",
+  "alpha": true,
+  "identity_sha256": "68b101d1208b4ac4280edf7e46e918ae30f01005ba8e2f7b2e5a7b4e30a7dbd9",
+  "production_rule": "Do not regenerate independently per frame. Derive all future poses from this locked visual identity."
+}
