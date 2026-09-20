@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 
 const keys = readFileSync('src/assets/assetKeys.ts', 'utf8');
 const boot = readFileSync('src/game/scenes/BootScene.ts', 'utf8');
@@ -16,6 +16,14 @@ for (const path of [
 ]) {
   if (!keys.includes(path)) throw new Error(`missing HD benchmark asset path: ${path}`);
 }
+for (const path of [
+  'public/assets/player/hd-v2/roach_master_hd_v1_1024.png',
+  'public/assets/player/hd-v2/roach_wing_hd_v1_1024.png',
+  'public/assets/player/hd-v2/roach_wall_hd_v1_1024.png',
+]) {
+  if (!existsSync(path)) throw new Error(`missing HD benchmark binary: ${path}`);
+}
+
 if (!boot.includes('HD_PLAYER_ASSET_PATHS')) throw new Error('BootScene must preload HD benchmark assets');
 if (!player.includes('hdCharacterBenchmark?: boolean')) throw new Error('HD benchmark must remain explicit opt-in');
 if (!player.includes('body.setSize(30, 18, false)')) throw new Error('HD benchmark must not change the 30x18 physics body');
