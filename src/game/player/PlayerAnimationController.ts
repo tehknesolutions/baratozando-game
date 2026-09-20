@@ -1,5 +1,13 @@
-import { PLAYER_FRAMES } from '../../assets/assetKeys.js';
+import { HD_PLAYER_BENCHMARK, PLAYER_FRAMES } from '../../assets/assetKeys.js';
 import type { PlayerState } from './PlayerState.js';
+
+const HD_BENCHMARK_STATE_TEXTURE: Partial<Record<PlayerState, string>> = {
+  IDLE: HD_PLAYER_BENCHMARK.idle,
+  WING_FLAP: HD_PLAYER_BENCHMARK.wing,
+  GLIDE: HD_PLAYER_BENCHMARK.wing,
+  WALL_CLING: HD_PLAYER_BENCHMARK.wall,
+  WALL_CLIMB: HD_PLAYER_BENCHMARK.wall,
+};
 
 const DEFS: Record<PlayerState, { frames: readonly string[]; fps: number; loop: boolean }> = {
   BOOT: { frames: PLAYER_FRAMES.idle, fps: 6, loop: true },
@@ -24,13 +32,24 @@ export class PlayerAnimationController {
   private stateStartedAt = 0;
   private currentTexture = '';
 
-  constructor(private readonly sprite: any) {}
+  constructor(private readonly sprite: any, private readonly hdBenchmark = false) {}
 
   update(state: PlayerState, nowMs: number): void {
     if (state !== this.state) {
       this.state = state;
       this.stateStartedAt = nowMs;
     }
+    if (this.hdBenchmark) {
+      const hdTexture = HD_BENCHMARK_STATE_TEXTURE[state];
+      if (hdTexture) {
+        if (hdTexture !== this.currentTexture) {
+          this.sprite.setTexture(hdTexture);
+          this.currentTexture = hdTexture;
+        }
+        return;
+      }
+    }
+
     const def = DEFS[state];
     const elapsed = Math.max(0, nowMs - this.stateStartedAt);
     const raw = Math.floor(elapsed / (1000 / def.fps));
