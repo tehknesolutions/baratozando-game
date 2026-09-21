@@ -11,6 +11,7 @@ export class MobilityLabV2Scene extends Phaser.Scene {
   private surfaces: Array<{ spec: MobilitySurface; block: any }> = [];
   private hud!: any;
   private prompt!: any;
+  private playerProbe!: any;
 
   constructor() { super('mobility-lab-v2'); }
 
@@ -35,6 +36,8 @@ export class MobilityLabV2Scene extends Phaser.Scene {
     this.player.setDepth(50);
     for (const { block } of this.surfaces) this.physics.add.collider(this.player, block);
     this.player.setWallContactProvider(() => this.resolveWallContact());
+
+    this.playerProbe = this.add.circle(this.player.x, this.player.y - 9, 4, 0xff0000, 1).setDepth(1000);
 
     this.cameras.main.startFollow(this.player, true, 0.09, 0.08);
     this.cameras.main.setDeadzone(220, 170);
@@ -61,7 +64,14 @@ export class MobilityLabV2Scene extends Phaser.Scene {
     const contact = this.resolveWallContact();
     const side = contact.touchingLeft ? 'L' : contact.touchingRight ? 'R' : '—';
     const climb = contact.surface ?? '—';
-    this.hud.setText(`MOBILITY LAB V2   ${this.player.state}   ASAS ${this.player.flapsRemaining}/2   PAREDE ${side} ${climb}`);
+    const body = this.player.body as any;
+    this.playerProbe.setPosition(this.player.x, this.player.y - 9);
+    this.hud.setText([
+      `STATE ${this.player.state}   ASAS ${this.player.flapsRemaining}/2   PAREDE ${side} ${climb}`,
+      `POS ${this.player.x.toFixed(1)},${this.player.y.toFixed(1)}  VEL ${Number(body?.velocity?.x ?? 0).toFixed(1)},${Number(body?.velocity?.y ?? 0).toFixed(1)}`,
+      `VIS ${this.player.visible} ACT ${this.player.active} ALPHA ${this.player.alpha.toFixed(2)} SCALE ${this.player.scaleX.toFixed(2)},${this.player.scaleY.toFixed(2)}`,
+      `TEX ${this.player.texture.key} BODY ${body?.enable ?? '—'}`,
+    ]);
 
     const vy = (this.player.body as any)?.velocity?.y ?? 0;
     const yBias = this.player.state === 'WALL_CLIMB' ? -70 : vy > 170 ? 55 : 0;
