@@ -54,7 +54,7 @@ export class PlayerAnimationController {
     const elapsed = Math.max(0, nowMs - this.stateStartedAt);
     const raw = Math.floor(elapsed / (1000 / def.fps));
     const index = def.loop ? raw % def.frames.length : Math.min(raw, def.frames.length - 1);
-    const key = def.frames[index];
+    const key = 'player-idle-01'; // TEMP QA: single-frame visual lock
     if (key !== this.currentTexture) {
       this.sprite.setTexture(key);
       this.currentTexture = key;

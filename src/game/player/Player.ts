@@ -232,6 +232,14 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     else if (!this.damage.respawning) this.setAlpha(1);
 
     this.animator.update(this.state, nowMs);
+
+    // TEMP QA - hard render lock
+    this.setVisible(true);
+    this.setActive(true);
+    this.setAlpha(1);
+    this.setScale(1);
+    this.setDepth(999);
+    this.clearMask();
   }
 
   requestRespawn(): void {
