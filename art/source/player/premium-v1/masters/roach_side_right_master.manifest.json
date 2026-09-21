@@ -1,0 +1,23 @@
+{
+  "id": "ROACH-PREMIUM-V1-SIDE-RIGHT-MASTER",
+  "issue": 31,
+  "authority": "CANDIDATE",
+  "runtimeReady": false,
+  "sourcePath": "art/source/player/premium-v1/masters/roach_side_right_master.png",
+  "canonicalFacing": "right",
+  "requiredFormat": "PNG RGBA transparent",
+  "minLongEdge": 2048,
+  "identityReference": {
+    "path": "art/source/player/premium-v1/references/roach_side_right_runtime_reference_1024.png",
+    "sha256": "6493461b077da87709a23771e5752944444c343729ccb813d7966144a7daca0d"
+  },
+  "requiredIdentityInvariants": [
+    "six legs",
+    "two stable antenna roots",
+    "stable head/pronotum/abdomen proportions",
+    "stable elytra/wing anatomy",
+    "realistic dark chitin"
+  ],
+  "visualApprovalRequired": true,
+  "binaryStatus": "PENDING"
+}
