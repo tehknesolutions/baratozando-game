@@ -7,6 +7,13 @@
   "canonicalFacing": "right",
   "requiredFormat": "PNG RGBA transparent",
   "minLongEdge": 2048,
+  "candidate": {
+    "dimensions": [2048, 1365],
+    "mode": "RGBA",
+    "alphaExtrema": [0, 255],
+    "bytes": 1612847,
+    "sha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e"
+  },
   "identityReference": {
     "path": "art/source/player/premium-v1/references/roach_side_right_runtime_reference_1024.png",
     "sha256": "6493461b077da87709a23771e5752944444c343729ccb813d7966144a7daca0d"
@@ -19,5 +26,6 @@
     "realistic dark chitin"
   ],
   "visualApprovalRequired": true,
-  "binaryStatus": "PENDING"
+  "visualApproval": "PENDING",
+  "binaryStatus": "GENERATED_PENDING_REPOSITORY_INGESTION"
 }
