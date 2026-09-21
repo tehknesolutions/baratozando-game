@@ -1,0 +1,24 @@
+{
+  "version": "ROACH_PREMIUM_V1",
+  "issue": 24,
+  "masterFormat": "PNG RGBA transparent",
+  "masterMinLongEdge": 2048,
+  "canonicalFacing": "right",
+  "origin": [
+    0.5,
+    1
+  ],
+  "identityInvariants": [
+    "six legs",
+    "two stable antenna roots",
+    "stable head/pronotum/abdomen proportions",
+    "stable elytra and wing anatomy",
+    "realistic dark chitin"
+  ],
+  "forbidden": [
+    "presentation-board crops as runtime sprites",
+    "independent redesign per pose",
+    "baked background",
+    "baked shadow"
+  ]
+}

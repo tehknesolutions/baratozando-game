@@ -1,10 +1,5 @@
-# ROACH PREMIUM V1 — Reference Assets
+# ROACH PREMIUM V1
 
-Issue: #18.
-
-This directory is reserved for crops derived from the approved realistic master board. They are design references, not runtime animation frames.
-
-## Gate order
-ROACH-01 visual identity -> ROACH-02 technical scale/origin/camera -> ROACH-03 pose lock -> animation-family production -> runtime integration.
-
-The PR must remain draft while binary PNGs/checksums are pending.
+Repository-first production area for the approved realistic cockroach identity.
+No presentation boards are production assets. Store isolated source masters and derived runtime assets only.
+Authority: CANDIDATE -> APPROVED -> LOCKED -> RUNTIME_READY. Physics/mobility stay frozen during visual production.
