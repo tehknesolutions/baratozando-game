@@ -1,0 +1,25 @@
+{
+  "id": "ROACH-PREMIUM-V1-SIDE-RIGHT-MASTER-CANDIDATE-QA",
+  "issue": 31,
+  "authority": "CANDIDATE",
+  "runtimeReady": false,
+  "binaryRepositoryStatus": "PENDING_INGESTION",
+  "localArtifact": {
+    "filename": "roach_side_right_master.png",
+    "width": 2048,
+    "height": 1365,
+    "mode": "RGBA",
+    "alphaExtrema": [0, 255],
+    "bytes": 1612847,
+    "sha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e"
+  },
+  "machineGates": {
+    "png": true,
+    "rgba": true,
+    "nontrivialAlpha": true,
+    "minLongEdge2048": true
+  },
+  "visualApproval": "PENDING",
+  "promotionBlocked": true,
+  "notes": "QA record describes the generated candidate binary. It does not claim the PNG bytes are present in GitHub. Runtime promotion remains blocked until repository ingestion, byte-for-byte revalidation, and explicit visual approval."
+}
