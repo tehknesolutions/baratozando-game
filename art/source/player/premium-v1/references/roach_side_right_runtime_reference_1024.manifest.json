@@ -1,0 +1,13 @@
+{
+  "id": "ROACH-PREMIUM-V1-RUNTIME-REFERENCE-1024",
+  "issue": 29,
+  "authority": "REFERENCE",
+  "runtimeReady": false,
+  "path": "art/source/player/premium-v1/references/roach_side_right_runtime_reference_1024.png",
+  "dimensions": [1024, 657],
+  "bytes": 517775,
+  "sha256": "6493461b077da87709a23771e5752944444c343729ccb813d7966144a7daca0d",
+  "provenance": "existing hd-v2 runtime reference; preserved for identity continuity only",
+  "promotionAllowed": false,
+  "nextGate": "real isolated high-resolution RGBA side-right master candidate"
+}
