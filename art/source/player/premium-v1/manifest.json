@@ -1,0 +1,13 @@
+{
+  "version": "ROACH_PREMIUM_V1",
+  "status": "REFERENCE_ASSETS_PENDING_BINARY_UPLOAD",
+  "issue": 18,
+  "source": "user-approved realistic ROACH MASTER PREMIUM V1 board",
+  "authority": "reference-only until ROACH-02 and ROACH-03 gates close",
+  "assets": [
+    "master_side_right.png","master_side_left.png","master_front.png","master_rear.png","master_top.png","silhouette_scale.png",
+    "detail_head_eyes_antennae.png","detail_pronotum.png","detail_elytra_closed.png","detail_wing_open.png","detail_leg.png",
+    "palette.png","materials_pbr.png","key_poses.png","gameplay_scale.png","environment_context.png","identity_notes.png","master_badge.png"
+  ],
+  "runtime": { "enabled": false, "reason": "reference crops are not animation frames" }
+}
