@@ -1,7 +1,7 @@
 {
   "id": "ROACH-PREMIUM-V1-WALK-FAMILY",
   "family": "WALK",
-  "status": "CADENCE_APPROVED_ARTICULATION_PENDING",
+  "status": "ARTICULATION_CANDIDATE_V1",
   "runtimeReady": false,
   "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
   "canvas": [
@@ -18,41 +18,92 @@
       "index": 1,
       "path": "public/assets/player/premium-v1/frames/walk/roach_walk_01.png",
       "sha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
-      "lowerBodyShiftPx": 0
+      "anglesDeg": {
+        "rear_near": 0,
+        "mid_near": 0,
+        "front_near": 0,
+        "rear_far": 0,
+        "mid_far": 0,
+        "front_far": 0
+      }
     },
     {
       "index": 2,
       "path": "public/assets/player/premium-v1/frames/walk/roach_walk_02.png",
-      "sha256": "0682bfe2a3b59d7eada54f903f9eb07e2f0381fe8ff8896fd2f8208133718015",
-      "lowerBodyShiftPx": 1
+      "sha256": "63c3167837af77213594ec31c000eab5cacea0e3f95592a30b8ae456ada844b4",
+      "anglesDeg": {
+        "rear_near": 4,
+        "mid_near": -4,
+        "front_near": 4,
+        "rear_far": -3,
+        "mid_far": 3,
+        "front_far": -3
+      }
     },
     {
       "index": 3,
       "path": "public/assets/player/premium-v1/frames/walk/roach_walk_03.png",
-      "sha256": "8669f502a2475d8d6257767c93e8f1f3c7ecbe807f9655b32733acfc75fb411a",
-      "lowerBodyShiftPx": 2
+      "sha256": "c58caba83cf1313b245cb8e9683aa22f092082f25add824fc81217b45c42b5e6",
+      "anglesDeg": {
+        "rear_near": 7,
+        "mid_near": -7,
+        "front_near": 7,
+        "rear_far": -5,
+        "mid_far": 5,
+        "front_far": -5
+      }
     },
     {
       "index": 4,
       "path": "public/assets/player/premium-v1/frames/walk/roach_walk_04.png",
-      "sha256": "0682bfe2a3b59d7eada54f903f9eb07e2f0381fe8ff8896fd2f8208133718015",
-      "lowerBodyShiftPx": 1
+      "sha256": "7d17c6f159711fb5ccef7e247f112158e1db8e139a74cb32e4650e3cd81848a3",
+      "anglesDeg": {
+        "rear_near": 3,
+        "mid_near": -3,
+        "front_near": 3,
+        "rear_far": -2,
+        "mid_far": 2,
+        "front_far": -2
+      }
     },
     {
       "index": 5,
       "path": "public/assets/player/premium-v1/frames/walk/roach_walk_05.png",
-      "sha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
-      "lowerBodyShiftPx": 0
+      "sha256": "3b9e463dd81ece1b344fb3d1f59ae9df16c7fe8904470fe8f17306e25b41bf20",
+      "anglesDeg": {
+        "rear_near": -4,
+        "mid_near": 4,
+        "front_near": -4,
+        "rear_far": 3,
+        "mid_far": -3,
+        "front_far": 3
+      }
     },
     {
       "index": 6,
       "path": "public/assets/player/premium-v1/frames/walk/roach_walk_06.png",
-      "sha256": "0682bfe2a3b59d7eada54f903f9eb07e2f0381fe8ff8896fd2f8208133718015",
-      "lowerBodyShiftPx": 1
+      "sha256": "35d9a457b548f24f02269d04f8a455992812908d603d58ec3d182b7064c0190e",
+      "anglesDeg": {
+        "rear_near": -7,
+        "mid_near": 7,
+        "front_near": -7,
+        "rear_far": 5,
+        "mid_far": -5,
+        "front_far": 5
+      }
     }
   ],
-  "derivation": "deterministic lower-body row warp below y=170; upper identity remains byte-aligned to the locked frame",
-  "qaPurpose": "locomotion cadence and continuity blockout only; not final premium leg articulation",
-  "promotionGate": "explicit in-game walk QA plus articulated-leg production pass",
-  "cadenceQa": "APPROVED_BY_CREATOR_2026-09-22"
+  "derivation": "deterministic six-distal-leg pivot rotation from locked idle identity; no character regeneration",
+  "qaPurpose": "premium WALK articulation candidate with locked upper-body identity and six-leg continuity",
+  "promotionGate": "technical articulation QA + explicit in-game visual approval",
+  "cadenceQa": "APPROVED_BY_CREATOR_2026-09-22",
+  "articulationMethod": "manual distal-leg masks with fixed pivots; alternating tripod gait",
+  "upperBodyLockRegion": [
+    0,
+    0,
+    256,
+    189
+  ],
+  "technicalQa": "PASS_2026-09-22",
+  "visualApproval": "PENDING"
 }
