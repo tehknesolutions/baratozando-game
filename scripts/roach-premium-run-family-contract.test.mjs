@@ -4,12 +4,12 @@ import { createHash } from 'node:crypto';
 const manifestPath='art/source/player/premium-v1/frames/run/run_family.manifest.json';
 if (!existsSync(manifestPath)) throw new Error('missing run manifest');
 const manifest=JSON.parse(readFileSync(manifestPath,'utf8'));
-if (manifest.status!=='ARTICULATION_CANDIDATE_V1') throw new Error('run articulation status drift');
+if (manifest.status!=='ARTICULATION_VISUAL_APPROVED_RUNTIME_PENDING') throw new Error('run articulation status drift');
 if (manifest.cadenceQa!=='APPROVED_BY_CREATOR_2026-09-22') throw new Error('run cadence approval drift');
 if (manifest.runtimeReady!==false) throw new Error('run promoted too early');
 if (manifest.playbackFps!==12 || manifest.frames.length!==8) throw new Error('run contract drift');
 if (manifest.technicalQa!=='PASS_2026-09-22') throw new Error('run technical QA drift');
-if (manifest.visualApproval!=='PENDING') throw new Error('run visual approval must remain pending');
+if (manifest.visualApproval!=='APPROVED_BY_CREATOR_2026-09-22') throw new Error('run visual approval drift');
 
 for (const frame of manifest.frames) {
   if (!existsSync(frame.path)) throw new Error(`missing run frame ${frame.index}`);
@@ -18,4 +18,4 @@ for (const frame of manifest.frames) {
   if (buf.readUInt32BE(16)!==256 || buf.readUInt32BE(20)!==256) throw new Error(`run frame ${frame.index} size drift`);
   if (createHash('sha256').update(buf).digest('hex')!==frame.sha256) throw new Error(`run frame ${frame.index} hash drift`);
 }
-console.log('PASS ROACH-14 run articulation candidate contract (01-08)');
+console.log('PASS ROACH-14 run articulation visual-approved contract (01-08)');
