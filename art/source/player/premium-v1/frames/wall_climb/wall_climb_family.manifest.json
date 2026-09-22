@@ -1,0 +1,69 @@
+{
+  "id": "ROACH-PREMIUM-V1-WALL-CLIMB-FAMILY",
+  "family": "WALL_CLIMB",
+  "status": "CANDIDATE_MOTION_BLOCKOUT",
+  "runtimeReady": false,
+  "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
+  "canvas": [
+    256,
+    256
+  ],
+  "origin": [
+    0.5,
+    1.0
+  ],
+  "playbackFps": 10,
+  "frames": [
+    {
+      "index": 1,
+      "path": "public/assets/player/premium-v1/frames/wall_climb/roach_wall_climb_01.png",
+      "sha256": "ebc09d7bd24a027eddd392ef486443450b6214d3a1611baec0d7841b91b275bf",
+      "yOffsetPx": 0,
+      "alphaBounds": [
+        84,
+        1,
+        256,
+        255
+      ]
+    },
+    {
+      "index": 2,
+      "path": "public/assets/player/premium-v1/frames/wall_climb/roach_wall_climb_02.png",
+      "sha256": "d469ec2a04035851304e3692096c56c1f9de15e58e5387a867bdb140bce83693",
+      "yOffsetPx": 1,
+      "alphaBounds": [
+        84,
+        2,
+        256,
+        256
+      ]
+    },
+    {
+      "index": 3,
+      "path": "public/assets/player/premium-v1/frames/wall_climb/roach_wall_climb_03.png",
+      "sha256": "ebc09d7bd24a027eddd392ef486443450b6214d3a1611baec0d7841b91b275bf",
+      "yOffsetPx": 0,
+      "alphaBounds": [
+        84,
+        1,
+        256,
+        255
+      ]
+    },
+    {
+      "index": 4,
+      "path": "public/assets/player/premium-v1/frames/wall_climb/roach_wall_climb_04.png",
+      "sha256": "d469ec2a04035851304e3692096c56c1f9de15e58e5387a867bdb140bce83693",
+      "yOffsetPx": 1,
+      "alphaBounds": [
+        84,
+        2,
+        256,
+        256
+      ]
+    }
+  ],
+  "derivation": "deterministic 90-degree wall orientation plus 0/1px vertical cadence offsets; no regeneration",
+  "qaPurpose": "validate wall-climb cadence/orientation only",
+  "promotionGate": "explicit wall-climb QA plus articulated-leg production pass"
+}

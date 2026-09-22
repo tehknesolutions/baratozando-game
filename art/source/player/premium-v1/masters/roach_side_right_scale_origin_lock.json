@@ -1,0 +1,33 @@
+{
+  "id": "ROACH-PREMIUM-V1-SCALE-ORIGIN-CAMERA-LOCK",
+  "sourceSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
+  "runtimeProbe": "public/assets/player/premium-v1/roach_side_right_idle_lock_256.png",
+  "runtimeProbeSha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
+  "canvas": [
+    256,
+    256
+  ],
+  "alphaBounds": [
+    1,
+    84,
+    255,
+    256
+  ],
+  "origin": [
+    0.5,
+    1.0
+  ],
+  "physicsBody": [
+    30,
+    18
+  ],
+  "physicsOffset": [
+    17,
+    42
+  ],
+  "renderScale": 1.0,
+  "cameraGate": "APPROVED_BY_CREATOR_2026-09-22",
+  "runtimeReady": false,
+  "notes": "Single-pose gameplay probe approved for scale/origin/camera by creator. Identity and probe are locked; animation-family production is now authorized. RuntimeReady remains false until pose-family, animation and gameplay QA complete.",
+  "scaleOriginGate": "APPROVED_BY_CREATOR_2026-09-22"
+}
