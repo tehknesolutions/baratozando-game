@@ -1,0 +1,70 @@
+{
+  "id": "ROACH-PREMIUM-V1-RUN-FAMILY",
+  "family": "RUN",
+  "status": "CADENCE_APPROVED_ARTICULATION_PENDING",
+  "runtimeReady": false,
+  "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
+  "canvas": [
+    256,
+    256
+  ],
+  "origin": [
+    0.5,
+    1.0
+  ],
+  "playbackFps": 12,
+  "frames": [
+    {
+      "index": 1,
+      "path": "public/assets/player/premium-v1/frames/run/roach_run_01.png",
+      "sha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
+      "lowerBodyShiftPx": 0
+    },
+    {
+      "index": 2,
+      "path": "public/assets/player/premium-v1/frames/run/roach_run_02.png",
+      "sha256": "dd75065924fa07b1d7662b88327f0fc083ed4148a4607fc3ce86c7225aaff167",
+      "lowerBodyShiftPx": 1
+    },
+    {
+      "index": 3,
+      "path": "public/assets/player/premium-v1/frames/run/roach_run_03.png",
+      "sha256": "8755218ea05103353d3d5a19fe473306e7a36067bff888801a6ef91c430f7a75",
+      "lowerBodyShiftPx": 2
+    },
+    {
+      "index": 4,
+      "path": "public/assets/player/premium-v1/frames/run/roach_run_04.png",
+      "sha256": "68f22e7f92f419688084f87250b6a8626e15f087a7d8838240cd0cbaec5af259",
+      "lowerBodyShiftPx": 3
+    },
+    {
+      "index": 5,
+      "path": "public/assets/player/premium-v1/frames/run/roach_run_05.png",
+      "sha256": "8755218ea05103353d3d5a19fe473306e7a36067bff888801a6ef91c430f7a75",
+      "lowerBodyShiftPx": 2
+    },
+    {
+      "index": 6,
+      "path": "public/assets/player/premium-v1/frames/run/roach_run_06.png",
+      "sha256": "dd75065924fa07b1d7662b88327f0fc083ed4148a4607fc3ce86c7225aaff167",
+      "lowerBodyShiftPx": 1
+    },
+    {
+      "index": 7,
+      "path": "public/assets/player/premium-v1/frames/run/roach_run_07.png",
+      "sha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
+      "lowerBodyShiftPx": 0
+    },
+    {
+      "index": 8,
+      "path": "public/assets/player/premium-v1/frames/run/roach_run_08.png",
+      "sha256": "dd75065924fa07b1d7662b88327f0fc083ed4148a4607fc3ce86c7225aaff167",
+      "lowerBodyShiftPx": 1
+    }
+  ],
+  "derivation": "deterministic lower-body row warp below y=160; upper identity remains byte-aligned to the locked frame",
+  "qaPurpose": "run cadence and continuity blockout only; not final premium leg articulation",
+  "promotionGate": "explicit in-game run QA plus articulated-leg production pass",
+  "cadenceQa": "APPROVED_BY_CREATOR_2026-09-22"
+}

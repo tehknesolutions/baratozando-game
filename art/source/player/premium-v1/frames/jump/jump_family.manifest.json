@@ -1,0 +1,70 @@
+{
+  "id": "ROACH-PREMIUM-V1-JUMP-FAMILY",
+  "family": "JUMP",
+  "status": "CADENCE_APPROVED_ARTICULATION_PENDING",
+  "runtimeReady": false,
+  "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
+  "canvas": [
+    256,
+    256
+  ],
+  "origin": [
+    0.5,
+    1.0
+  ],
+  "playbackFps": 10,
+  "frames": [
+    {
+      "index": 1,
+      "path": "public/assets/player/premium-v1/frames/jump/roach_jump_01.png",
+      "sha256": "3734aae2ede80a333835243716a3d38b40c5a860afdeaa16bbdec2d515a81d9e",
+      "scaleY": 0.97,
+      "alphaBounds": [
+        1,
+        89,
+        255,
+        256
+      ]
+    },
+    {
+      "index": 2,
+      "path": "public/assets/player/premium-v1/frames/jump/roach_jump_02.png",
+      "sha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
+      "scaleY": 1.0,
+      "alphaBounds": [
+        1,
+        84,
+        255,
+        256
+      ]
+    },
+    {
+      "index": 3,
+      "path": "public/assets/player/premium-v1/frames/jump/roach_jump_03.png",
+      "sha256": "0923b4cf67347a5f20ce9ce336262ca9b8da19b6d5607f414d5cb5159dd87835",
+      "scaleY": 1.02,
+      "alphaBounds": [
+        1,
+        81,
+        255,
+        256
+      ]
+    },
+    {
+      "index": 4,
+      "path": "public/assets/player/premium-v1/frames/jump/roach_jump_04.png",
+      "sha256": "1e254666a398caec0fad402f1b1621d5447abc15fbac50a48362594971dad7f6",
+      "scaleY": 0.99,
+      "alphaBounds": [
+        1,
+        86,
+        255,
+        256
+      ]
+    }
+  ],
+  "derivation": "deterministic vertical silhouette scaling of the locked idle crop, bottom-center anchored; no regeneration",
+  "qaPurpose": "jump cadence/continuity blockout only; not final premium leg articulation",
+  "promotionGate": "explicit in-game jump QA plus articulated-leg production pass",
+  "cadenceQa": "APPROVED_BY_CREATOR_2026-09-22"
+}

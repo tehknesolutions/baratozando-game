@@ -1,0 +1,46 @@
+{
+  "id": "ROACH-PREMIUM-V1-FALL-FAMILY",
+  "family": "FALL",
+  "status": "CADENCE_APPROVED_ARTICULATION_PENDING",
+  "runtimeReady": false,
+  "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
+  "canvas": [
+    256,
+    256
+  ],
+  "origin": [
+    0.5,
+    1.0
+  ],
+  "playbackFps": 8,
+  "frames": [
+    {
+      "index": 1,
+      "path": "public/assets/player/premium-v1/frames/fall/roach_fall_01.png",
+      "sha256": "c35b7c1dc956ad931f3af39386c333cfd2e9264dfab928380504f4a8397b2a12",
+      "scaleY": 1.01,
+      "alphaBounds": [
+        1,
+        82,
+        255,
+        256
+      ]
+    },
+    {
+      "index": 2,
+      "path": "public/assets/player/premium-v1/frames/fall/roach_fall_02.png",
+      "sha256": "1e254666a398caec0fad402f1b1621d5447abc15fbac50a48362594971dad7f6",
+      "scaleY": 0.99,
+      "alphaBounds": [
+        1,
+        86,
+        255,
+        256
+      ]
+    }
+  ],
+  "derivation": "deterministic vertical silhouette scaling of the locked idle crop, bottom-center anchored; no regeneration",
+  "qaPurpose": "fall cadence/continuity blockout only; not final premium leg articulation",
+  "promotionGate": "explicit in-game fall QA plus articulated-leg production pass",
+  "cadenceQa": "APPROVED_BY_CREATOR_2026-09-22"
+}

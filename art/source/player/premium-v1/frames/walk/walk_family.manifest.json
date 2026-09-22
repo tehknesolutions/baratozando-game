@@ -1,0 +1,58 @@
+{
+  "id": "ROACH-PREMIUM-V1-WALK-FAMILY",
+  "family": "WALK",
+  "status": "CADENCE_APPROVED_ARTICULATION_PENDING",
+  "runtimeReady": false,
+  "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
+  "canvas": [
+    256,
+    256
+  ],
+  "origin": [
+    0.5,
+    1.0
+  ],
+  "playbackFps": 8,
+  "frames": [
+    {
+      "index": 1,
+      "path": "public/assets/player/premium-v1/frames/walk/roach_walk_01.png",
+      "sha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
+      "lowerBodyShiftPx": 0
+    },
+    {
+      "index": 2,
+      "path": "public/assets/player/premium-v1/frames/walk/roach_walk_02.png",
+      "sha256": "0682bfe2a3b59d7eada54f903f9eb07e2f0381fe8ff8896fd2f8208133718015",
+      "lowerBodyShiftPx": 1
+    },
+    {
+      "index": 3,
+      "path": "public/assets/player/premium-v1/frames/walk/roach_walk_03.png",
+      "sha256": "8669f502a2475d8d6257767c93e8f1f3c7ecbe807f9655b32733acfc75fb411a",
+      "lowerBodyShiftPx": 2
+    },
+    {
+      "index": 4,
+      "path": "public/assets/player/premium-v1/frames/walk/roach_walk_04.png",
+      "sha256": "0682bfe2a3b59d7eada54f903f9eb07e2f0381fe8ff8896fd2f8208133718015",
+      "lowerBodyShiftPx": 1
+    },
+    {
+      "index": 5,
+      "path": "public/assets/player/premium-v1/frames/walk/roach_walk_05.png",
+      "sha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
+      "lowerBodyShiftPx": 0
+    },
+    {
+      "index": 6,
+      "path": "public/assets/player/premium-v1/frames/walk/roach_walk_06.png",
+      "sha256": "0682bfe2a3b59d7eada54f903f9eb07e2f0381fe8ff8896fd2f8208133718015",
+      "lowerBodyShiftPx": 1
+    }
+  ],
+  "derivation": "deterministic lower-body row warp below y=170; upper identity remains byte-aligned to the locked frame",
+  "qaPurpose": "locomotion cadence and continuity blockout only; not final premium leg articulation",
+  "promotionGate": "explicit in-game walk QA plus articulated-leg production pass",
+  "cadenceQa": "APPROVED_BY_CREATOR_2026-09-22"
+}

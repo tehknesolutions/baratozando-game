@@ -1,0 +1,58 @@
+{
+  "id": "ROACH-PREMIUM-V1-IDLE-FAMILY",
+  "family": "IDLE",
+  "status": "CANDIDATE_LOOP_COMPLETE",
+  "runtimeReady": false,
+  "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
+  "scaleOriginLock": "APPROVED_BY_CREATOR_2026-09-22",
+  "canvas": [
+    256,
+    256
+  ],
+  "origin": [
+    0.5,
+    1.0
+  ],
+  "frames": [
+    {
+      "index": 1,
+      "path": "public/assets/player/premium-v1/frames/idle/roach_idle_01.png",
+      "sha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
+      "authority": "LOCKED_BASE_FRAME",
+      "derivation": "byte-identical copy of approved single-pose runtime probe"
+    },
+    {
+      "index": 2,
+      "path": "public/assets/player/premium-v1/frames/idle/roach_idle_02.png",
+      "sha256": "6bc253743c7caededd801837e3349a45d40eedf2b42490b050c2a9c5c8758b84",
+      "authority": "CANDIDATE_DERIVED_FRAME",
+      "parentSha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
+      "derivation": "deterministic 1px vertical compression anchored to bottom-center; no regeneration"
+    },
+    {
+      "index": 3,
+      "path": "public/assets/player/premium-v1/frames/idle/roach_idle_03.png",
+      "sha256": "b0f6d06361c634d5aa8ad504b169d681259a29506cf28114203f3b3178c24096",
+      "authority": "CANDIDATE_DERIVED_FRAME",
+      "parentSha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
+      "derivation": "deterministic 2px vertical compression anchored to bottom-center; no regeneration"
+    },
+    {
+      "index": 4,
+      "path": "public/assets/player/premium-v1/frames/idle/roach_idle_04.png",
+      "sha256": "6bc253743c7caededd801837e3349a45d40eedf2b42490b050c2a9c5c8758b84",
+      "authority": "CANDIDATE_LOOP_RETURN_FRAME",
+      "parentSha256": "6bc253743c7caededd801837e3349a45d40eedf2b42490b050c2a9c5c8758b84",
+      "derivation": "byte-identical loop-return copy of idle_02 for a 01-02-03-02 breathing cycle; no regeneration"
+    }
+  ],
+  "nextRequiredFrame": null,
+  "rule": "All future IDLE frames must preserve the locked character identity; only minimal biomechanical idle motion may change.",
+  "loopSequence": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "playbackFps": 4
+}

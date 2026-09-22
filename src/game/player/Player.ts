@@ -20,6 +20,7 @@ function approach(current: number, target: number, maxDelta: number): number {
 export type PlayerOptions = {
   mobilityV2?: boolean;
   hdCharacterBenchmark?: boolean;
+  premiumVisualQa?: boolean;
 };
 
 export type WallContact = {
@@ -68,7 +69,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     body.setSize(30, 18, false);
     body.setOffset(17, 42);
     this.checkpoint = { x, y };
-    this.animator = new PlayerAnimationController(this, options.hdCharacterBenchmark === true);
+    this.animator = new PlayerAnimationController(this, options.hdCharacterBenchmark === true, options.premiumVisualQa === true);
   }
 
   get flapsRemaining(): number {

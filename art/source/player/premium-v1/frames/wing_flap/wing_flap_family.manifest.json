@@ -1,0 +1,75 @@
+{
+  "id": "ROACH-PREMIUM-V1-WING-FLAP-FAMILY",
+  "family": "WING_FLAP",
+  "status": "TIMING_APPROVED_WING_ART_PENDING",
+  "runtimeReady": false,
+  "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
+  "canvas": [
+    256,
+    256
+  ],
+  "origin": [
+    0.5,
+    1.0
+  ],
+  "playbackFps": 14,
+  "frames": [
+    {
+      "path": "public/assets/player/premium-v1/frames/wing_flap/roach_wing_flap_01.png",
+      "sha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
+      "scaleY": 1.0,
+      "yOffsetPx": 0,
+      "alphaBounds": [
+        1,
+        84,
+        255,
+        256
+      ],
+      "index": 1
+    },
+    {
+      "path": "public/assets/player/premium-v1/frames/wing_flap/roach_wing_flap_02.png",
+      "sha256": "ddb5b799e582416066dffc1b20c8ff90e9233d0e8559239fc9831b2695dee797",
+      "scaleY": 1.01,
+      "yOffsetPx": -1,
+      "alphaBounds": [
+        1,
+        81,
+        255,
+        255
+      ],
+      "index": 2
+    },
+    {
+      "path": "public/assets/player/premium-v1/frames/wing_flap/roach_wing_flap_03.png",
+      "sha256": "f03a0b6d0832db2d3e496af741ba508c384477fa95aba0cc5de62a27d54e3f18",
+      "scaleY": 1.02,
+      "yOffsetPx": -2,
+      "alphaBounds": [
+        1,
+        79,
+        255,
+        254
+      ],
+      "index": 3
+    },
+    {
+      "path": "public/assets/player/premium-v1/frames/wing_flap/roach_wing_flap_04.png",
+      "sha256": "ddb5b799e582416066dffc1b20c8ff90e9233d0e8559239fc9831b2695dee797",
+      "scaleY": 1.01,
+      "yOffsetPx": -1,
+      "alphaBounds": [
+        1,
+        81,
+        255,
+        255
+      ],
+      "index": 4
+    }
+  ],
+  "derivation": "deterministic vertical scale/offset timing blockout from locked idle identity; no wing artwork introduced",
+  "qaPurpose": "validate WING_FLAP cadence/state timing only",
+  "wingArtworkStatus": "PENDING_DEDICATED_ART_PASS",
+  "promotionGate": "dedicated wing artwork + explicit in-game wing QA",
+  "timingQa": "APPROVED_BY_CREATOR_2026-09-22"
+}
