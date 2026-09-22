@@ -1,9 +1,9 @@
 {
   "id": "ROACH-PREMIUM-V1-SIDE-RIGHT-MASTER-CANDIDATE-QA",
   "issue": 31,
-  "authority": "CANDIDATE",
+  "authority": "VISUAL_LOCKED",
   "runtimeReady": false,
-  "binaryRepositoryStatus": "PENDING_INGESTION",
+  "binaryRepositoryStatus": "INGESTED_REVALIDATED",
   "localArtifact": {
     "filename": "roach_side_right_master.png",
     "width": 2048,
@@ -19,7 +19,7 @@
     "nontrivialAlpha": true,
     "minLongEdge2048": true
   },
-  "visualApproval": "PENDING",
-  "promotionBlocked": true,
-  "notes": "QA record describes the generated candidate binary. It does not claim the PNG bytes are present in GitHub. Runtime promotion remains blocked until repository ingestion, byte-for-byte revalidation, and explicit visual approval."
+  "visualApproval": "APPROVED_BY_CREATOR_2026-09-22",
+  "promotionBlocked": false,
+  "notes": "Candidate PNG bytes are present in the reconciled Git tree and were revalidated byte-for-byte against the locked SHA-256. Visual identity is explicitly approved by the creator. Runtime remains false until scale/origin, pose-family, animation and gameplay QA complete."
 }

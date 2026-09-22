@@ -1,7 +1,7 @@
 {
   "id": "ROACH-PREMIUM-V1-SIDE-RIGHT-MASTER",
   "issue": 31,
-  "authority": "CANDIDATE",
+  "authority": "VISUAL_LOCKED",
   "runtimeReady": false,
   "sourcePath": "art/source/player/premium-v1/masters/roach_side_right_master.png",
   "canonicalFacing": "right",
@@ -26,6 +26,6 @@
     "realistic dark chitin"
   ],
   "visualApprovalRequired": true,
-  "visualApproval": "PENDING",
-  "binaryStatus": "GENERATED_PENDING_REPOSITORY_INGESTION"
+  "visualApproval": "APPROVED_BY_CREATOR_2026-09-22",
+  "binaryStatus": "INGESTED_REVALIDATED"
 }

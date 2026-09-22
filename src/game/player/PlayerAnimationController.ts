@@ -1,4 +1,4 @@
-import { HD_PLAYER_BENCHMARK, PLAYER_FRAMES } from '../../assets/assetKeys.js';
+﻿import { HD_PLAYER_BENCHMARK, PLAYER_FRAMES, PREMIUM_PLAYER_QA } from '../../assets/assetKeys.js';
 import type { PlayerState } from './PlayerState.js';
 
 const HD_BENCHMARK_STATE_TEXTURE: Partial<Record<PlayerState, string>> = {
@@ -32,13 +32,53 @@ export class PlayerAnimationController {
   private stateStartedAt = 0;
   private currentTexture = '';
 
-  constructor(private readonly sprite: any, private readonly hdBenchmark = false) {}
+  constructor(private readonly sprite: any, private readonly hdBenchmark = false, private readonly premiumVisualQa = false) {}
 
   update(state: PlayerState, nowMs: number): void {
     if (state !== this.state) {
       this.state = state;
       this.stateStartedAt = nowMs;
     }
+    if (this.premiumVisualQa) {
+      const elapsed = Math.max(0, nowMs - this.stateStartedAt);
+      let key: string = PREMIUM_PLAYER_QA.idleLock;
+      if (state === 'IDLE' || state === 'BOOT' || state === 'RESPAWN') {
+        const frames = PREMIUM_PLAYER_QA.idleFrames;
+        key = frames[Math.floor(elapsed / 250) % frames.length];
+      } else if (state === 'WALK') {
+        const frames = PREMIUM_PLAYER_QA.walkFrames;
+        key = frames[Math.floor(elapsed / 125) % frames.length];
+      } else if (state === 'RUN') {
+        const frames = PREMIUM_PLAYER_QA.runFrames;
+        key = frames[Math.floor(elapsed / (1000 / 12)) % frames.length];
+      } else if (state === 'JUMP') {
+        const frames = PREMIUM_PLAYER_QA.jumpFrames;
+        key = frames[Math.min(Math.floor(elapsed / 100), frames.length - 1)];
+      } else if (state === 'FALL') {
+        const frames = PREMIUM_PLAYER_QA.fallFrames;
+        key = frames[Math.floor(elapsed / 125) % frames.length];
+      } else if (state === 'WING_FLAP') {
+        const frames = PREMIUM_PLAYER_QA.wingFlapFrames;
+        key = frames[Math.min(Math.floor(elapsed / (1000 / 14)), frames.length - 1)];
+      } else if (state === 'GLIDE') {
+        const frames = PREMIUM_PLAYER_QA.glideFrames;
+        key = frames[Math.floor(elapsed / (1000 / 6)) % frames.length];
+      } else if (state === 'WALL_CLING') {
+        key = PREMIUM_PLAYER_QA.wallClingFrames[0];
+      } else if (state === 'WALL_CLIMB') {
+        const frames = PREMIUM_PLAYER_QA.wallClimbFrames;
+        key = frames[Math.floor(elapsed / 100) % frames.length];
+      } else if (state === 'WALL_JUMP') {
+        const frames = PREMIUM_PLAYER_QA.wallJumpFrames;
+        key = frames[Math.min(Math.floor(elapsed / (1000 / 12)), frames.length - 1)];
+      }
+      if (key !== this.currentTexture) {
+        this.sprite.setTexture(key);
+        this.currentTexture = key;
+      }
+      return;
+    }
+
     if (this.hdBenchmark) {
       const hdTexture = HD_BENCHMARK_STATE_TEXTURE[state];
       if (hdTexture) {

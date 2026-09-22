@@ -1,0 +1,33 @@
+{
+  "id": "ROACH-PREMIUM-V1-WALL-CLING-FAMILY",
+  "family": "WALL_CLING",
+  "status": "CANDIDATE_ORIENTATION_BLOCKOUT",
+  "runtimeReady": false,
+  "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
+  "canvas": [
+    256,
+    256
+  ],
+  "origin": [
+    0.5,
+    1.0
+  ],
+  "playbackFps": 1,
+  "frames": [
+    {
+      "index": 1,
+      "path": "public/assets/player/premium-v1/frames/wall_cling/roach_wall_cling_01.png",
+      "sha256": "ebc09d7bd24a027eddd392ef486443450b6214d3a1611baec0d7841b91b275bf",
+      "rotationDegCCW": 90,
+      "alphaBounds": [
+        84,
+        1,
+        256,
+        255
+      ]
+    }
+  ],
+  "derivation": "deterministic 90-degree CCW rotation of locked idle frame; no regeneration",
+  "qaPurpose": "validate vertical wall orientation/contact only",
+  "promotionGate": "explicit wall orientation QA plus articulated-leg production pass"
+}
