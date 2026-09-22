@@ -1,0 +1,105 @@
+{
+  "id": "ROACH-PREMIUM-V1-DEATH-FAMILY",
+  "family": "DEATH",
+  "status": "CANDIDATE_MOTION_BLOCKOUT",
+  "runtimeReady": false,
+  "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
+  "canvas": [
+    256,
+    256
+  ],
+  "origin": [
+    0.5,
+    1.0
+  ],
+  "playbackFps": 8,
+  "frames": [
+    {
+      "index": 1,
+      "path": "public/assets/player/premium-v1/frames/death/roach_death_01.png",
+      "sha256": "61a004072e1f83adfec5333bec75547338807bdd3a9d5ca21400459478335bae",
+      "rotationDegCW": 0,
+      "preScale": 0.68,
+      "alphaBounds": [
+        41,
+        137,
+        214,
+        254
+      ],
+      "edgeAlphaPixels": 0
+    },
+    {
+      "index": 2,
+      "path": "public/assets/player/premium-v1/frames/death/roach_death_02.png",
+      "sha256": "7d98cd94cad13149640e60ef0c1a51b6c4b4e966c3212ff2ed6bc09e64b88b78",
+      "rotationDegCW": 15,
+      "preScale": 0.68,
+      "alphaBounds": [
+        34,
+        159,
+        229,
+        256
+      ],
+      "edgeAlphaPixels": 19
+    },
+    {
+      "index": 3,
+      "path": "public/assets/player/premium-v1/frames/death/roach_death_03.png",
+      "sha256": "343ecd5bddf0099dc238fb284655c96984a8d29ec2e66a87abe8c3ec913e6823",
+      "rotationDegCW": 30,
+      "preScale": 0.68,
+      "alphaBounds": [
+        32,
+        168,
+        237,
+        256
+      ],
+      "edgeAlphaPixels": 14
+    },
+    {
+      "index": 4,
+      "path": "public/assets/player/premium-v1/frames/death/roach_death_04.png",
+      "sha256": "f56950160a128c0b79c9e520aa671dae4bf97bb0614fab4db51c1d6912b0081a",
+      "rotationDegCW": 45,
+      "preScale": 0.68,
+      "alphaBounds": [
+        37,
+        151,
+        237,
+        256
+      ],
+      "edgeAlphaPixels": 12
+    },
+    {
+      "index": 5,
+      "path": "public/assets/player/premium-v1/frames/death/roach_death_05.png",
+      "sha256": "f0eda98c6aa6915c0853222282a610ce725b729b1cd82c91062ad504113c3d3f",
+      "rotationDegCW": 60,
+      "preScale": 0.68,
+      "alphaBounds": [
+        47,
+        137,
+        230,
+        256
+      ],
+      "edgeAlphaPixels": 16
+    },
+    {
+      "index": 6,
+      "path": "public/assets/player/premium-v1/frames/death/roach_death_06.png",
+      "sha256": "aa81371382ac343785f10e48f0c22b8b9dc820433c8e7c4174c3699cad20f4c4",
+      "rotationDegCW": 75,
+      "preScale": 0.68,
+      "alphaBounds": [
+        61,
+        126,
+        208,
+        256
+      ],
+      "edgeAlphaPixels": 25
+    }
+  ],
+  "derivation": "deterministic margin-safe scaled rotation fall-over blockout from locked identity; no regeneration",
+  "qaPurpose": "validate death timing/readability only",
+  "promotionGate": "dedicated death articulation pass plus explicit gameplay QA"
+}

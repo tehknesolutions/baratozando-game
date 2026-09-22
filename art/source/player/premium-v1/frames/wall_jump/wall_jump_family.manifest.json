@@ -1,7 +1,7 @@
 {
   "id": "ROACH-PREMIUM-V1-WALL-JUMP-FAMILY",
   "family": "WALL_JUMP",
-  "status": "CANDIDATE_TIMING_BLOCKOUT",
+  "status": "QA_APPROVED_ARTICULATION_PENDING",
   "runtimeReady": false,
   "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
   "canvas": [
@@ -65,5 +65,6 @@
   ],
   "derivation": "byte-identical reuse of approved JUMP blockout frames for wall-jump timing; no regeneration",
   "qaPurpose": "validate wall-jump state timing only",
-  "promotionGate": "dedicated wall-jump articulation/orientation pass plus explicit gameplay QA"
+  "promotionGate": "dedicated wall-jump articulation/orientation pass plus explicit gameplay QA",
+  "stateQa": "APPROVED_BY_CREATOR_2026-09-22"
 }

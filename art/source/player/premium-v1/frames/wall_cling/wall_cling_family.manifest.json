@@ -1,7 +1,7 @@
 {
   "id": "ROACH-PREMIUM-V1-WALL-CLING-FAMILY",
   "family": "WALL_CLING",
-  "status": "CANDIDATE_ORIENTATION_BLOCKOUT",
+  "status": "QA_APPROVED_ARTICULATION_PENDING",
   "runtimeReady": false,
   "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
   "canvas": [
@@ -29,5 +29,6 @@
   ],
   "derivation": "deterministic 90-degree CCW rotation of locked idle frame; no regeneration",
   "qaPurpose": "validate vertical wall orientation/contact only",
-  "promotionGate": "explicit wall orientation QA plus articulated-leg production pass"
+  "promotionGate": "explicit wall orientation QA plus articulated-leg production pass",
+  "stateQa": "APPROVED_BY_CREATOR_2026-09-22"
 }
