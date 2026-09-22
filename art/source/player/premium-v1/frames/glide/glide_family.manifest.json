@@ -1,7 +1,7 @@
 {
   "id": "ROACH-PREMIUM-V1-GLIDE-FAMILY",
   "family": "GLIDE",
-  "status": "TIMING_APPROVED_WING_ART_PENDING",
+  "status": "WING_ARTICULATION_CANDIDATE_V1",
   "runtimeReady": false,
   "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
   "canvas": [
@@ -15,35 +15,108 @@
   "playbackFps": 6,
   "frames": [
     {
+      "index": 1,
       "path": "public/assets/player/premium-v1/frames/glide/roach_glide_01.png",
-      "sha256": "cbdc11b1c15e61dbe6efec3b68bbc0f3d44189b4bb27fff317fed5ccd8078e09",
-      "scaleY": 0.97,
-      "yOffsetPx": -2,
-      "alphaBounds": [
-        1,
-        87,
-        255,
-        254
-      ],
-      "index": 1
+      "sha256": "b63267963f094bb2bbb0ab6287f1dcd80e52720831baa575090c62c168c7fa08",
+      "wingLayers": [
+        {
+          "angleDeg": -28,
+          "alphaScale": 0.36
+        },
+        {
+          "angleDeg": -36,
+          "alphaScale": 0.68
+        }
+      ]
     },
     {
+      "index": 2,
       "path": "public/assets/player/premium-v1/frames/glide/roach_glide_02.png",
-      "sha256": "5326401263e3c353ae6b8a08256db2a06979bef6408630e614beee9c0732966e",
-      "scaleY": 0.96,
-      "yOffsetPx": -3,
-      "alphaBounds": [
-        1,
-        88,
-        255,
-        253
-      ],
-      "index": 2
+      "sha256": "ecde7802e5856dbd4191e405206c4a793af57df05cf2a43b821f061294aafee1",
+      "wingLayers": [
+        {
+          "angleDeg": -31,
+          "alphaScale": 0.36
+        },
+        {
+          "angleDeg": -40,
+          "alphaScale": 0.68
+        }
+      ]
     }
   ],
-  "derivation": "deterministic vertical scale/offset timing blockout from locked idle identity; no wing artwork introduced",
-  "qaPurpose": "validate GLIDE cadence/state timing only",
-  "wingArtworkStatus": "PENDING_DEDICATED_ART_PASS",
-  "promotionGate": "dedicated glide wing artwork + explicit in-game glide QA",
-  "timingQa": "APPROVED_BY_CREATOR_2026-09-22"
+  "derivation": "deterministic dual-layer rotation of canonical closed-wing texture over an approved articulated airborne body; no character regeneration",
+  "qaPurpose": "premium GLIDE wing deployment candidate with locked head/antennae and articulated airborne body",
+  "wingArtworkStatus": "DERIVED_CANONICAL_WING_TEXTURE_V1",
+  "promotionGate": "technical wing QA + explicit in-game visual approval",
+  "timingQa": "APPROVED_BY_CREATOR_2026-09-22",
+  "articulationMethod": "canonical wing polygon with fixed thoracic hinge and two translucent derived layers",
+  "bodySource": "public/assets/player/premium-v1/frames/fall/roach_fall_01.png",
+  "bodySourceSha256": "7c749748bfa9e82e185f22acf0fac9d780dd8fda1fa40cecc4abfa28df41640b",
+  "wingSource": "public/assets/player/premium-v1/frames/idle/roach_idle_01.png",
+  "wingSourceSha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
+  "wingPolygon": [
+    [
+      52,
+      149
+    ],
+    [
+      79,
+      137
+    ],
+    [
+      125,
+      137
+    ],
+    [
+      158,
+      148
+    ],
+    [
+      158,
+      169
+    ],
+    [
+      136,
+      184
+    ],
+    [
+      92,
+      192
+    ],
+    [
+      51,
+      188
+    ],
+    [
+      39,
+      175
+    ]
+  ],
+  "wingHinge": [
+    153,
+    154
+  ],
+  "identityLockRegions": {
+    "headAntennae": [
+      158,
+      0,
+      256,
+      256
+    ],
+    "lowerBodyLegs": [
+      0,
+      180,
+      256,
+      256
+    ]
+  },
+  "wingChangeEnvelope": [
+    35,
+    85,
+    160,
+    195
+  ],
+  "technicalQa": "PASS_2026-09-22",
+  "visualApproval": "PENDING"
 }
