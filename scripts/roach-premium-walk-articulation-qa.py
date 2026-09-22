@@ -1,4 +1,4 @@
-﻿from pathlib import Path
+from pathlib import Path
 from PIL import Image, ImageChops
 import hashlib, json, sys
 
@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parents[1]
 manifest=json.loads((ROOT/'art/source/player/premium-v1/frames/walk/walk_family.manifest.json').read_text(encoding='utf-8'))
 base=Image.open(ROOT/'public/assets/player/premium-v1/frames/idle/roach_idle_01.png').convert('RGBA')
 lock_box=(0,0,256,189)
-expected_status='ARTICULATION_CANDIDATE_V1'
+expected_status='ARTICULATION_VISUAL_APPROVED_RUNTIME_PENDING'
 
 if manifest.get('status')!=expected_status:
     raise SystemExit(f'walk status drift: {manifest.get("status")}')

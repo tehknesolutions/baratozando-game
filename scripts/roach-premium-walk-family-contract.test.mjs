@@ -4,12 +4,12 @@ import { createHash } from 'node:crypto';
 const manifestPath='art/source/player/premium-v1/frames/walk/walk_family.manifest.json';
 if (!existsSync(manifestPath)) throw new Error('missing walk manifest');
 const manifest=JSON.parse(readFileSync(manifestPath,'utf8'));
-if (manifest.status!=='ARTICULATION_CANDIDATE_V1') throw new Error('walk articulation status drift');
+if (manifest.status!=='ARTICULATION_VISUAL_APPROVED_RUNTIME_PENDING') throw new Error('walk articulation status drift');
 if (manifest.cadenceQa!=='APPROVED_BY_CREATOR_2026-09-22') throw new Error('walk cadence approval drift');
 if (manifest.runtimeReady!==false) throw new Error('walk promoted too early');
 if (manifest.playbackFps!==8 || manifest.frames.length!==6) throw new Error('walk contract drift');
 if (manifest.technicalQa!=='PASS_2026-09-22') throw new Error('walk technical QA drift');
-if (manifest.visualApproval!=='PENDING') throw new Error('walk visual approval must remain pending');
+if (manifest.visualApproval!=='APPROVED_BY_CREATOR_2026-09-22') throw new Error('walk visual approval drift');
 
 for (const frame of manifest.frames) {
   if (!existsSync(frame.path)) throw new Error(`missing walk frame ${frame.index}`);
@@ -18,4 +18,4 @@ for (const frame of manifest.frames) {
   if (buf.readUInt32BE(16)!==256 || buf.readUInt32BE(20)!==256) throw new Error(`walk frame ${frame.index} size drift`);
   if (createHash('sha256').update(buf).digest('hex')!==frame.sha256) throw new Error(`walk frame ${frame.index} hash drift`);
 }
-console.log('PASS ROACH-12 walk articulation candidate contract (01-06)');
+console.log('PASS ROACH-13 walk articulation visual-approved contract (01-06)');
