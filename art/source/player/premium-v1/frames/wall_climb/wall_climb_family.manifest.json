@@ -1,7 +1,7 @@
 {
   "id": "ROACH-PREMIUM-V1-WALL-CLIMB-FAMILY",
   "family": "WALL_CLIMB",
-  "status": "CANDIDATE_MOTION_BLOCKOUT",
+  "status": "QA_APPROVED_ARTICULATION_PENDING",
   "runtimeReady": false,
   "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
   "canvas": [
@@ -65,5 +65,6 @@
   ],
   "derivation": "deterministic 90-degree wall orientation plus 0/1px vertical cadence offsets; no regeneration",
   "qaPurpose": "validate wall-climb cadence/orientation only",
-  "promotionGate": "explicit wall-climb QA plus articulated-leg production pass"
+  "promotionGate": "explicit wall-climb QA plus articulated-leg production pass",
+  "stateQa": "APPROVED_BY_CREATOR_2026-09-22"
 }

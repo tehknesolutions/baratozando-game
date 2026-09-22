@@ -1,16 +1,18 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 
-for (const [name,count,fps] of [
-  ['wall_cling',1,1],
-  ['wall_climb',4,10],
-  ['wall_jump',4,12],
-]) {
+const defs = [
+  ['dodge',5,14,'CANDIDATE_MOTION_BLOCKOUT'],
+  ['hurt',3,8,'CANDIDATE_IMPACT_BLOCKOUT'],
+  ['death',6,8,'CANDIDATE_MOTION_BLOCKOUT'],
+  ['respawn',4,6,'CANDIDATE_VISIBILITY_BLOCKOUT'],
+];
+
+for (const [name,count,fps,status] of defs) {
   const manifestPath=`art/source/player/premium-v1/frames/${name}/${name}_family.manifest.json`;
   if (!existsSync(manifestPath)) throw new Error(`missing ${name} manifest`);
   const manifest=JSON.parse(readFileSync(manifestPath,'utf8'));
-  if (manifest.status!=='QA_APPROVED_ARTICULATION_PENDING') throw new Error(`${name} status drift`);
-  if (manifest.stateQa!=='APPROVED_BY_CREATOR_2026-09-22') throw new Error(`${name} QA approval drift`);
+  if (manifest.status!==status) throw new Error(`${name} status drift`);
   if (manifest.runtimeReady!==false) throw new Error(`${name} promoted too early`);
   if (manifest.playbackFps!==fps || manifest.frames.length!==count) throw new Error(`${name} contract drift`);
   for (const frame of manifest.frames) {
@@ -21,4 +23,4 @@ for (const [name,count,fps] of [
     if (createHash('sha256').update(buf).digest('hex')!==frame.sha256) throw new Error(`${name} hash drift ${frame.index}`);
   }
 }
-console.log('PASS ROACH-12 wall state QA-approved contracts');
+console.log('PASS ROACH-12 dodge/hurt/death/respawn blockout contracts');
