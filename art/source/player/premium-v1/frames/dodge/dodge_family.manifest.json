@@ -1,0 +1,101 @@
+{
+  "id": "ROACH-PREMIUM-V1-DODGE-FAMILY",
+  "family": "DODGE",
+  "status": "CANDIDATE_MOTION_BLOCKOUT",
+  "runtimeReady": false,
+  "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
+  "canvas": [
+    256,
+    256
+  ],
+  "origin": [
+    0.5,
+    1.0
+  ],
+  "playbackFps": 14,
+  "frames": [
+    {
+      "index": 1,
+      "path": "public/assets/player/premium-v1/frames/dodge/roach_dodge_01.png",
+      "sha256": "687f0d4789516437c26b842dc3ed1cd1d3bd0da49080c7b21016fa20993f15f2",
+      "scaleX": 0.96,
+      "scaleY": 1.0,
+      "xShiftPx": 0,
+      "yShiftPx": 0,
+      "alphaBounds": [
+        6,
+        84,
+        250,
+        256
+      ],
+      "edgeAlphaPixels": 6
+    },
+    {
+      "index": 2,
+      "path": "public/assets/player/premium-v1/frames/dodge/roach_dodge_02.png",
+      "sha256": "9962937cdc401779fb270ff9de78928b5997bc9534a9aeff67bc95ee39593175",
+      "scaleX": 0.98,
+      "scaleY": 0.98,
+      "xShiftPx": 1,
+      "yShiftPx": 1,
+      "alphaBounds": [
+        4,
+        88,
+        253,
+        256
+      ],
+      "edgeAlphaPixels": 9
+    },
+    {
+      "index": 3,
+      "path": "public/assets/player/premium-v1/frames/dodge/roach_dodge_03.png",
+      "sha256": "014fd017ead4c610cdd577cefbbe9652e7095d5b5afb3de8a45265d2e08c83d3",
+      "scaleX": 0.99,
+      "scaleY": 0.95,
+      "xShiftPx": 0,
+      "yShiftPx": 2,
+      "alphaBounds": [
+        2,
+        95,
+        253,
+        256
+      ],
+      "edgeAlphaPixels": 23
+    },
+    {
+      "index": 4,
+      "path": "public/assets/player/premium-v1/frames/dodge/roach_dodge_04.png",
+      "sha256": "9962937cdc401779fb270ff9de78928b5997bc9534a9aeff67bc95ee39593175",
+      "scaleX": 0.98,
+      "scaleY": 0.98,
+      "xShiftPx": 1,
+      "yShiftPx": 1,
+      "alphaBounds": [
+        4,
+        88,
+        253,
+        256
+      ],
+      "edgeAlphaPixels": 9
+    },
+    {
+      "index": 5,
+      "path": "public/assets/player/premium-v1/frames/dodge/roach_dodge_05.png",
+      "sha256": "687f0d4789516437c26b842dc3ed1cd1d3bd0da49080c7b21016fa20993f15f2",
+      "scaleX": 0.96,
+      "scaleY": 1.0,
+      "xShiftPx": 0,
+      "yShiftPx": 0,
+      "alphaBounds": [
+        6,
+        84,
+        250,
+        256
+      ],
+      "edgeAlphaPixels": 6
+    }
+  ],
+  "derivation": "deterministic margin-safe scale/offset dodge blockout from locked identity; no regeneration",
+  "qaPurpose": "validate dodge timing/readability only",
+  "promotionGate": "dedicated articulated dodge pass plus explicit gameplay QA"
+}

@@ -10,6 +10,10 @@ export const PREMIUM_PLAYER_QA = {
   wallClingFrames: ['player-premium-wall-cling-01'],
   wallClimbFrames: ['player-premium-wall-climb-01', 'player-premium-wall-climb-02', 'player-premium-wall-climb-03', 'player-premium-wall-climb-04'],
   wallJumpFrames: ['player-premium-wall-jump-01', 'player-premium-wall-jump-02', 'player-premium-wall-jump-03', 'player-premium-wall-jump-04'],
+  dodgeFrames: ['player-premium-dodge-01', 'player-premium-dodge-02', 'player-premium-dodge-03', 'player-premium-dodge-04', 'player-premium-dodge-05'],
+  hurtFrames: ['player-premium-hurt-01', 'player-premium-hurt-02', 'player-premium-hurt-03'],
+  deathFrames: ['player-premium-death-01', 'player-premium-death-02', 'player-premium-death-03', 'player-premium-death-04', 'player-premium-death-05', 'player-premium-death-06'],
+  respawnFrames: ['player-premium-respawn-01', 'player-premium-respawn-02', 'player-premium-respawn-03', 'player-premium-respawn-04'],
 } as const;
 
 export const PREMIUM_PLAYER_QA_ASSET_PATHS: Record<string, string> = {
@@ -53,6 +57,24 @@ export const PREMIUM_PLAYER_QA_ASSET_PATHS: Record<string, string> = {
   [PREMIUM_PLAYER_QA.wallJumpFrames[1]]: 'assets/player/premium-v1/frames/wall_jump/roach_wall_jump_02.png',
   [PREMIUM_PLAYER_QA.wallJumpFrames[2]]: 'assets/player/premium-v1/frames/wall_jump/roach_wall_jump_03.png',
   [PREMIUM_PLAYER_QA.wallJumpFrames[3]]: 'assets/player/premium-v1/frames/wall_jump/roach_wall_jump_04.png',
+  [PREMIUM_PLAYER_QA.dodgeFrames[0]]: 'assets/player/premium-v1/frames/dodge/roach_dodge_01.png',
+  [PREMIUM_PLAYER_QA.dodgeFrames[1]]: 'assets/player/premium-v1/frames/dodge/roach_dodge_02.png',
+  [PREMIUM_PLAYER_QA.dodgeFrames[2]]: 'assets/player/premium-v1/frames/dodge/roach_dodge_03.png',
+  [PREMIUM_PLAYER_QA.dodgeFrames[3]]: 'assets/player/premium-v1/frames/dodge/roach_dodge_04.png',
+  [PREMIUM_PLAYER_QA.dodgeFrames[4]]: 'assets/player/premium-v1/frames/dodge/roach_dodge_05.png',
+  [PREMIUM_PLAYER_QA.hurtFrames[0]]: 'assets/player/premium-v1/frames/hurt/roach_hurt_01.png',
+  [PREMIUM_PLAYER_QA.hurtFrames[1]]: 'assets/player/premium-v1/frames/hurt/roach_hurt_02.png',
+  [PREMIUM_PLAYER_QA.hurtFrames[2]]: 'assets/player/premium-v1/frames/hurt/roach_hurt_03.png',
+  [PREMIUM_PLAYER_QA.deathFrames[0]]: 'assets/player/premium-v1/frames/death/roach_death_01.png',
+  [PREMIUM_PLAYER_QA.deathFrames[1]]: 'assets/player/premium-v1/frames/death/roach_death_02.png',
+  [PREMIUM_PLAYER_QA.deathFrames[2]]: 'assets/player/premium-v1/frames/death/roach_death_03.png',
+  [PREMIUM_PLAYER_QA.deathFrames[3]]: 'assets/player/premium-v1/frames/death/roach_death_04.png',
+  [PREMIUM_PLAYER_QA.deathFrames[4]]: 'assets/player/premium-v1/frames/death/roach_death_05.png',
+  [PREMIUM_PLAYER_QA.deathFrames[5]]: 'assets/player/premium-v1/frames/death/roach_death_06.png',
+  [PREMIUM_PLAYER_QA.respawnFrames[0]]: 'assets/player/premium-v1/frames/respawn/roach_respawn_01.png',
+  [PREMIUM_PLAYER_QA.respawnFrames[1]]: 'assets/player/premium-v1/frames/respawn/roach_respawn_02.png',
+  [PREMIUM_PLAYER_QA.respawnFrames[2]]: 'assets/player/premium-v1/frames/respawn/roach_respawn_03.png',
+  [PREMIUM_PLAYER_QA.respawnFrames[3]]: 'assets/player/premium-v1/frames/respawn/roach_respawn_04.png',
 };
 
 export const HD_PLAYER_BENCHMARK = {

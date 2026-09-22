@@ -71,6 +71,18 @@ export class PlayerAnimationController {
       } else if (state === 'WALL_JUMP') {
         const frames = PREMIUM_PLAYER_QA.wallJumpFrames;
         key = frames[Math.min(Math.floor(elapsed / (1000 / 12)), frames.length - 1)];
+      } else if (state === 'DODGE') {
+        const frames = PREMIUM_PLAYER_QA.dodgeFrames;
+        key = frames[Math.min(Math.floor(elapsed / (1000 / 14)), frames.length - 1)];
+      } else if (state === 'HURT') {
+        const frames = PREMIUM_PLAYER_QA.hurtFrames;
+        key = frames[Math.min(Math.floor(elapsed / 125), frames.length - 1)];
+      } else if (state === 'DEATH') {
+        const frames = PREMIUM_PLAYER_QA.deathFrames;
+        key = frames[Math.min(Math.floor(elapsed / 125), frames.length - 1)];
+      } else if (state === 'RESPAWN') {
+        const frames = PREMIUM_PLAYER_QA.respawnFrames;
+        key = frames[Math.min(Math.floor(elapsed / (1000 / 6)), frames.length - 1)];
       }
       if (key !== this.currentTexture) {
         this.sprite.setTexture(key);

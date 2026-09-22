@@ -1,0 +1,63 @@
+{
+  "id": "ROACH-PREMIUM-V1-HURT-FAMILY",
+  "family": "HURT",
+  "status": "CANDIDATE_IMPACT_BLOCKOUT",
+  "runtimeReady": false,
+  "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
+  "canvas": [
+    256,
+    256
+  ],
+  "origin": [
+    0.5,
+    1.0
+  ],
+  "playbackFps": 8,
+  "frames": [
+    {
+      "path": "public/assets/player/premium-v1/frames/hurt/roach_hurt_01.png",
+      "sha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
+      "alphaBounds": [
+        1,
+        84,
+        255,
+        256
+      ],
+      "bytes": 41331,
+      "index": 1,
+      "scaleX": 1.0,
+      "xShiftPx": 0
+    },
+    {
+      "path": "public/assets/player/premium-v1/frames/hurt/roach_hurt_02.png",
+      "sha256": "cceeb25b2d42b4c6e0bdf61ece91fd102c3eb0a2c44dd6ffa5dd88fd7c305da4",
+      "alphaBounds": [
+        2,
+        84,
+        248,
+        256
+      ],
+      "bytes": 41329,
+      "index": 2,
+      "scaleX": 0.97,
+      "xShiftPx": -3
+    },
+    {
+      "path": "public/assets/player/premium-v1/frames/hurt/roach_hurt_03.png",
+      "sha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
+      "alphaBounds": [
+        1,
+        84,
+        255,
+        256
+      ],
+      "bytes": 41331,
+      "index": 3,
+      "scaleX": 1.0,
+      "xShiftPx": 0
+    }
+  ],
+  "derivation": "deterministic horizontal compression/offset impact blockout; no regeneration",
+  "qaPurpose": "validate hurt impact timing/readability only",
+  "promotionGate": "dedicated articulated hurt pass plus explicit gameplay QA"
+}

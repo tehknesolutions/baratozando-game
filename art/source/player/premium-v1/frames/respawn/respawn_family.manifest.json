@@ -1,0 +1,73 @@
+{
+  "id": "ROACH-PREMIUM-V1-RESPAWN-FAMILY",
+  "family": "RESPAWN",
+  "status": "CANDIDATE_VISIBILITY_BLOCKOUT",
+  "runtimeReady": false,
+  "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
+  "canvas": [
+    256,
+    256
+  ],
+  "origin": [
+    0.5,
+    1.0
+  ],
+  "playbackFps": 6,
+  "frames": [
+    {
+      "path": "public/assets/player/premium-v1/frames/respawn/roach_respawn_01.png",
+      "sha256": "13031780cd428a5380d10e1c440fb1e833cade5a0a4f31aef75171144ef0b833",
+      "alphaBounds": [
+        2,
+        84,
+        255,
+        256
+      ],
+      "bytes": 39170,
+      "index": 1,
+      "alphaScale": 0.25
+    },
+    {
+      "path": "public/assets/player/premium-v1/frames/respawn/roach_respawn_02.png",
+      "sha256": "3a83397ff51c10e3dc46529e7f6e7579dbddb89336ecfa778fcb591b5255bda5",
+      "alphaBounds": [
+        2,
+        84,
+        255,
+        256
+      ],
+      "bytes": 40079,
+      "index": 2,
+      "alphaScale": 0.5
+    },
+    {
+      "path": "public/assets/player/premium-v1/frames/respawn/roach_respawn_03.png",
+      "sha256": "941409d188e43664b1b7cec26207df1d723a5bbe05f6e1123535091d66fc81dd",
+      "alphaBounds": [
+        1,
+        84,
+        255,
+        256
+      ],
+      "bytes": 41349,
+      "index": 3,
+      "alphaScale": 0.75
+    },
+    {
+      "path": "public/assets/player/premium-v1/frames/respawn/roach_respawn_04.png",
+      "sha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
+      "alphaBounds": [
+        1,
+        84,
+        255,
+        256
+      ],
+      "bytes": 41331,
+      "index": 4,
+      "alphaScale": 1.0
+    }
+  ],
+  "derivation": "deterministic alpha fade-in from locked idle frame; no regeneration",
+  "qaPurpose": "validate respawn readability/timing only",
+  "promotionGate": "explicit gameplay QA before any runtime promotion"
+}
