@@ -1,7 +1,7 @@
 {
   "id": "ROACH-PREMIUM-V1-RUN-FAMILY",
   "family": "RUN",
-  "status": "CADENCE_APPROVED_ARTICULATION_PENDING",
+  "status": "ARTICULATION_CANDIDATE_V1",
   "runtimeReady": false,
   "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
   "canvas": [
@@ -18,53 +18,118 @@
       "index": 1,
       "path": "public/assets/player/premium-v1/frames/run/roach_run_01.png",
       "sha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
-      "lowerBodyShiftPx": 0
+      "anglesDeg": {
+        "rear_near": 0,
+        "mid_near": 0,
+        "front_near": 0,
+        "rear_far": 0,
+        "mid_far": 0,
+        "front_far": 0
+      }
     },
     {
       "index": 2,
       "path": "public/assets/player/premium-v1/frames/run/roach_run_02.png",
-      "sha256": "dd75065924fa07b1d7662b88327f0fc083ed4148a4607fc3ce86c7225aaff167",
-      "lowerBodyShiftPx": 1
+      "sha256": "1f67e640d27acb596e2393d6f6f9efddbeeab35337aecd8785adc825ef791b62",
+      "anglesDeg": {
+        "rear_near": 5,
+        "mid_near": -5,
+        "front_near": 5,
+        "rear_far": -4,
+        "mid_far": 4,
+        "front_far": -4
+      }
     },
     {
       "index": 3,
       "path": "public/assets/player/premium-v1/frames/run/roach_run_03.png",
-      "sha256": "8755218ea05103353d3d5a19fe473306e7a36067bff888801a6ef91c430f7a75",
-      "lowerBodyShiftPx": 2
+      "sha256": "3d6bdfb83f8728cfc1c68947fe5fe31ef73532bada2eb60dba5127cc31489a60",
+      "anglesDeg": {
+        "rear_near": 9,
+        "mid_near": -9,
+        "front_near": 9,
+        "rear_far": -7,
+        "mid_far": 7,
+        "front_far": -7
+      }
     },
     {
       "index": 4,
       "path": "public/assets/player/premium-v1/frames/run/roach_run_04.png",
-      "sha256": "68f22e7f92f419688084f87250b6a8626e15f087a7d8838240cd0cbaec5af259",
-      "lowerBodyShiftPx": 3
+      "sha256": "1f67e640d27acb596e2393d6f6f9efddbeeab35337aecd8785adc825ef791b62",
+      "anglesDeg": {
+        "rear_near": 5,
+        "mid_near": -5,
+        "front_near": 5,
+        "rear_far": -4,
+        "mid_far": 4,
+        "front_far": -4
+      }
     },
     {
       "index": 5,
       "path": "public/assets/player/premium-v1/frames/run/roach_run_05.png",
-      "sha256": "8755218ea05103353d3d5a19fe473306e7a36067bff888801a6ef91c430f7a75",
-      "lowerBodyShiftPx": 2
+      "sha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
+      "anglesDeg": {
+        "rear_near": 0,
+        "mid_near": 0,
+        "front_near": 0,
+        "rear_far": 0,
+        "mid_far": 0,
+        "front_far": 0
+      }
     },
     {
       "index": 6,
       "path": "public/assets/player/premium-v1/frames/run/roach_run_06.png",
-      "sha256": "dd75065924fa07b1d7662b88327f0fc083ed4148a4607fc3ce86c7225aaff167",
-      "lowerBodyShiftPx": 1
+      "sha256": "93096bd1d839b6724c2254170fb3b878f108a304f3cea92c08fb8351b3bf88d3",
+      "anglesDeg": {
+        "rear_near": -5,
+        "mid_near": 5,
+        "front_near": -5,
+        "rear_far": 4,
+        "mid_far": -4,
+        "front_far": 4
+      }
     },
     {
       "index": 7,
       "path": "public/assets/player/premium-v1/frames/run/roach_run_07.png",
-      "sha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
-      "lowerBodyShiftPx": 0
+      "sha256": "9da52310f53c2318f64da61117d7e977d81f6158c4f9462fd169c805459f317a",
+      "anglesDeg": {
+        "rear_near": -9,
+        "mid_near": 9,
+        "front_near": -9,
+        "rear_far": 7,
+        "mid_far": -7,
+        "front_far": 7
+      }
     },
     {
       "index": 8,
       "path": "public/assets/player/premium-v1/frames/run/roach_run_08.png",
-      "sha256": "dd75065924fa07b1d7662b88327f0fc083ed4148a4607fc3ce86c7225aaff167",
-      "lowerBodyShiftPx": 1
+      "sha256": "93096bd1d839b6724c2254170fb3b878f108a304f3cea92c08fb8351b3bf88d3",
+      "anglesDeg": {
+        "rear_near": -5,
+        "mid_near": 5,
+        "front_near": -5,
+        "rear_far": 4,
+        "mid_far": -4,
+        "front_far": 4
+      }
     }
   ],
-  "derivation": "deterministic lower-body row warp below y=160; upper identity remains byte-aligned to the locked frame",
-  "qaPurpose": "run cadence and continuity blockout only; not final premium leg articulation",
-  "promotionGate": "explicit in-game run QA plus articulated-leg production pass",
-  "cadenceQa": "APPROVED_BY_CREATOR_2026-09-22"
+  "derivation": "deterministic six-distal-leg pivot rotation from locked idle identity; no character regeneration",
+  "qaPurpose": "premium RUN articulation candidate with locked upper-body identity and six-leg continuity",
+  "promotionGate": "technical articulation QA + explicit in-game visual approval",
+  "cadenceQa": "APPROVED_BY_CREATOR_2026-09-22",
+  "articulationMethod": "manual distal-leg masks with fixed pivots; higher-amplitude alternating tripod gait",
+  "upperBodyLockRegion": [
+    0,
+    0,
+    256,
+    189
+  ],
+  "technicalQa": "PASS_2026-09-22",
+  "visualApproval": "PENDING"
 }
