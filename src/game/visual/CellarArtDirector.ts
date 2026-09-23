@@ -5,6 +5,7 @@ import { FIRST_THREAT_VISUAL_CONFIG as V } from './FirstThreatVisualConfig.js';
 import { CellarAtmosphere } from './CellarAtmosphere.js';
 import { CellarCinematicComposition } from './CellarCinematicComposition.js';
 import { CellarNarrativeDressing } from './CellarNarrativeDressing.js';
+import { CellarAmbientMotion } from './CellarAmbientMotion.js';
 
 export type CellarArtHandles = {
   amberGlow: any;
@@ -136,6 +137,7 @@ export class CellarArtDirector {
 
     CellarCinematicComposition.addFirstThreat(scene);
     CellarNarrativeDressing.addFirstThreat(scene);
+    CellarAmbientMotion.addFirstThreat(scene);
 
     CellarAtmosphere.addScreenVignette(scene, V.depths.foreground + 8);
 

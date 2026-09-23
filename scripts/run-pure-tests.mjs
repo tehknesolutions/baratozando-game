@@ -18,6 +18,7 @@ const contracts = [
   'scripts/environment-premium-materials-contract.test.mjs',
   'scripts/environment-cinematic-composition-contract.test.mjs',
   'scripts/environment-narrative-dressing-contract.test.mjs',
+  'scripts/environment-ambient-motion-contract.test.mjs',
   'scripts/premium-player-runtime-contract.test.mjs',
   'scripts/roach-premium-idle-family-contract.test.mjs',
   'scripts/roach-premium-walk-family-contract.test.mjs',
