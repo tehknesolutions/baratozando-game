@@ -20,6 +20,8 @@
     "src/game/player/PlayableV3AssetContract.test.ts",
     "src/game/player/PlayableV3RuntimeDefault.ts",
     "src/game/player/PlayableV3RuntimeDefault.test.ts",
+    "src/game/player/PlayableV3Scale.ts",
+    "src/game/player/PlayableV3Scale.test.ts",
     "src/game/threat/ThreatChaseController.ts",
     "src/game/threat/ThreatChaseController.test.ts",
     "src/game/horror/HorrorReactiveState.ts",
