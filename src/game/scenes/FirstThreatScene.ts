@@ -8,6 +8,7 @@ import { ThreatChaseController } from '../threat/ThreatChaseController.js';
 import { AncientPredator } from '../threat/AncientPredator.js';
 import { CellarArtDirector, type CellarArtHandles } from '../visual/CellarArtDirector.js';
 import { resolveDangerVisual } from '../visual/DangerVisualController.js';
+import { resolveHorrorReactiveState, type HorrorReactiveOutput } from '../horror/HorrorReactiveState.js';
 
 export class FirstThreatScene extends Phaser.Scene {
   private player!: Player;
@@ -17,6 +18,7 @@ export class FirstThreatScene extends Phaser.Scene {
   private warningText!: any;
   private dangerOverlay!: any;
   private art!: CellarArtHandles;
+  private horror: HorrorReactiveOutput = { tension: 0, band: 'CALM' };
   private wasRespawning = false;
 
   constructor() { super('first-threat'); }
@@ -96,6 +98,15 @@ export class FirstThreatScene extends Phaser.Scene {
     this.predator.setThreatX(this.chase.threatX);
     this.predator.setMood(this.chase.state);
 
+    const gap = Math.max(0, this.player.x - this.chase.threatX);
+    this.horror = resolveHorrorReactiveState({
+      chaseState: this.chase.state,
+      threatGap: gap,
+      recentDamage: this.player.damage.isHurt(time),
+      respawning: this.player.damage.respawning,
+      zoneIntensity: 0,
+    });
+
     if (event.triggeredNow) {
       this.warningText.setText('...').setAlpha(0.72);
       this.cameras.main.shake(210, 0.0032);
@@ -135,6 +146,7 @@ export class FirstThreatScene extends Phaser.Scene {
 
   private resetChase(): void {
     this.chase.reset();
+    this.horror = { tension: 0, band: 'CALM' };
     this.predator.setThreatX(FIRST_THREAT_LAYOUT.chase.threatStartX);
     this.predator.setMood('DORMANT');
     this.warningText.setAlpha(0);
@@ -144,12 +156,17 @@ export class FirstThreatScene extends Phaser.Scene {
   private updateDangerVisual(): void {
     const gap = Math.max(0, this.player.x - this.chase.threatX);
     const visual = resolveDangerVisual(this.chase.state, gap);
-    this.dangerOverlay.setAlpha(visual.overlayAlpha);
-    this.art.amberGlow.setAlpha(visual.amberAlpha);
+    const tension = this.horror.tension;
+    const overlayAlpha = Math.min(0.22, Math.max(visual.overlayAlpha, tension * 0.16));
+    const amberAlpha = Math.min(0.16, Math.max(visual.amberAlpha, 0.03 + tension * 0.11));
+    const dustBoost = Math.max(visual.dustBoost, tension * 0.85);
+
+    this.dangerOverlay.setAlpha(overlayAlpha);
+    this.art.amberGlow.setAlpha(amberAlpha);
 
     for (let i = 0; i < this.art.dust.length; i++) {
       const base = 0.055 + (i % 4) * 0.018;
-      this.art.dust[i].setAlpha(Math.min(0.28, base + visual.dustBoost * 0.11));
+      this.art.dust[i].setAlpha(Math.min(0.28, base + dustBoost * 0.11));
     }
   }
 
