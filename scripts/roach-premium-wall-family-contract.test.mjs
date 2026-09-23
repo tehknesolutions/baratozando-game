@@ -9,11 +9,11 @@ for (const [name,count,fps] of [
   const manifestPath=`art/source/player/premium-v1/frames/${name}/${name}_family.manifest.json`;
   if (!existsSync(manifestPath)) throw new Error(`missing ${name} manifest`);
   const manifest=JSON.parse(readFileSync(manifestPath,'utf8'));
-  if (manifest.status!=='WALL_ARTICULATION_CANDIDATE_V1') throw new Error(`${name} status drift`);
+  if (manifest.status!=='WALL_ARTICULATION_VISUAL_APPROVED_RUNTIME_PENDING') throw new Error(`${name} status drift`);
   if (manifest.runtimeReady!==false) throw new Error(`${name} promoted too early`);
   if (manifest.playbackFps!==fps || manifest.frames.length!==count) throw new Error(`${name} contract drift`);
   if (manifest.technicalQa!=='PASS_2026-09-23') throw new Error(`${name} technical QA drift`);
-  if (manifest.visualApproval!=='PENDING') throw new Error(`${name} visual approval must remain pending`);
+  if (manifest.visualApproval!=='APPROVED_BY_CREATOR_2026-09-23') throw new Error(`${name} visual approval drift`);
   for (const frame of manifest.frames) {
     if (!existsSync(frame.path)) throw new Error(`missing ${name} frame ${frame.index}`);
     const buf=readFileSync(frame.path);
@@ -22,4 +22,4 @@ for (const [name,count,fps] of [
     if (createHash('sha256').update(buf).digest('hex')!==frame.sha256) throw new Error(`${name} hash drift ${frame.index}`);
   }
 }
-console.log('PASS ROACH-17 wall articulation candidate contracts');
+console.log('PASS ROACH-17 wall articulation visual-approved contracts');

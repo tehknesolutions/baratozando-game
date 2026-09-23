@@ -1,7 +1,7 @@
 {
   "id": "ROACH-PREMIUM-V1-RESPAWN-FAMILY",
   "family": "RESPAWN",
-  "status": "CANDIDATE_VISIBILITY_BLOCKOUT",
+  "status": "LIFECYCLE_ARTICULATION_CANDIDATE_V1",
   "runtimeReady": false,
   "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
   "canvas": [
@@ -15,45 +15,67 @@
   "playbackFps": 6,
   "frames": [
     {
+      "index": 1,
       "path": "public/assets/player/premium-v1/frames/respawn/roach_respawn_01.png",
-      "sha256": "13031780cd428a5380d10e1c440fb1e833cade5a0a4f31aef75171144ef0b833",
+      "sha256": "341ba749d07a66d408bd721f9624f2a7184adb28f8e28d9859a973f879a8b9a4",
       "alphaBounds": [
         2,
         84,
         255,
         256
       ],
-      "bytes": 39170,
-      "index": 1,
+      "anglesDeg": {
+        "rear_near": 12,
+        "mid_near": -12,
+        "front_near": 10,
+        "rear_far": -9,
+        "mid_far": 9,
+        "front_far": -8
+      },
       "alphaScale": 0.25
     },
     {
+      "index": 2,
       "path": "public/assets/player/premium-v1/frames/respawn/roach_respawn_02.png",
-      "sha256": "3a83397ff51c10e3dc46529e7f6e7579dbddb89336ecfa778fcb591b5255bda5",
+      "sha256": "ed06c70bff9ddb8914877744ca0fac323e4e6ea5fd1a9515e8ea2f6526ed886d",
       "alphaBounds": [
         2,
         84,
         255,
         256
       ],
-      "bytes": 40079,
-      "index": 2,
+      "anglesDeg": {
+        "rear_near": 8,
+        "mid_near": -8,
+        "front_near": 7,
+        "rear_far": -6,
+        "mid_far": 6,
+        "front_far": -5
+      },
       "alphaScale": 0.5
     },
     {
+      "index": 3,
       "path": "public/assets/player/premium-v1/frames/respawn/roach_respawn_03.png",
-      "sha256": "941409d188e43664b1b7cec26207df1d723a5bbe05f6e1123535091d66fc81dd",
+      "sha256": "1c94f88fe4ff911eb47890b5b15c69a15b2421958c35f3d4d120eefa52a497bb",
       "alphaBounds": [
         1,
         84,
         255,
         256
       ],
-      "bytes": 41349,
-      "index": 3,
+      "anglesDeg": {
+        "rear_near": 4,
+        "mid_near": -4,
+        "front_near": 4,
+        "rear_far": -3,
+        "mid_far": 3,
+        "front_far": -3
+      },
       "alphaScale": 0.75
     },
     {
+      "index": 4,
       "path": "public/assets/player/premium-v1/frames/respawn/roach_respawn_04.png",
       "sha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
       "alphaBounds": [
@@ -62,12 +84,21 @@
         255,
         256
       ],
-      "bytes": 41331,
-      "index": 4,
+      "anglesDeg": {
+        "rear_near": 0,
+        "mid_near": 0,
+        "front_near": 0,
+        "rear_far": 0,
+        "mid_far": 0,
+        "front_far": 0
+      },
       "alphaScale": 1.0
     }
   ],
-  "derivation": "deterministic alpha fade-in from locked idle frame; no regeneration",
-  "qaPurpose": "validate respawn readability/timing only",
-  "promotionGate": "explicit gameplay QA before any runtime promotion"
+  "derivation": "deterministic articulation from locked idle identity; no character regeneration",
+  "articulationMethod": "six-leg progressive unfold plus deterministic alpha ramp; final frame byte-identical to locked IDLE",
+  "technicalQa": "PASS_2026-09-23",
+  "visualApproval": "PENDING",
+  "qaPurpose": "premium RESPAWN articulated unfold/fade-in candidate ending exactly at locked IDLE",
+  "promotionGate": "technical lifecycle articulation QA + explicit in-game visual approval"
 }

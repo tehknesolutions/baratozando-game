@@ -20,7 +20,7 @@ def verify_file(frame):
 
 for name,count in [('wall_cling',1),('wall_climb',4),('wall_jump',4)]:
     manifest=json.loads((ROOT/f'art/source/player/premium-v1/frames/{name}/{name}_family.manifest.json').read_text(encoding='utf-8'))
-    if manifest.get('status')!='WALL_ARTICULATION_CANDIDATE_V1':
+    if manifest.get('status')!='WALL_ARTICULATION_VISUAL_APPROVED_RUNTIME_PENDING':
         raise SystemExit(f'{name} status drift')
     if manifest.get('runtimeReady') is not False:
         raise SystemExit(f'{name} promoted too early')
