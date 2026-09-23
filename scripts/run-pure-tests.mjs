@@ -19,6 +19,7 @@ const contracts = [
   'scripts/environment-cinematic-composition-contract.test.mjs',
   'scripts/environment-narrative-dressing-contract.test.mjs',
   'scripts/environment-ambient-motion-contract.test.mjs',
+  'scripts/environment-reactive-horror-contract.test.mjs',
   'scripts/premium-player-runtime-contract.test.mjs',
   'scripts/roach-premium-idle-family-contract.test.mjs',
   'scripts/roach-premium-walk-family-contract.test.mjs',
@@ -56,6 +57,7 @@ const tests = [
   '.test-dist/game/visual/FirstThreatVisualConfig.test.js',
   '.test-dist/game/threat/SirChinellusVisualConfig.test.js',
   '.test-dist/game/visual/DangerVisualController.test.js',
+  '.test-dist/game/horror/HorrorReactiveState.test.js',
 ];
 
 for (const file of tests) {
