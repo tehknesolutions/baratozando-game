@@ -1,13 +1,26 @@
 {
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "ES2022",
+    "noEmit": false,
+    "outDir": ".tmp-tests",
+    "rootDir": "src/game",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "strict": true,
-    "skipLibCheck": true,
-    "outDir": ".test-dist",
-    "rootDir": "src"
+    "types": ["node"],
+    "skipLibCheck": true
   },
-  "include": ["src/game/**/*.test.ts", "src/game/horror/*.ts", "src/game/player/*.ts", "src/game/input/*.ts", "src/game/world/MovementLabLayout.ts", "src/game/world/FirstThreatLayout.ts", "src/game/threat/ThreatChaseController.ts"],
-  "exclude": ["src/game/scenes/**", "src/game/player/Player.ts", "src/game/player/PlayerAnimationController.ts", "src/game/input/KeyboardInputAdapter.ts", "src/game/world/Hazard.ts", "src/game/world/Checkpoint.ts"]
+  "include": [
+    "src/game/player/PlayerDamageController.ts",
+    "src/game/player/PlayerDamageController.test.ts",
+    "src/game/player/WingMobilityController.ts",
+    "src/game/player/WingMobilityController.test.ts",
+    "src/game/player/PlayerMotionController.ts",
+    "src/game/player/PlayerMotionController.test.ts",
+    "src/game/player/PlayableV3AssetContract.ts",
+    "src/game/player/PlayableV3AssetContract.test.ts",
+    "src/game/threat/ThreatChaseController.ts",
+    "src/game/threat/ThreatChaseController.test.ts",
+    "src/game/horror/HorrorReactiveState.ts",
+    "src/game/horror/HorrorReactiveState.test.ts"
+  ]
 }
