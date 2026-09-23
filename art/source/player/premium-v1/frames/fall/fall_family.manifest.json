@@ -1,7 +1,7 @@
 {
   "id": "ROACH-PREMIUM-V1-FALL-FAMILY",
   "family": "FALL",
-  "status": "ARTICULATION_CANDIDATE_V1",
+  "status": "ARTICULATION_VISUAL_APPROVED_RUNTIME_PENDING",
   "runtimeReady": false,
   "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
   "canvas": [
@@ -43,7 +43,7 @@
   ],
   "derivation": "deterministic six-distal-leg pivot rotation from locked idle identity; no character regeneration",
   "qaPurpose": "premium FALL articulation candidate with locked upper-body identity and six-leg continuity",
-  "promotionGate": "technical articulation QA + explicit in-game visual approval",
+  "promotionGate": "runtime integration/regression QA before runtimeReady",
   "cadenceQa": "APPROVED_BY_CREATOR_2026-09-22",
   "articulationMethod": "manual distal-leg masks with fixed pivots; airborne tuck/spread leg poses",
   "upperBodyLockRegion": [
@@ -53,5 +53,5 @@
     189
   ],
   "technicalQa": "PASS_2026-09-22",
-  "visualApproval": "PENDING"
+  "visualApproval": "APPROVED_BY_CREATOR_2026-09-22"
 }

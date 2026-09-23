@@ -1,7 +1,7 @@
 {
   "id": "ROACH-PREMIUM-V1-WING-FLAP-FAMILY",
   "family": "WING_FLAP",
-  "status": "TIMING_APPROVED_WING_ART_PENDING",
+  "status": "WING_ARTICULATION_CANDIDATE_V1",
   "runtimeReady": false,
   "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
   "canvas": [
@@ -15,61 +15,129 @@
   "playbackFps": 14,
   "frames": [
     {
+      "index": 1,
       "path": "public/assets/player/premium-v1/frames/wing_flap/roach_wing_flap_01.png",
-      "sha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
-      "scaleY": 1.0,
-      "yOffsetPx": 0,
-      "alphaBounds": [
-        1,
-        84,
-        255,
-        256
-      ],
-      "index": 1
+      "sha256": "3e982d5d4f7b4a4e6b36a0794c76a36d702634050523a5545d36e013900f90f9",
+      "wingLayers": []
     },
     {
+      "index": 2,
       "path": "public/assets/player/premium-v1/frames/wing_flap/roach_wing_flap_02.png",
-      "sha256": "ddb5b799e582416066dffc1b20c8ff90e9233d0e8559239fc9831b2695dee797",
-      "scaleY": 1.01,
-      "yOffsetPx": -1,
-      "alphaBounds": [
-        1,
-        81,
-        255,
-        255
-      ],
-      "index": 2
+      "sha256": "57d8a10acdb218a48d586e9d9f39f88980573f94bff0e5f4fc091c95c803f366",
+      "wingLayers": [
+        {
+          "angleDeg": -12,
+          "alphaScale": 0.25
+        },
+        {
+          "angleDeg": -18,
+          "alphaScale": 0.65
+        }
+      ]
     },
     {
+      "index": 3,
       "path": "public/assets/player/premium-v1/frames/wing_flap/roach_wing_flap_03.png",
-      "sha256": "f03a0b6d0832db2d3e496af741ba508c384477fa95aba0cc5de62a27d54e3f18",
-      "scaleY": 1.02,
-      "yOffsetPx": -2,
-      "alphaBounds": [
-        1,
-        79,
-        255,
-        254
-      ],
-      "index": 3
+      "sha256": "bbdc3c05458bb4c84ff7cae38af173f54d533820871edd1496a942bc4b1e7b6b",
+      "wingLayers": [
+        {
+          "angleDeg": -35,
+          "alphaScale": 0.38
+        },
+        {
+          "angleDeg": -45,
+          "alphaScale": 0.72
+        }
+      ]
     },
     {
+      "index": 4,
       "path": "public/assets/player/premium-v1/frames/wing_flap/roach_wing_flap_04.png",
-      "sha256": "ddb5b799e582416066dffc1b20c8ff90e9233d0e8559239fc9831b2695dee797",
-      "scaleY": 1.01,
-      "yOffsetPx": -1,
-      "alphaBounds": [
-        1,
-        81,
-        255,
-        255
-      ],
-      "index": 4
+      "sha256": "d1e7aeeacbc910c81b6d54a599bf7d7e615747477b07e399d3c3a961ba70ac2d",
+      "wingLayers": [
+        {
+          "angleDeg": -14,
+          "alphaScale": 0.25
+        },
+        {
+          "angleDeg": -20,
+          "alphaScale": 0.65
+        }
+      ]
     }
   ],
-  "derivation": "deterministic vertical scale/offset timing blockout from locked idle identity; no wing artwork introduced",
-  "qaPurpose": "validate WING_FLAP cadence/state timing only",
-  "wingArtworkStatus": "PENDING_DEDICATED_ART_PASS",
-  "promotionGate": "dedicated wing artwork + explicit in-game wing QA",
-  "timingQa": "APPROVED_BY_CREATOR_2026-09-22"
+  "derivation": "deterministic dual-layer rotation of canonical closed-wing texture over an approved articulated airborne body; no character regeneration",
+  "qaPurpose": "premium WING_FLAP wing deployment candidate with locked head/antennae and articulated airborne body",
+  "wingArtworkStatus": "DERIVED_CANONICAL_WING_TEXTURE_V1",
+  "promotionGate": "technical wing QA + explicit in-game visual approval",
+  "timingQa": "APPROVED_BY_CREATOR_2026-09-22",
+  "articulationMethod": "canonical wing polygon with fixed thoracic hinge and two translucent derived layers",
+  "bodySource": "public/assets/player/premium-v1/frames/jump/roach_jump_03.png",
+  "bodySourceSha256": "3e982d5d4f7b4a4e6b36a0794c76a36d702634050523a5545d36e013900f90f9",
+  "wingSource": "public/assets/player/premium-v1/frames/idle/roach_idle_01.png",
+  "wingSourceSha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
+  "wingPolygon": [
+    [
+      52,
+      149
+    ],
+    [
+      79,
+      137
+    ],
+    [
+      125,
+      137
+    ],
+    [
+      158,
+      148
+    ],
+    [
+      158,
+      169
+    ],
+    [
+      136,
+      184
+    ],
+    [
+      92,
+      192
+    ],
+    [
+      51,
+      188
+    ],
+    [
+      39,
+      175
+    ]
+  ],
+  "wingHinge": [
+    153,
+    154
+  ],
+  "identityLockRegions": {
+    "headAntennae": [
+      158,
+      0,
+      256,
+      256
+    ],
+    "lowerBodyLegs": [
+      0,
+      180,
+      256,
+      256
+    ]
+  },
+  "wingChangeEnvelope": [
+    35,
+    85,
+    160,
+    195
+  ],
+  "technicalQa": "PASS_2026-09-22",
+  "visualApproval": "PENDING"
 }
