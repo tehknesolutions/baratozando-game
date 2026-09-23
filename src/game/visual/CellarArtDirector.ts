@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import type { FirstThreatLayout } from '../world/FirstThreatLayout.js';
-import { CELLAR_TEXTURES } from '../../assets/environmentAssetKeys.js';
+import { CELLAR_TEXTURES, CELLAR_TEXTURE_DISPLAY_SCALE } from '../../assets/environmentAssetKeys.js';
 import { FIRST_THREAT_VISUAL_CONFIG as V } from './FirstThreatVisualConfig.js';
 import { CellarAtmosphere } from './CellarAtmosphere.js';
 
@@ -33,7 +33,7 @@ export class CellarArtDirector {
       [1540, 245, 1.55, -0.04],
     ] as const) {
       scene.add.image(x, y, CELLAR_TEXTURES.pipe)
-        .setScale(scale)
+        .setScale(scale * CELLAR_TEXTURE_DISPLAY_SCALE)
         .setRotation(rotation)
         .setAlpha(0.34)
         .setScrollFactor(0.42)
@@ -60,12 +60,13 @@ export class CellarArtDirector {
 
       scene.add.tileSprite(p.x, p.y, p.width, p.height, texture)
         .setOrigin(0, 0)
+        .setTileScale(CELLAR_TEXTURE_DISPLAY_SCALE, CELLAR_TEXTURE_DISPLAY_SCALE)
         .setDepth(V.depths.gameplay);
 
       if (index % 3 === 0) {
         scene.add.image(p.x + Math.min(72, p.width * 0.5), p.y + 4, CELLAR_TEXTURES.grime)
           .setOrigin(0.5, 0.2)
-          .setScale(0.42)
+          .setScale(0.42 * CELLAR_TEXTURE_DISPLAY_SCALE)
           .setAlpha(0.22)
           .setDepth(V.depths.gameplay + 0.2);
       }
@@ -91,7 +92,7 @@ export class CellarArtDirector {
       );
 
       scene.add.image(prop.x, prop.y, prop.texture)
-        .setScale(prop.scale)
+        .setScale(prop.scale * CELLAR_TEXTURE_DISPLAY_SCALE)
         .setRotation(prop.rotation)
         .setAlpha(prop.alpha)
         .setScrollFactor(scrollFactor)
@@ -118,7 +119,7 @@ export class CellarArtDirector {
     const dust: any[] = [];
     for (let i = 0; i < 54; i++) {
       const particle = scene.add.image((i * 173) % layout.width, 72 + ((i * 89) % 370), CELLAR_TEXTURES.dust)
-        .setScale(0.45 + (i % 3) * 0.2)
+        .setScale((0.45 + (i % 3) * 0.2) * CELLAR_TEXTURE_DISPLAY_SCALE)
         .setAlpha(0.08 + (i % 4) * 0.025)
         .setScrollFactor(0.48 + (i % 3) * 0.08)
         .setDepth(V.depths.atmosphere);
@@ -127,7 +128,7 @@ export class CellarArtDirector {
 
     // Mold is rare and semantic: it should hint at future chemical gameplay without becoming a hazard yet.
     scene.add.image(1450, 491, CELLAR_TEXTURES.mold)
-      .setScale(0.52)
+      .setScale(0.52 * CELLAR_TEXTURE_DISPLAY_SCALE)
       .setAlpha(0.32)
       .setDepth(V.depths.gameplay + 0.3);
 

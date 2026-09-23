@@ -1,5 +1,6 @@
 import type { MobilityLabV2Layout } from '../world/MobilityLabV2Layout.js';
 import { MOBILITY_LAB_VISUAL as V } from './MobilityLabVisualConfig.js';
+import { CELLAR_TEXTURE_DISPLAY_SCALE } from '../../assets/environmentAssetKeys.js';
 import { CellarAtmosphere } from './CellarAtmosphere.js';
 
 export class MobilityLabArtDirector {
@@ -24,6 +25,7 @@ export class MobilityLabArtDirector {
       );
       scene.add.tileSprite(surface.x, surface.y, surface.width, surface.height, texture)
         .setOrigin(0, 0)
+        .setTileScale(CELLAR_TEXTURE_DISPLAY_SCALE, CELLAR_TEXTURE_DISPLAY_SCALE)
         .setAlpha(surface.role === 'recovery' ? 0.68 : 0.98)
         .setDepth(surfaceDepth);
     }
@@ -39,7 +41,7 @@ export class MobilityLabArtDirector {
         0.20,
       );
       scene.add.image(prop.x, prop.y, prop.texture)
-        .setScale(prop.scale)
+        .setScale(prop.scale * CELLAR_TEXTURE_DISPLAY_SCALE)
         .setRotation(prop.rotation)
         .setAlpha(prop.alpha)
         .setDepth(prop.depth);
