@@ -1,0 +1,1 @@
+V3-02 centralizes the premium roach runtime scale at 0.25 (256px source canvas -> 64px established gameplay footprint), applies it in Player, and forbids scene-local scale drift. Acceptance remains pending visual inspection in the complete Cellar; collider alignment is deferred to V3-03.
