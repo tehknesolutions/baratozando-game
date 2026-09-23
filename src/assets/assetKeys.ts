@@ -77,6 +77,9 @@ export const PREMIUM_PLAYER_QA_ASSET_PATHS: Record<string, string> = {
   [PREMIUM_PLAYER_QA.respawnFrames[3]]: 'assets/player/premium-v1/frames/respawn/roach_respawn_04.png',
 };
 
+export const PREMIUM_PLAYER = PREMIUM_PLAYER_QA;
+export const PREMIUM_PLAYER_ASSET_PATHS = PREMIUM_PLAYER_QA_ASSET_PATHS;
+
 export const HD_PLAYER_BENCHMARK = {
   idle: 'player-hd-master',
   wing: 'player-hd-wing',

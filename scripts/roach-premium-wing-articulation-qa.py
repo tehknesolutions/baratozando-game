@@ -9,9 +9,9 @@ defs=[
 ]
 for name,count,body_path in defs:
     manifest=json.loads((ROOT/f'art/source/player/premium-v1/frames/{name}/{name}_family.manifest.json').read_text(encoding='utf-8'))
-    if manifest.get('status')!='WING_ARTICULATION_VISUAL_APPROVED_RUNTIME_PENDING':
+    if manifest.get('status')!='RUNTIME_READY_V1':
         raise SystemExit(f'{name} status drift')
-    if manifest.get('runtimeReady') is not False:
+    if manifest.get('runtimeReady') is not True:
         raise SystemExit(f'{name} promoted too early')
     if manifest.get('wingArtworkStatus')!='DERIVED_CANONICAL_WING_TEXTURE_V1':
         raise SystemExit(f'{name} wing art provenance drift')

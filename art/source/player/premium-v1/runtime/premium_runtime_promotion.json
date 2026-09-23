@@ -1,0 +1,55 @@
+{
+  "id": "ROACH-PREMIUM-V1-RUNTIME-PROMOTION",
+  "status": "RUNTIME_READY_V1",
+  "runtimeReady": true,
+  "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
+  "canvas": [
+    256,
+    256
+  ],
+  "origin": [
+    0.5,
+    1.0
+  ],
+  "physicsBody": [
+    30,
+    18
+  ],
+  "physicsOffset": [
+    17,
+    42
+  ],
+  "families": [
+    "idle",
+    "walk",
+    "run",
+    "jump",
+    "fall",
+    "wing_flap",
+    "glide",
+    "wall_cling",
+    "wall_climb",
+    "wall_jump",
+    "dodge",
+    "hurt",
+    "death",
+    "respawn"
+  ],
+  "runtimeScenes": [
+    "mobility-lab-v2",
+    "movement-lab",
+    "first-threat"
+  ],
+  "legacyHdBenchmark": "RETIRED_FROM_BOOT_RUNTIME",
+  "integrationQa": "PASS_2026-09-23",
+  "promotionGate": "CLOSED_2026-09-23",
+  "familyContracts": "PASS_2026-09-23",
+  "fullNpmTest": "PASS_2026-09-23",
+  "productionBuild": "PASS_2026-09-23",
+  "runtimeHttpSmoke": "PASS_2026-09-23",
+  "runtimeHttpSmokeAssets": 7,
+  "temporaryHardRenderLock": "REMOVED",
+  "respawnStateRouting": "FIXED",
+  "lifecycleWindowMapping": "INTEGRATED",
+  "physicsMobility": "FROZEN_UNCHANGED"
+}

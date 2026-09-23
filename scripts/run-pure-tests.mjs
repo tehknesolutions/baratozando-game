@@ -13,6 +13,14 @@ const contracts = [
   'scripts/a6-wall-climb-assets-contract.test.mjs',
   'scripts/a6-wall-climb-integration-contract.test.mjs',
   'scripts/hd-character-benchmark-contract.test.mjs',
+  'scripts/premium-player-runtime-contract.test.mjs',
+  'scripts/roach-premium-idle-family-contract.test.mjs',
+  'scripts/roach-premium-walk-family-contract.test.mjs',
+  'scripts/roach-premium-run-family-contract.test.mjs',
+  'scripts/roach-premium-air-family-contract.test.mjs',
+  'scripts/roach-premium-wing-family-contract.test.mjs',
+  'scripts/roach-premium-wall-family-contract.test.mjs',
+  'scripts/roach-premium-damage-family-contract.test.mjs',
 ];
 
 for (const file of contracts) {

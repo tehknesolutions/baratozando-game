@@ -1,13 +1,12 @@
-﻿import { HD_PLAYER_BENCHMARK, PLAYER_FRAMES, PREMIUM_PLAYER_QA } from '../../assets/assetKeys.js';
+import { PLAYER_FRAMES, PREMIUM_PLAYER } from '../../assets/assetKeys.js';
 import type { PlayerState } from './PlayerState.js';
 
-const HD_BENCHMARK_STATE_TEXTURE: Partial<Record<PlayerState, string>> = {
-  IDLE: HD_PLAYER_BENCHMARK.idle,
-  WING_FLAP: HD_PLAYER_BENCHMARK.wing,
-  GLIDE: HD_PLAYER_BENCHMARK.wing,
-  WALL_CLING: HD_PLAYER_BENCHMARK.wall,
-  WALL_CLIMB: HD_PLAYER_BENCHMARK.wall,
-};
+function frameForWindow(frames: readonly string[], elapsedMs: number, durationMs: number): string {
+  const safeDuration = Math.max(1, durationMs);
+  const progress = Math.min(Math.max(elapsedMs, 0), safeDuration) / safeDuration;
+  const index = Math.min(Math.floor(progress * frames.length), frames.length - 1);
+  return frames[index];
+}
 
 const DEFS: Record<PlayerState, { frames: readonly string[]; fps: number; loop: boolean }> = {
   BOOT: { frames: PLAYER_FRAMES.idle, fps: 6, loop: true },
@@ -32,57 +31,57 @@ export class PlayerAnimationController {
   private stateStartedAt = 0;
   private currentTexture = '';
 
-  constructor(private readonly sprite: any, private readonly hdBenchmark = false, private readonly premiumVisualQa = false) {}
+  constructor(private readonly sprite: any, private readonly premiumVisual = false) {}
 
   update(state: PlayerState, nowMs: number): void {
     if (state !== this.state) {
       this.state = state;
       this.stateStartedAt = nowMs;
     }
-    if (this.premiumVisualQa) {
+    if (this.premiumVisual) {
       const elapsed = Math.max(0, nowMs - this.stateStartedAt);
-      let key: string = PREMIUM_PLAYER_QA.idleLock;
-      if (state === 'IDLE' || state === 'BOOT' || state === 'RESPAWN') {
-        const frames = PREMIUM_PLAYER_QA.idleFrames;
+      let key: string = PREMIUM_PLAYER.idleLock;
+      if (state === 'IDLE' || state === 'BOOT') {
+        const frames = PREMIUM_PLAYER.idleFrames;
         key = frames[Math.floor(elapsed / 250) % frames.length];
       } else if (state === 'WALK') {
-        const frames = PREMIUM_PLAYER_QA.walkFrames;
+        const frames = PREMIUM_PLAYER.walkFrames;
         key = frames[Math.floor(elapsed / 125) % frames.length];
       } else if (state === 'RUN') {
-        const frames = PREMIUM_PLAYER_QA.runFrames;
+        const frames = PREMIUM_PLAYER.runFrames;
         key = frames[Math.floor(elapsed / (1000 / 12)) % frames.length];
       } else if (state === 'JUMP') {
-        const frames = PREMIUM_PLAYER_QA.jumpFrames;
+        const frames = PREMIUM_PLAYER.jumpFrames;
         key = frames[Math.min(Math.floor(elapsed / 100), frames.length - 1)];
       } else if (state === 'FALL') {
-        const frames = PREMIUM_PLAYER_QA.fallFrames;
+        const frames = PREMIUM_PLAYER.fallFrames;
         key = frames[Math.floor(elapsed / 125) % frames.length];
       } else if (state === 'WING_FLAP') {
-        const frames = PREMIUM_PLAYER_QA.wingFlapFrames;
-        key = frames[Math.min(Math.floor(elapsed / (1000 / 14)), frames.length - 1)];
+        const frames = PREMIUM_PLAYER.wingFlapFrames;
+        key = frameForWindow(frames, elapsed, 115);
       } else if (state === 'GLIDE') {
-        const frames = PREMIUM_PLAYER_QA.glideFrames;
+        const frames = PREMIUM_PLAYER.glideFrames;
         key = frames[Math.floor(elapsed / (1000 / 6)) % frames.length];
       } else if (state === 'WALL_CLING') {
-        key = PREMIUM_PLAYER_QA.wallClingFrames[0];
+        key = PREMIUM_PLAYER.wallClingFrames[0];
       } else if (state === 'WALL_CLIMB') {
-        const frames = PREMIUM_PLAYER_QA.wallClimbFrames;
+        const frames = PREMIUM_PLAYER.wallClimbFrames;
         key = frames[Math.floor(elapsed / 100) % frames.length];
       } else if (state === 'WALL_JUMP') {
-        const frames = PREMIUM_PLAYER_QA.wallJumpFrames;
-        key = frames[Math.min(Math.floor(elapsed / (1000 / 12)), frames.length - 1)];
+        const frames = PREMIUM_PLAYER.wallJumpFrames;
+        key = frameForWindow(frames, elapsed, 150);
       } else if (state === 'DODGE') {
-        const frames = PREMIUM_PLAYER_QA.dodgeFrames;
-        key = frames[Math.min(Math.floor(elapsed / (1000 / 14)), frames.length - 1)];
+        const frames = PREMIUM_PLAYER.dodgeFrames;
+        key = frameForWindow(frames, elapsed, 160);
       } else if (state === 'HURT') {
-        const frames = PREMIUM_PLAYER_QA.hurtFrames;
-        key = frames[Math.min(Math.floor(elapsed / 125), frames.length - 1)];
+        const frames = PREMIUM_PLAYER.hurtFrames;
+        key = frameForWindow(frames, elapsed, 220);
       } else if (state === 'DEATH') {
-        const frames = PREMIUM_PLAYER_QA.deathFrames;
-        key = frames[Math.min(Math.floor(elapsed / 125), frames.length - 1)];
+        const frames = PREMIUM_PLAYER.deathFrames;
+        key = frameForWindow(frames, elapsed, 520);
       } else if (state === 'RESPAWN') {
-        const frames = PREMIUM_PLAYER_QA.respawnFrames;
-        key = frames[Math.min(Math.floor(elapsed / (1000 / 6)), frames.length - 1)];
+        const frames = PREMIUM_PLAYER.respawnFrames;
+        key = frameForWindow(frames, elapsed, 400);
       }
       if (key !== this.currentTexture) {
         this.sprite.setTexture(key);
@@ -91,22 +90,11 @@ export class PlayerAnimationController {
       return;
     }
 
-    if (this.hdBenchmark) {
-      const hdTexture = HD_BENCHMARK_STATE_TEXTURE[state];
-      if (hdTexture) {
-        if (hdTexture !== this.currentTexture) {
-          this.sprite.setTexture(hdTexture);
-          this.currentTexture = hdTexture;
-        }
-        return;
-      }
-    }
-
     const def = DEFS[state];
     const elapsed = Math.max(0, nowMs - this.stateStartedAt);
     const raw = Math.floor(elapsed / (1000 / def.fps));
     const index = def.loop ? raw % def.frames.length : Math.min(raw, def.frames.length - 1);
-    const key = 'player-idle-01'; // TEMP QA: single-frame visual lock
+    const key = def.frames[index];
     if (key !== this.currentTexture) {
       this.sprite.setTexture(key);
       this.currentTexture = key;

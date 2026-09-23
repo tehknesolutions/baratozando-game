@@ -5,8 +5,8 @@ for (const [name,count,fps] of [['wing_flap',4,14],['glide',2,6]]) {
   const manifestPath=`art/source/player/premium-v1/frames/${name}/${name}_family.manifest.json`;
   if (!existsSync(manifestPath)) throw new Error(`missing ${name} manifest`);
   const manifest=JSON.parse(readFileSync(manifestPath,'utf8'));
-  if (manifest.status!=='WING_ARTICULATION_VISUAL_APPROVED_RUNTIME_PENDING') throw new Error(`${name} status drift`);
-  if (manifest.runtimeReady!==false) throw new Error(`${name} promoted too early`);
+  if (manifest.status!=='RUNTIME_READY_V1') throw new Error(`${name} status drift`);
+  if (manifest.runtimeReady!==true) throw new Error(`${name} not promoted after integration QA`);
   if (manifest.playbackFps!==fps || manifest.frames.length!==count) throw new Error(`${name} contract drift`);
   if (manifest.technicalQa!=='PASS_2026-09-22') throw new Error(`${name} technical QA drift`);
   if (manifest.visualApproval!=='APPROVED_BY_CREATOR_2026-09-23') throw new Error(`${name} visual approval drift`);

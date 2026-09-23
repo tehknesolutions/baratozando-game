@@ -9,9 +9,9 @@ defs=[('dodge',5),('hurt',3),('death',6),('respawn',4)]
 for name,count in defs:
     p=ROOT/f'art/source/player/premium-v1/frames/{name}/{name}_family.manifest.json'
     m=json.loads(p.read_text(encoding='utf-8'))
-    if m.get('status')!='LIFECYCLE_ARTICULATION_CANDIDATE_V1':
+    if m.get('status')!='RUNTIME_READY_V1':
         raise SystemExit(f'{name} status drift')
-    if m.get('runtimeReady') is not False:
+    if m.get('runtimeReady') is not True:
         raise SystemExit(f'{name} promoted too early')
     if len(m.get('frames',[]))!=count:
         raise SystemExit(f'{name} frame count drift')
