@@ -1,96 +1,73 @@
-# ENV-07 — Reactive Horror Direction Design
+import { resolveHorrorReactiveState, type HorrorReactiveInput } from './HorrorReactiveState.js';
 
-**Status:** Approved design — amended with Modo Barata Tonta
-**Date:** 2026-09-23
-**Baseline:** `022c3918d7d72095adc5e26070e3d847f41fa617` (ENV-06)
+function equal(actual: unknown, expected: unknown, message: string): void {
+  if (!Object.is(actual, expected)) throw new Error(`${message}: expected ${expected}, got ${actual}`);
+}
 
-## Intent
-BARATOZANDO makes danger physically legible through the cockroach before danger becomes a conventional UI message. External danger produces TENSION; the roach converts that pressure into FEAR. Extreme FEAR activates the canonical **MODO BARATA TONTA**: visually frantic, frighteningly chaotic survival behavior while player control remains precise.
+function ok(condition: boolean, message: string): void {
+  if (!condition) throw new Error(message);
+}
 
-`world/enemy signals -> HorrorReactiveState -> TENSION 0..1`
+function resolve(overrides: Partial<HorrorReactiveInput> = {}) {
+  return resolveHorrorReactiveState({
+    chaseState: 'DORMANT',
+    threatGap: 500,
+    recentDamage: false,
+    respawning: false,
+    zoneIntensity: 0,
+    ...overrides,
+  });
+}
 
-`TENSION + exposure/recovery -> RoachFearState -> FEAR 0..1`
+const dormant = resolve();
+equal(dormant.tension, 0, 'dormant tension');
+equal(dormant.band, 'CALM', 'dormant band');
 
-`FEAR -> BARATA_TONTA -> survival boosts + panic wings + fear output`
+const warning = resolve({ chaseState: 'WARNING' });
+ok(warning.tension > dormant.tension, 'warning must raise tension');
+equal(warning.band, 'OMEN', 'warning band');
 
-TENSION and FEAR are distinct. A space can foreshadow danger before the roach panics, and fear can persist briefly after external danger falls.
+const farChase = resolve({ chaseState: 'CHASING', threatGap: 300 });
+const closeChase = resolve({ chaseState: 'CHASING', threatGap: 40 });
+ok(closeChase.tension > farChase.tension, 'closing threat must raise tension');
+ok(['DANGER', 'CHASE', 'PANIC'].includes(closeChase.band), 'close chase must reach a danger band');
 
-## ENV-07A — Horror/Tension Core
-Introduce deterministic `HorrorReactiveState`. Inputs: threat/chase state, threat distance, recent damage, respawn/recovery state, optional authored tension-zone intensity. Output is normalized `0..1` plus `CALM | OMEN | ALERT | DANGER | CHASE | PANIC`. Values are clamped and reproducible. First integration target: `FirstThreatScene`.
+const caught = resolve({ chaseState: 'CAUGHT', threatGap: 0 });
+equal(caught.tension, 1, 'caught tension');
+equal(caught.band, 'PANIC', 'caught band');
 
-## ENV-07B — Roach Fear
-`RoachFearState` accumulates and decays FEAR with hysteresis. Semantic states: `CALM | ALERT | FEAR | PANIC | BARATA_TONTA`. Damage may spike fear but cannot be the optimal charging strategy; proximity, pursuit, cornering and authored horror events are primary sources.
+const escaped = resolve({ chaseState: 'ESCAPED', threatGap: 0, recentDamage: true, zoneIntensity: 1 });
+equal(escaped.tension, 0, 'escaped must be safe');
+equal(escaped.band, 'CALM', 'escaped band');
 
-## ENV-07C — Modo Barata Tonta / Survival Instinct
-**MODO BARATA TONTA** is the player-facing identity of maximum survival panic. The roach becomes desperate enough to become frightening to its threats. It may receive capped speed/acceleration and offensive-survival boosts. Presentation becomes frantic — antennae, body, legs and wings — without randomizing or degrading input.
+const zoneHigh = resolve({ zoneIntensity: 4 });
+equal(zoneHigh.tension, 1, 'zone intensity must clamp high');
+const zoneLow = resolve({ zoneIntensity: -3 });
+equal(zoneLow.tension, 0, 'zone intensity must clamp low');
 
-Barata Tonta also introduces **FEAR OUTPUT**: selected enemies can react to the roach's extreme survival display. Enemy response is capability-based: susceptible enemies may hesitate/recoil; larger or resistant enemies may only stagger or acknowledge the display. Boss immunity/resistance is explicit, never assumed.
+const respawn = resolve({ chaseState: 'CAUGHT', threatGap: 0, recentDamage: true, zoneIntensity: 1, respawning: true });
+equal(respawn.tension, 0, 'respawn must override danger');
 
-## ENV-07D — Panic Flight
-Panic Flight is **not free flight**. It is bounded aerial platforming: `ground jump -> PANIC FLAP -> optional additional PANIC FLAPS -> WING GLIDE -> landing`. Fear thresholds determine wing assistance. Holding jump during eligible descent can extend/reduce fall; pressing jump airborne can consume a bounded flap charge. Gravity and level geometry remain authoritative. No infinite hover, altitude gain or accidental map bypass.
+for (const threatGap of [Number.NaN, Number.POSITIVE_INFINITY, Number.NEGATIVE_INFINITY, -50]) {
+  const output = resolve({ chaseState: 'CHASING', threatGap });
+  ok(Number.isFinite(output.tension), `tension must be finite for gap ${threatGap}`);
+  ok(output.tension >= 0 && output.tension <= 1, `tension must be bounded for gap ${threatGap}`);
+}
 
-## ENV-07E — Roach Ghowl / Wing Shockwave
-`GHOWL` is a stylized survival action combining violent wing vibration and bodily panic response. At low intensity it is presentation; under Barata Tonta it may produce short-range defensive fear/interrupt/knockback and aerial recoil. Explicit cooldown/resource gates prevent stun loops.
+const damaged = resolve({ chaseState: 'WARNING', recentDamage: true });
+ok(damaged.tension > warning.tension, 'recent damage must add a bounded tension bump');
 
-## ENV-07F — Reactive Enemy Horror
-Desired dramatic vocabulary: `IDLE -> SUSPICIOUS -> INVESTIGATE -> SPOT -> FREEZE -> PREPARE -> ATTACK/CHASE -> SEARCH -> RELEASE`. Not every enemy implements every state. Enemy AI owns combat truth. Barata Tonta FEAR OUTPUT may feed an explicit enemy fear/reaction interface without fabricating collision or damage.
+const sample: HorrorReactiveInput = {
+  chaseState: 'CHASING', threatGap: 90, recentDamage: true, respawning: false, zoneIntensity: 0.44,
+};
+const first = resolveHorrorReactiveState(sample);
+const second = resolveHorrorReactiveState(sample);
+equal(first.tension, second.tension, 'identical samples must resolve identically');
+equal(first.band, second.band, 'identical samples must keep the same band');
 
-## ENV-07G — Reactive Environment
-ENV-06 deterministic ambience consumes TENSION. Flicker, haze, shadows, dust and selected drips may modulate within readability ceilings. Visual layers add no physics/colliders. Environmental effects remain below player depth `50` unless separately reviewed.
+for (const output of [dormant, warning, farChase, closeChase, caught, escaped, zoneHigh, zoneLow, respawn, damaged, first]) {
+  ok(Number.isFinite(output.tension), 'every tension must be finite');
+  ok(output.tension >= 0 && output.tension <= 1, 'every tension must remain in 0..1');
+}
 
-## ENV-07H — Encounter Choreography
-Encounters coordinate foreshadowing, enemy anticipation, roach fear, Barata Tonta and escape routes. Desired rhythm: `CALM -> OMEN -> SUSPICION -> REVEAL -> CHASE/PANIC -> BARATA_TONTA -> ESCAPE -> RECOVERY`. Required progression cannot depend on accidental fear farming unless the encounter guarantees the state.
-
-## ENV-07I — Cinematic Polish and Balance
-Tune curves only after deterministic contracts work. Camera, vignette, animation intensity, wing motion, particles and audio hooks have ceilings so maximum panic stays readable.
-
-## Data ownership
-- `HorrorReactiveState`: reads gameplay facts, produces TENSION, mutates no gameplay.
-- `RoachFearState`: owns FEAR accumulation/decay and fear bands.
-- Barata Tonta: explicit survival modifier interface; no visual class changes physics.
-- Player movement/combat explicitly consumes modifiers.
-- Environment consumes presentation values only.
-- Enemy AI owns decisions; FEAR OUTPUT is an explicit input to capable enemies.
-- Tuning constants remain centralized.
-
-## Determinism and control fidelity
-No ENV-07 core state uses `Math.random`. Same ordered inputs and deltas produce the same TENSION/FEAR outputs. Cosmetic panic cannot inject unrequested movement, random direction changes, missed inputs, input delay or control inversion. The roach may **look out of control while remaining tightly controlled by the player**.
-
-## Failure/recovery rules
-- Clamp normalized inputs.
-- Missing zone intensity = zero.
-- Respawn/reset returns transient TENSION/FEAR to safe baseline.
-- Fear thresholds use hysteresis.
-- Panic Flight charges never go negative or regenerate indefinitely airborne.
-- GHOWL obeys explicit cooldown/resource gates.
-- FEAR OUTPUT affects only enemies declaring support/resistance behavior.
-
-## Testing gates
-1. deterministic core tests;
-2. no `Math.random` in reactive core;
-3. no visual physics/colliders;
-4. player readability invariant;
-5. flap/glide ceilings and reset tests;
-6. fear/tension reset and hysteresis tests;
-7. Barata Tonta activation/deactivation and capped modifier tests;
-8. FEAR OUTPUT resistance/capability tests;
-9. full `npm test`;
-10. production build;
-11. runtime inspection of relevant scenes;
-12. deployment validation after merge.
-
-## Delivery order
-1. ENV-07A — Horror/Tension Core
-2. ENV-07B — Roach Fear
-3. ENV-07C — **Modo Barata Tonta** / Survival Instinct + FEAR OUTPUT contract
-4. ENV-07D — Panic Flight
-5. ENV-07E — Ghowl / Wing Shockwave
-6. ENV-07F — Reactive Enemy Horror
-7. ENV-07G — Reactive Environment
-8. ENV-07H — Encounter Choreography
-9. ENV-07I — Cinematic Polish + Balance
-
-Each stage is independently reviewable and later stages consume explicit interfaces.
-
-## Definition of success
-Danger escalates coherently through world, enemy and roach behavior. At maximum fear the roach enters the memorable **Modo Barata Tonta**: desperate, fast, wing-ready and scary enough to produce fear reactions in susceptible threats, while deterministic platforming and precise player control remain intact.
+console.log('PASS HorrorReactiveState');
