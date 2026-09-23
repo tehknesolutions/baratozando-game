@@ -14,6 +14,7 @@ const contracts = [
   'scripts/a6-wall-climb-integration-contract.test.mjs',
   'scripts/hd-character-benchmark-contract.test.mjs',
   'scripts/realistic-renderer-contract.test.mjs',
+  'scripts/environment-atmosphere-contract.test.mjs',
   'scripts/premium-player-runtime-contract.test.mjs',
   'scripts/roach-premium-idle-family-contract.test.mjs',
   'scripts/roach-premium-walk-family-contract.test.mjs',

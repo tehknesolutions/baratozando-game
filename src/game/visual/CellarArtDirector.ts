@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import type { FirstThreatLayout } from '../world/FirstThreatLayout.js';
 import { CELLAR_TEXTURES } from '../../assets/environmentAssetKeys.js';
 import { FIRST_THREAT_VISUAL_CONFIG as V } from './FirstThreatVisualConfig.js';
+import { CellarAtmosphere } from './CellarAtmosphere.js';
 
 export type CellarArtHandles = {
   amberGlow: any;
@@ -12,6 +13,8 @@ export class CellarArtDirector {
   static build(scene: any, layout: FirstThreatLayout): CellarArtHandles {
     scene.add.rectangle(layout.width / 2, layout.height / 2, layout.width, layout.height, 0x090807, 1)
       .setDepth(-20);
+
+    CellarAtmosphere.addDepthHaze(scene, layout.width, layout.height, V.depths.background - 4);
 
     // Macro silhouettes: distant cellar supports, pipes and stacked storage.
     for (let i = 0; i < 14; i++) {
@@ -45,6 +48,16 @@ export class CellarArtDirector {
           ? CELLAR_TEXTURES.metal
           : CELLAR_TEXTURES.masonry;
 
+      CellarAtmosphere.addContactShadow(
+        scene,
+        p.x + p.width * 0.5,
+        p.y + p.height + 5,
+        Math.max(48, p.width * 0.96),
+        Math.max(8, Math.min(22, p.height * 0.34)),
+        V.depths.gameplay - 0.12,
+        0.26,
+      );
+
       scene.add.tileSprite(p.x, p.y, p.width, p.height, texture)
         .setOrigin(0, 0)
         .setDepth(V.depths.gameplay);
@@ -66,6 +79,17 @@ export class CellarArtDirector {
           : V.depths.gameplay - 0.5;
 
       const scrollFactor = prop.layer === 'background' ? 0.7 : 1;
+      CellarAtmosphere.addContactShadow(
+        scene,
+        prop.x,
+        prop.y + 18 * prop.scale,
+        72 * prop.scale,
+        14 * prop.scale,
+        depth - 0.08,
+        prop.layer === 'foreground' ? 0.26 : 0.18,
+        scrollFactor,
+      );
+
       scene.add.image(prop.x, prop.y, prop.texture)
         .setScale(prop.scale)
         .setRotation(prop.rotation)
@@ -74,7 +98,20 @@ export class CellarArtDirector {
         .setDepth(depth);
     }
 
-    const amberGlow = scene.add.ellipse(760, 385, 560, 230, 0xe38a38, 0.035)
+    CellarAtmosphere.addSoftLight(scene, {
+      x: 735, y: 360, width: 760, height: 330,
+      color: 0xd88945, alpha: 0.17,
+      depth: V.depths.atmosphere - 1.2,
+      scrollFactor: 0.55,
+    });
+    CellarAtmosphere.addSoftLight(scene, {
+      x: 1660, y: 225, width: 620, height: 280,
+      color: 0x6b8594, alpha: 0.095,
+      depth: V.depths.atmosphere - 1.1,
+      scrollFactor: 0.42,
+    });
+
+    const amberGlow = scene.add.ellipse(760, 385, 560, 230, 0xe38a38, 0.018)
       .setScrollFactor(0.55)
       .setDepth(V.depths.atmosphere - 1);
 
@@ -93,6 +130,8 @@ export class CellarArtDirector {
       .setScale(0.52)
       .setAlpha(0.32)
       .setDepth(V.depths.gameplay + 0.3);
+
+    CellarAtmosphere.addScreenVignette(scene, V.depths.foreground + 8);
 
     return { amberGlow, dust };
   }
