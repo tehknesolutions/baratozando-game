@@ -1,7 +1,7 @@
 {
   "id": "ROACH-PREMIUM-V1-WALL-JUMP-FAMILY",
   "family": "WALL_JUMP",
-  "status": "QA_APPROVED_ARTICULATION_PENDING",
+  "status": "WALL_ARTICULATION_CANDIDATE_V1",
   "runtimeReady": false,
   "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
   "canvas": [
@@ -17,54 +17,54 @@
     {
       "index": 1,
       "path": "public/assets/player/premium-v1/frames/wall_jump/roach_wall_jump_01.png",
-      "sha256": "3734aae2ede80a333835243716a3d38b40c5a860afdeaa16bbdec2d515a81d9e",
-      "sourceJumpFrame": "public/assets/player/premium-v1/frames/jump/roach_jump_01.png",
-      "alphaBounds": [
-        1,
-        89,
-        255,
-        256
-      ]
+      "sha256": "d822f4dd34f2ca313396d648bd7f7298922c015a86076bb733e0602e607ba5d6",
+      "phase": "wall_push",
+      "rotationDegCCW": 90,
+      "preRotationAnglesDeg": {
+        "rear_near": 12,
+        "mid_near": -12,
+        "front_near": 10,
+        "rear_far": -9,
+        "mid_far": 9,
+        "front_far": -8
+      }
     },
     {
       "index": 2,
       "path": "public/assets/player/premium-v1/frames/wall_jump/roach_wall_jump_02.png",
-      "sha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
-      "sourceJumpFrame": "public/assets/player/premium-v1/frames/jump/roach_jump_02.png",
-      "alphaBounds": [
-        1,
-        84,
-        255,
-        256
-      ]
+      "sha256": "df0ab15bd221618463c71e79c53d4838f9f9a6e0303a127ff9442d58b9939926",
+      "phase": "turn_62deg",
+      "sourceJumpFrame": "public/assets/player/premium-v1/frames/jump/roach_jump_01.png",
+      "rotationDegCCW": 62
     },
     {
       "index": 3,
       "path": "public/assets/player/premium-v1/frames/wall_jump/roach_wall_jump_03.png",
-      "sha256": "0923b4cf67347a5f20ce9ce336262ca9b8da19b6d5607f414d5cb5159dd87835",
-      "sourceJumpFrame": "public/assets/player/premium-v1/frames/jump/roach_jump_03.png",
-      "alphaBounds": [
-        1,
-        81,
-        255,
-        256
-      ]
+      "sha256": "a562e3ae6453eddf172a3426b7b9b0942cba2cb020ff2092265fe956a35c836c",
+      "phase": "turn_32deg",
+      "sourceJumpFrame": "public/assets/player/premium-v1/frames/jump/roach_jump_01.png",
+      "rotationDegCCW": 32
     },
     {
       "index": 4,
       "path": "public/assets/player/premium-v1/frames/wall_jump/roach_wall_jump_04.png",
-      "sha256": "1e254666a398caec0fad402f1b1621d5447abc15fbac50a48362594971dad7f6",
-      "sourceJumpFrame": "public/assets/player/premium-v1/frames/jump/roach_jump_04.png",
-      "alphaBounds": [
-        1,
-        86,
-        255,
-        256
-      ]
+      "sha256": "216290f6f9ff8cb9955190ab446274aa2a51c2e2144f4fc1bb4dd9658381355a",
+      "phase": "airborne_horizontal",
+      "sourceJumpFrame": "public/assets/player/premium-v1/frames/jump/roach_jump_02.png",
+      "rotationDegCCW": 0
     }
   ],
-  "derivation": "byte-identical reuse of approved JUMP blockout frames for wall-jump timing; no regeneration",
-  "qaPurpose": "validate wall-jump state timing only",
-  "promotionGate": "dedicated wall-jump articulation/orientation pass plus explicit gameplay QA",
-  "stateQa": "APPROVED_BY_CREATOR_2026-09-22"
+  "derivation": "deterministic six-distal-leg articulation with lossless wall orientation and source-locked wall-jump transition; no character regeneration",
+  "qaPurpose": "premium WALL_JUMP articulation candidate with locked identity and wall-state continuity",
+  "promotionGate": "technical wall articulation QA + explicit in-game visual approval",
+  "stateQa": "APPROVED_BY_CREATOR_2026-09-22",
+  "articulationMethod": "fixed distal-leg masks/pivots; 90-degree lossless vertical orientation; wall-jump transitions from approved JUMP source frames",
+  "preRotationUpperBodyLockRegion": [
+    0,
+    0,
+    256,
+    188
+  ],
+  "technicalQa": "PASS_2026-09-23",
+  "visualApproval": "PENDING"
 }

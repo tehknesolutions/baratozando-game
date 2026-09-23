@@ -9,7 +9,7 @@ defs=[
 ]
 for name,count,body_path in defs:
     manifest=json.loads((ROOT/f'art/source/player/premium-v1/frames/{name}/{name}_family.manifest.json').read_text(encoding='utf-8'))
-    if manifest.get('status')!='WING_ARTICULATION_CANDIDATE_V1':
+    if manifest.get('status')!='WING_ARTICULATION_VISUAL_APPROVED_RUNTIME_PENDING':
         raise SystemExit(f'{name} status drift')
     if manifest.get('runtimeReady') is not False:
         raise SystemExit(f'{name} promoted too early')

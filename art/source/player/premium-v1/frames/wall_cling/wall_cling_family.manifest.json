@@ -1,7 +1,7 @@
 {
   "id": "ROACH-PREMIUM-V1-WALL-CLING-FAMILY",
   "family": "WALL_CLING",
-  "status": "QA_APPROVED_ARTICULATION_PENDING",
+  "status": "WALL_ARTICULATION_CANDIDATE_V1",
   "runtimeReady": false,
   "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
   "canvas": [
@@ -17,18 +17,29 @@
     {
       "index": 1,
       "path": "public/assets/player/premium-v1/frames/wall_cling/roach_wall_cling_01.png",
-      "sha256": "ebc09d7bd24a027eddd392ef486443450b6214d3a1611baec0d7841b91b275bf",
-      "rotationDegCCW": 90,
-      "alphaBounds": [
-        84,
-        1,
-        256,
-        255
-      ]
+      "sha256": "a885e81dced74b7f553589c14df0fb4c8d8480c33679e35c0bf0be6004e4cff6",
+      "preRotationAnglesDeg": {
+        "rear_near": 7,
+        "mid_near": -7,
+        "front_near": 7,
+        "rear_far": -6,
+        "mid_far": 6,
+        "front_far": -6
+      },
+      "rotationDegCCW": 90
     }
   ],
-  "derivation": "deterministic 90-degree CCW rotation of locked idle frame; no regeneration",
-  "qaPurpose": "validate vertical wall orientation/contact only",
-  "promotionGate": "explicit wall orientation QA plus articulated-leg production pass",
-  "stateQa": "APPROVED_BY_CREATOR_2026-09-22"
+  "derivation": "deterministic six-distal-leg articulation with lossless wall orientation and source-locked wall-jump transition; no character regeneration",
+  "qaPurpose": "premium WALL_CLING articulation candidate with locked identity and wall-state continuity",
+  "promotionGate": "technical wall articulation QA + explicit in-game visual approval",
+  "stateQa": "APPROVED_BY_CREATOR_2026-09-22",
+  "articulationMethod": "fixed distal-leg masks/pivots; 90-degree lossless vertical orientation; wall-jump transitions from approved JUMP source frames",
+  "preRotationUpperBodyLockRegion": [
+    0,
+    0,
+    256,
+    188
+  ],
+  "technicalQa": "PASS_2026-09-23",
+  "visualApproval": "PENDING"
 }
