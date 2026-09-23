@@ -1,0 +1,1 @@
+Scale lock implementation is on feat/playable-v3-scale-lock. Visual acceptance pending.
