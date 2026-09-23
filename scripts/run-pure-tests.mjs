@@ -15,6 +15,7 @@ const contracts = [
   'scripts/hd-character-benchmark-contract.test.mjs',
   'scripts/realistic-renderer-contract.test.mjs',
   'scripts/environment-atmosphere-contract.test.mjs',
+  'scripts/environment-premium-materials-contract.test.mjs',
   'scripts/premium-player-runtime-contract.test.mjs',
   'scripts/roach-premium-idle-family-contract.test.mjs',
   'scripts/roach-premium-walk-family-contract.test.mjs',

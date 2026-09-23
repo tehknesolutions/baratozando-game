@@ -1,0 +1,277 @@
+{
+  "id": "ENV-CELLAR-PREMIUM-MATERIALS-V1",
+  "status": "RUNTIME_CANDIDATE",
+  "runtimeReady": false,
+  "intrinsicScale": 4,
+  "displayScale": 0.25,
+  "policy": "source-derived deterministic premium material pass; preserve world scale and silhouettes",
+  "profiles": [
+    "wood",
+    "masonry",
+    "metal",
+    "glass",
+    "rubber",
+    "grime",
+    "organic",
+    "dust"
+  ],
+  "sourceRepairs": [
+    {
+      "asset": "fork.png",
+      "reason": "main source blob was PNG-truncated and failed decode",
+      "supersededCorruptSourceSha256": "84b3c15e396d421dcbfc25f7100e1cee0fa6c82dd68cd175a122425bfa0d17cd",
+      "restoredFromCommit": "51d0d4d9351a9e59e9232578e9e2fa0243f96a82",
+      "restoredSourceSha256": "1f2101a37062fcfbbabb737df3ed5dad71bff0dbb8e19627ccd6b23fe3b36807"
+    }
+  ],
+  "assets": [
+    {
+      "name": "floor_wood.png",
+      "profile": "wood",
+      "source": "public/assets/environment/cellar/floor_wood.png",
+      "output": "public/assets/environment/cellar/premium-v1/floor_wood.png",
+      "sourceSha256": "3395cb7afcab1262a0471a7985c7ac0e104f71e0f085d9ec56f12f1505b28ed8",
+      "outputSha256": "fea6342c7835495f5e256a9b70b4c901b4faf6952f23d33229603f890337bb21",
+      "sourceSize": [
+        128,
+        32
+      ],
+      "outputSize": [
+        512,
+        128
+      ],
+      "intrinsicScale": 4,
+      "displayScale": 0.25,
+      "silhouettePolicy": "alpha channel only resampled with LANCZOS; no object redesign"
+    },
+    {
+      "name": "floor_masonry.png",
+      "profile": "masonry",
+      "source": "public/assets/environment/cellar/floor_masonry.png",
+      "output": "public/assets/environment/cellar/premium-v1/floor_masonry.png",
+      "sourceSha256": "e8c80025edece33a43365b88cace113af41a67a92157655bb0a594165af9227c",
+      "outputSha256": "f1907e5a96280b114902261a986bbb292283bd20ad59e99e99be75a067491a84",
+      "sourceSize": [
+        128,
+        64
+      ],
+      "outputSize": [
+        512,
+        256
+      ],
+      "intrinsicScale": 4,
+      "displayScale": 0.25,
+      "silhouettePolicy": "alpha channel only resampled with LANCZOS; no object redesign"
+    },
+    {
+      "name": "floor_metal.png",
+      "profile": "metal",
+      "source": "public/assets/environment/cellar/floor_metal.png",
+      "output": "public/assets/environment/cellar/premium-v1/floor_metal.png",
+      "sourceSha256": "e5503b8a30f0102a6befb9dd570b719f5a9421dc8cac055121e6718d6a2a0ec3",
+      "outputSha256": "c16e0f9297766c81802e97d622a603ca664b9132c390817d35ebb32155a162b1",
+      "sourceSize": [
+        128,
+        32
+      ],
+      "outputSize": [
+        512,
+        128
+      ],
+      "intrinsicScale": 4,
+      "displayScale": 0.25,
+      "silhouettePolicy": "alpha channel only resampled with LANCZOS; no object redesign"
+    },
+    {
+      "name": "pipe_horizontal.png",
+      "profile": "metal",
+      "source": "public/assets/environment/cellar/pipe_horizontal.png",
+      "output": "public/assets/environment/cellar/premium-v1/pipe_horizontal.png",
+      "sourceSha256": "ac9598286d5fa114864edc15e7a14e9826132d63c34181881afaed4c189b4f07",
+      "outputSha256": "4f9d8e585289e63215e07a068b88defde59bc497f7adc579671964a387605a44",
+      "sourceSize": [
+        192,
+        64
+      ],
+      "outputSize": [
+        768,
+        256
+      ],
+      "intrinsicScale": 4,
+      "displayScale": 0.25,
+      "silhouettePolicy": "alpha channel only resampled with LANCZOS; no object redesign"
+    },
+    {
+      "name": "fork.png",
+      "profile": "metal",
+      "source": "public/assets/environment/cellar/fork.png",
+      "output": "public/assets/environment/cellar/premium-v1/fork.png",
+      "sourceSha256": "1f2101a37062fcfbbabb737df3ed5dad71bff0dbb8e19627ccd6b23fe3b36807",
+      "outputSha256": "fc168705102682e5a7ae8fe839be8a11da1f200188ec80cad4da3573cd691cb2",
+      "sourceSize": [
+        96,
+        96
+      ],
+      "outputSize": [
+        384,
+        384
+      ],
+      "intrinsicScale": 4,
+      "displayScale": 0.25,
+      "silhouettePolicy": "alpha channel only resampled with LANCZOS; no object redesign"
+    },
+    {
+      "name": "bottle.png",
+      "profile": "glass",
+      "source": "public/assets/environment/cellar/bottle.png",
+      "output": "public/assets/environment/cellar/premium-v1/bottle.png",
+      "sourceSha256": "7ccd28f90e06539c754f67c8597afd2eb623b714ca30598721d164a3b3dae700",
+      "outputSha256": "f9dae5ed4856d6eef16239ca10ff28a1fce4cf6ed55c8ba40b7806816c28a170",
+      "sourceSize": [
+        80,
+        128
+      ],
+      "outputSize": [
+        320,
+        512
+      ],
+      "intrinsicScale": 4,
+      "displayScale": 0.25,
+      "silhouettePolicy": "alpha channel only resampled with LANCZOS; no object redesign"
+    },
+    {
+      "name": "can.png",
+      "profile": "metal",
+      "source": "public/assets/environment/cellar/can.png",
+      "output": "public/assets/environment/cellar/premium-v1/can.png",
+      "sourceSha256": "32e75b9c2e21aadd1f3d6ef26b8ee00ec1610c609886e9e2ef4e1f428281ca3d",
+      "outputSha256": "6517e8d024f7a33b05afc93dc341aba64772567f20613396ef6a8bb66f987c9b",
+      "sourceSize": [
+        96,
+        96
+      ],
+      "outputSize": [
+        384,
+        384
+      ],
+      "intrinsicScale": 4,
+      "displayScale": 0.25,
+      "silhouettePolicy": "alpha channel only resampled with LANCZOS; no object redesign"
+    },
+    {
+      "name": "crate.png",
+      "profile": "wood",
+      "source": "public/assets/environment/cellar/crate.png",
+      "output": "public/assets/environment/cellar/premium-v1/crate.png",
+      "sourceSha256": "026b6968c5bc90eaaa995e3daf70bc90792a45ee4ce05a92ce200fa7ecbc917f",
+      "outputSha256": "5d47bfff6fe6e8668ea11fd98d13a4b02263c7ce38e710a6fdec31761bf716c9",
+      "sourceSize": [
+        128,
+        128
+      ],
+      "outputSize": [
+        512,
+        512
+      ],
+      "intrinsicScale": 4,
+      "displayScale": 0.25,
+      "silhouettePolicy": "alpha channel only resampled with LANCZOS; no object redesign"
+    },
+    {
+      "name": "cable.png",
+      "profile": "rubber",
+      "source": "public/assets/environment/cellar/cable.png",
+      "output": "public/assets/environment/cellar/premium-v1/cable.png",
+      "sourceSha256": "f0dc398a15192fecd069730bc5c08c417f8609411ab3ef7ff62b210fbb49c66a",
+      "outputSha256": "3683df4b35c6fc27bfe89f562b25d1b061c03cc8c66bd61926ec2b33a04b9dee",
+      "sourceSize": [
+        192,
+        192
+      ],
+      "outputSize": [
+        768,
+        768
+      ],
+      "intrinsicScale": 4,
+      "displayScale": 0.25,
+      "silhouettePolicy": "alpha channel only resampled with LANCZOS; no object redesign"
+    },
+    {
+      "name": "drain.png",
+      "profile": "metal",
+      "source": "public/assets/environment/cellar/drain.png",
+      "output": "public/assets/environment/cellar/premium-v1/drain.png",
+      "sourceSha256": "839842dac2a540504fe5a47d75a228943b9698f2d6c3a7e324f12ce53d19389e",
+      "outputSha256": "c86914705751762a95b9bce9b97eba7fd80568d3258a719c3379dd2f880a0760",
+      "sourceSize": [
+        160,
+        160
+      ],
+      "outputSize": [
+        640,
+        640
+      ],
+      "intrinsicScale": 4,
+      "displayScale": 0.25,
+      "silhouettePolicy": "alpha channel only resampled with LANCZOS; no object redesign"
+    },
+    {
+      "name": "grime_decal.png",
+      "profile": "grime",
+      "source": "public/assets/environment/cellar/grime_decal.png",
+      "output": "public/assets/environment/cellar/premium-v1/grime_decal.png",
+      "sourceSha256": "b43dcf4135ef104a48f3b3cbb60ff5291617868ff0a04be6fcb4b7c4cec3d12d",
+      "outputSha256": "466160f6426c1eefe8e421bc42bb2075c65dacf544f8dbddc116cb7762f7796e",
+      "sourceSize": [
+        160,
+        96
+      ],
+      "outputSize": [
+        640,
+        384
+      ],
+      "intrinsicScale": 4,
+      "displayScale": 0.25,
+      "silhouettePolicy": "alpha channel only resampled with LANCZOS; no object redesign"
+    },
+    {
+      "name": "mold_decal.png",
+      "profile": "organic",
+      "source": "public/assets/environment/cellar/mold_decal.png",
+      "output": "public/assets/environment/cellar/premium-v1/mold_decal.png",
+      "sourceSha256": "f19c0d36719c13362188ee95feb3d302d2ebd68862300e3b0a9b9e7f53b2f416",
+      "outputSha256": "013c83d5f970953adda5d80d29bc1eb86b8426e2c161e2dbaf8d1460b0a8e5a3",
+      "sourceSize": [
+        160,
+        96
+      ],
+      "outputSize": [
+        640,
+        384
+      ],
+      "intrinsicScale": 4,
+      "displayScale": 0.25,
+      "silhouettePolicy": "alpha channel only resampled with LANCZOS; no object redesign"
+    },
+    {
+      "name": "dust_particle.png",
+      "profile": "dust",
+      "source": "public/assets/environment/cellar/dust_particle.png",
+      "output": "public/assets/environment/cellar/premium-v1/dust_particle.png",
+      "sourceSha256": "f1b8e09970c965cf4bc0ebe62ce7732ec835df53493002c7458bbc149862e50c",
+      "outputSha256": "7cfc747aa22e4294a65113876e1525a46ce0a4823e311fe63df3ae97f2cd8bea",
+      "sourceSize": [
+        12,
+        12
+      ],
+      "outputSize": [
+        48,
+        48
+      ],
+      "intrinsicScale": 4,
+      "displayScale": 0.25,
+      "silhouettePolicy": "alpha channel only resampled with LANCZOS; no object redesign"
+    }
+  ],
+  "promotionGate": "binary/hash/dimension/silhouette QA + runtime scale-lock contract + full tests/build/HTTP smoke"
+}
