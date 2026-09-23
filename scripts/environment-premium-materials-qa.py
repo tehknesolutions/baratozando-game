@@ -8,9 +8,9 @@ manifest=json.loads(manifest_path.read_text(encoding='utf-8'))
 
 if manifest.get('id')!='ENV-CELLAR-PREMIUM-MATERIALS-V1':
     raise SystemExit('manifest id drift')
-if manifest.get('status')!='RUNTIME_CANDIDATE':
+if manifest.get('status')!='RUNTIME_READY_V1':
     raise SystemExit(f"status drift: {manifest.get('status')}")
-if manifest.get('runtimeReady') is not False:
+if manifest.get('runtimeReady') is not True:
     raise SystemExit('premium materials promoted too early')
 if manifest.get('intrinsicScale')!=4 or manifest.get('displayScale')!=0.25:
     raise SystemExit('intrinsic/display scale contract drift')

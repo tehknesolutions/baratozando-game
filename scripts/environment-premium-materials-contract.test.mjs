@@ -5,8 +5,8 @@ const manifestPath='art/source/environment/cellar/premium-v1/premium_materials_v
 if (!existsSync(manifestPath)) throw new Error('missing ENV-03 premium materials manifest');
 const manifest=JSON.parse(readFileSync(manifestPath,'utf8'));
 
-if (manifest.status!=='RUNTIME_CANDIDATE') throw new Error('ENV-03 must remain a runtime candidate before final gate');
-if (manifest.runtimeReady!==false) throw new Error('ENV-03 promoted before final runtime gate');
+if (manifest.status!=='RUNTIME_READY_V1') throw new Error('ENV-03 must be runtime ready after final gate');
+if (manifest.runtimeReady!==true) throw new Error('ENV-03 not promoted after final runtime gate');
 if (manifest.intrinsicScale!==4 || manifest.displayScale!==0.25) throw new Error('ENV-03 scale contract drift');
 if (manifest.assets.length!==13) throw new Error('ENV-03 asset matrix incomplete');
 
