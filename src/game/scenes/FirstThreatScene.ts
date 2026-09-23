@@ -39,7 +39,7 @@ export class FirstThreatScene extends Phaser.Scene {
     }
 
     const input = new KeyboardInputAdapter(this);
-    this.player = new Player(this, L.spawn.x, L.spawn.y, input);
+    this.player = new Player(this, L.spawn.x, L.spawn.y, input, { premiumVisual: true });
     this.player.setDepth(50);
     for (const platform of platforms) this.physics.add.collider(this.player, platform);
 

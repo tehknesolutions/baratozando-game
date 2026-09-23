@@ -7,9 +7,9 @@ manifest=json.loads((ROOT/'art/source/player/premium-v1/frames/run/run_family.ma
 base=Image.open(ROOT/'public/assets/player/premium-v1/frames/idle/roach_idle_01.png').convert('RGBA')
 lock_box=(0,0,256,189)
 
-if manifest.get('status')!='ARTICULATION_VISUAL_APPROVED_RUNTIME_PENDING':
+if manifest.get('status')!='RUNTIME_READY_V1':
     raise SystemExit(f'run status drift: {manifest.get("status")}')
-if manifest.get('runtimeReady') is not False:
+if manifest.get('runtimeReady') is not True:
     raise SystemExit('run promoted too early')
 if manifest.get('upperBodyLockRegion') != [0,0,256,189]:
     raise SystemExit('upper body lock region drift')

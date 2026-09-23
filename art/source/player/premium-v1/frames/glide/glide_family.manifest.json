@@ -1,8 +1,8 @@
 {
   "id": "ROACH-PREMIUM-V1-GLIDE-FAMILY",
   "family": "GLIDE",
-  "status": "WING_ARTICULATION_VISUAL_APPROVED_RUNTIME_PENDING",
-  "runtimeReady": false,
+  "status": "RUNTIME_READY_V1",
+  "runtimeReady": true,
   "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
   "canvas": [
     256,
@@ -48,7 +48,7 @@
   "derivation": "deterministic dual-layer rotation of canonical closed-wing texture over an approved articulated airborne body; no character regeneration",
   "qaPurpose": "premium GLIDE wing deployment candidate with locked head/antennae and articulated airborne body",
   "wingArtworkStatus": "DERIVED_CANONICAL_WING_TEXTURE_V1",
-  "promotionGate": "runtime integration/regression QA before runtimeReady",
+  "promotionGate": "CLOSED_2026-09-23",
   "timingQa": "APPROVED_BY_CREATOR_2026-09-22",
   "articulationMethod": "canonical wing polygon with fixed thoracic hinge and two translucent derived layers",
   "bodySource": "public/assets/player/premium-v1/frames/fall/roach_fall_01.png",
@@ -118,5 +118,8 @@
     195
   ],
   "technicalQa": "PASS_2026-09-22",
-  "visualApproval": "APPROVED_BY_CREATOR_2026-09-23"
+  "visualApproval": "APPROVED_BY_CREATOR_2026-09-23",
+  "previousStatus": "WING_ARTICULATION_VISUAL_APPROVED_RUNTIME_PENDING",
+  "integrationQa": "PASS_2026-09-23",
+  "runtimePromotion": "ROACH-19"
 }

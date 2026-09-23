@@ -1,8 +1,8 @@
 {
   "id": "ROACH-PREMIUM-V1-RESPAWN-FAMILY",
   "family": "RESPAWN",
-  "status": "LIFECYCLE_ARTICULATION_CANDIDATE_V1",
-  "runtimeReady": false,
+  "status": "RUNTIME_READY_V1",
+  "runtimeReady": true,
   "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
   "canvas": [
     256,
@@ -98,7 +98,10 @@
   "derivation": "deterministic articulation from locked idle identity; no character regeneration",
   "articulationMethod": "six-leg progressive unfold plus deterministic alpha ramp; final frame byte-identical to locked IDLE",
   "technicalQa": "PASS_2026-09-23",
-  "visualApproval": "PENDING",
+  "visualApproval": "APPROVED_BY_CREATOR_2026-09-23",
   "qaPurpose": "premium RESPAWN articulated unfold/fade-in candidate ending exactly at locked IDLE",
-  "promotionGate": "technical lifecycle articulation QA + explicit in-game visual approval"
+  "promotionGate": "CLOSED_2026-09-23",
+  "previousStatus": "LIFECYCLE_ARTICULATION_VISUAL_APPROVED_RUNTIME_PENDING",
+  "integrationQa": "PASS_2026-09-23",
+  "runtimePromotion": "ROACH-19"
 }

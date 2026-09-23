@@ -8,9 +8,9 @@ LOCK_BOX=(0,0,256,189)
 
 for name,count in [('jump',4),('fall',2)]:
     manifest=json.loads((ROOT/f'art/source/player/premium-v1/frames/{name}/{name}_family.manifest.json').read_text(encoding='utf-8'))
-    if manifest.get('status')!='ARTICULATION_VISUAL_APPROVED_RUNTIME_PENDING':
+    if manifest.get('status')!='RUNTIME_READY_V1':
         raise SystemExit(f'{name} status drift: {manifest.get("status")}')
-    if manifest.get('runtimeReady') is not False:
+    if manifest.get('runtimeReady') is not True:
         raise SystemExit(f'{name} promoted too early')
     if manifest.get('upperBodyLockRegion') != [0,0,256,189]:
         raise SystemExit(f'{name} upper body lock drift')

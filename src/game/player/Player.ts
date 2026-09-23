@@ -10,6 +10,7 @@ import { PlayerDamageController } from './PlayerDamageController.js';
 import { WingMobilityController } from './WingMobilityController.js';
 import { WallMobilityController } from './WallMobilityController.js';
 import type { SurfaceType } from '../world/SurfaceType.js';
+import { PREMIUM_PLAYER } from '../../assets/assetKeys.js';
 
 function approach(current: number, target: number, maxDelta: number): number {
   if (current < target) return Math.min(current + maxDelta, target);
@@ -19,8 +20,8 @@ function approach(current: number, target: number, maxDelta: number): number {
 
 export type PlayerOptions = {
   mobilityV2?: boolean;
-  hdCharacterBenchmark?: boolean;
-  premiumVisualQa?: boolean;
+  premiumVisual?: boolean;
+  premiumVisualQa?: boolean; // backwards-compatible QA alias
 };
 
 export type WallContact = {
@@ -54,7 +55,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     private readonly inputController: InputController,
     options: PlayerOptions = {},
   ) {
-    super(scene, x, y, 'player-idle-01');
+    super(scene, x, y, (options.premiumVisual === true || options.premiumVisualQa === true) ? PREMIUM_PLAYER.idleFrames[0] : 'player-idle-01');
     this.mobilityV2 = options.mobilityV2 === true;
     this.movement = this.mobilityV2 ? MOBILITY_V2 : PLAYER_MOVEMENT_CONFIG;
     this.timers = new MovementTimers(this.movement);
@@ -69,7 +70,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     body.setSize(30, 18, false);
     body.setOffset(17, 42);
     this.checkpoint = { x, y };
-    this.animator = new PlayerAnimationController(this, options.hdCharacterBenchmark === true, options.premiumVisualQa === true);
+    this.animator = new PlayerAnimationController(this, options.premiumVisual === true || options.premiumVisualQa === true);
   }
 
   get flapsRemaining(): number {
@@ -234,13 +235,6 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
 
     this.animator.update(this.state, nowMs);
 
-    // TEMP QA - hard render lock
-    this.setVisible(true);
-    this.setActive(true);
-    this.setAlpha(1);
-    this.setScale(1);
-    this.setDepth(999);
-    this.clearMask();
   }
 
   requestRespawn(): void {
@@ -258,8 +252,8 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     this.wallJumpUntil = Number.NEGATIVE_INFINITY;
     this.setVelocity(0, 0);
     this.setPosition(this.checkpoint.x, this.checkpoint.y);
-    this.setAlpha(0.25);
-    this.scene.time.delayedCall(90, () => {
+    this.setAlpha(1);
+    this.scene.time.delayedCall(400, () => {
       this.damage.completeRespawn();
       this.deathAt = Number.NEGATIVE_INFINITY;
       this.respawnScheduled = false;
