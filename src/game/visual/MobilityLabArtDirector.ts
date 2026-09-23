@@ -2,6 +2,7 @@ import type { MobilityLabV2Layout } from '../world/MobilityLabV2Layout.js';
 import { MOBILITY_LAB_VISUAL as V } from './MobilityLabVisualConfig.js';
 import { CELLAR_TEXTURE_DISPLAY_SCALE } from '../../assets/environmentAssetKeys.js';
 import { CellarAtmosphere } from './CellarAtmosphere.js';
+import { CellarCinematicComposition } from './CellarCinematicComposition.js';
 
 export class MobilityLabArtDirector {
   static build(scene: any, layout: MobilityLabV2Layout): void {
@@ -60,6 +61,7 @@ export class MobilityLabArtDirector {
       color: 0x6f8794, alpha: 0.07,
       depth: -1.3, scrollFactor: 0.58,
     });
-    CellarAtmosphere.addScreenVignette(scene, 36);
+    CellarCinematicComposition.addMobilityLab(scene);
+        CellarAtmosphere.addScreenVignette(scene, 36);
   }
 }
