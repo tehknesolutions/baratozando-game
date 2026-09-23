@@ -3,6 +3,7 @@ import type { FirstThreatLayout } from '../world/FirstThreatLayout.js';
 import { CELLAR_TEXTURES, CELLAR_TEXTURE_DISPLAY_SCALE } from '../../assets/environmentAssetKeys.js';
 import { FIRST_THREAT_VISUAL_CONFIG as V } from './FirstThreatVisualConfig.js';
 import { CellarAtmosphere } from './CellarAtmosphere.js';
+import { CellarCinematicComposition } from './CellarCinematicComposition.js';
 
 export type CellarArtHandles = {
   amberGlow: any;
@@ -131,6 +132,8 @@ export class CellarArtDirector {
       .setScale(0.52 * CELLAR_TEXTURE_DISPLAY_SCALE)
       .setAlpha(0.32)
       .setDepth(V.depths.gameplay + 0.3);
+
+    CellarCinematicComposition.addFirstThreat(scene);
 
     CellarAtmosphere.addScreenVignette(scene, V.depths.foreground + 8);
 
