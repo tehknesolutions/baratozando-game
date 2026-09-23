@@ -1,7 +1,7 @@
 {
   "id": "ROACH-PREMIUM-V1-DODGE-FAMILY",
   "family": "DODGE",
-  "status": "CANDIDATE_MOTION_BLOCKOUT",
+  "status": "LIFECYCLE_ARTICULATION_CANDIDATE_V1",
   "runtimeReady": false,
   "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
   "canvas": [
@@ -17,85 +17,123 @@
     {
       "index": 1,
       "path": "public/assets/player/premium-v1/frames/dodge/roach_dodge_01.png",
-      "sha256": "687f0d4789516437c26b842dc3ed1cd1d3bd0da49080c7b21016fa20993f15f2",
-      "scaleX": 0.96,
-      "scaleY": 1.0,
-      "xShiftPx": 0,
-      "yShiftPx": 0,
+      "sha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
       "alphaBounds": [
-        6,
+        1,
         84,
-        250,
+        255,
         256
       ],
-      "edgeAlphaPixels": 6
+      "anglesDeg": {
+        "rear_near": 0,
+        "mid_near": 0,
+        "front_near": 0,
+        "rear_far": 0,
+        "mid_far": 0,
+        "front_far": 0
+      },
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "xShiftPx": 0,
+      "yShiftPx": 0
     },
     {
       "index": 2,
       "path": "public/assets/player/premium-v1/frames/dodge/roach_dodge_02.png",
-      "sha256": "9962937cdc401779fb270ff9de78928b5997bc9534a9aeff67bc95ee39593175",
-      "scaleX": 0.98,
-      "scaleY": 0.98,
-      "xShiftPx": 1,
-      "yShiftPx": 1,
+      "sha256": "0ea1581d9ddb4b2a870f6f4f0c073846a68fb533871ec83c4d05c9d62041d51a",
       "alphaBounds": [
         4,
         88,
-        253,
+        255,
         256
       ],
-      "edgeAlphaPixels": 9
+      "anglesDeg": {
+        "rear_near": 5,
+        "mid_near": -5,
+        "front_near": 5,
+        "rear_far": -4,
+        "mid_far": 4,
+        "front_far": -4
+      },
+      "scaleX": 0.99,
+      "scaleY": 0.98,
+      "xShiftPx": 2,
+      "yShiftPx": 1
     },
     {
       "index": 3,
       "path": "public/assets/player/premium-v1/frames/dodge/roach_dodge_03.png",
-      "sha256": "014fd017ead4c610cdd577cefbbe9652e7095d5b5afb3de8a45265d2e08c83d3",
-      "scaleX": 0.99,
-      "scaleY": 0.95,
-      "xShiftPx": 0,
-      "yShiftPx": 2,
+      "sha256": "686e19700d58a2afcc6da3de2e4a0c70cda0255a3af1aef5ec8e99efd9b2dddc",
       "alphaBounds": [
-        2,
-        95,
+        9,
+        96,
         253,
         256
       ],
-      "edgeAlphaPixels": 23
+      "anglesDeg": {
+        "rear_near": 10,
+        "mid_near": -10,
+        "front_near": 9,
+        "rear_far": -8,
+        "mid_far": 8,
+        "front_far": -7
+      },
+      "scaleX": 0.96,
+      "scaleY": 0.94,
+      "xShiftPx": 3,
+      "yShiftPx": 2
     },
     {
       "index": 4,
       "path": "public/assets/player/premium-v1/frames/dodge/roach_dodge_04.png",
-      "sha256": "9962937cdc401779fb270ff9de78928b5997bc9534a9aeff67bc95ee39593175",
-      "scaleX": 0.98,
-      "scaleY": 0.98,
-      "xShiftPx": 1,
-      "yShiftPx": 1,
+      "sha256": "0ea1581d9ddb4b2a870f6f4f0c073846a68fb533871ec83c4d05c9d62041d51a",
       "alphaBounds": [
         4,
         88,
-        253,
+        255,
         256
       ],
-      "edgeAlphaPixels": 9
+      "anglesDeg": {
+        "rear_near": 5,
+        "mid_near": -5,
+        "front_near": 5,
+        "rear_far": -4,
+        "mid_far": 4,
+        "front_far": -4
+      },
+      "scaleX": 0.99,
+      "scaleY": 0.98,
+      "xShiftPx": 2,
+      "yShiftPx": 1
     },
     {
       "index": 5,
       "path": "public/assets/player/premium-v1/frames/dodge/roach_dodge_05.png",
-      "sha256": "687f0d4789516437c26b842dc3ed1cd1d3bd0da49080c7b21016fa20993f15f2",
-      "scaleX": 0.96,
-      "scaleY": 1.0,
-      "xShiftPx": 0,
-      "yShiftPx": 0,
+      "sha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
       "alphaBounds": [
-        6,
+        1,
         84,
-        250,
+        255,
         256
       ],
-      "edgeAlphaPixels": 6
+      "anglesDeg": {
+        "rear_near": 0,
+        "mid_near": 0,
+        "front_near": 0,
+        "rear_far": 0,
+        "mid_far": 0,
+        "front_far": 0
+      },
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "xShiftPx": 0,
+      "yShiftPx": 0
     }
   ],
-  "derivation": "deterministic margin-safe scale/offset dodge blockout from locked identity; no regeneration",
-  "qaPurpose": "validate dodge timing/readability only",
-  "promotionGate": "dedicated articulated dodge pass plus explicit gameplay QA"
+  "derivation": "deterministic articulation from locked idle identity; no character regeneration",
+  "articulationMethod": "six distal leg pivots plus margin-safe whole-body squash/translation",
+  "technicalQa": "PASS_2026-09-23",
+  "visualApproval": "PENDING",
+  "qaPurpose": "premium DODGE articulated evade/recover candidate",
+  "promotionGate": "technical lifecycle articulation QA + explicit in-game visual approval"
 }

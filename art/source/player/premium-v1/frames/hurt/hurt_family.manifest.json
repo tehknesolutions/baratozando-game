@@ -1,7 +1,7 @@
 {
   "id": "ROACH-PREMIUM-V1-HURT-FAMILY",
   "family": "HURT",
-  "status": "CANDIDATE_IMPACT_BLOCKOUT",
+  "status": "LIFECYCLE_ARTICULATION_CANDIDATE_V1",
   "runtimeReady": false,
   "identityMasterSha256": "2401227bf0d73e27c3c7df3630e8b755c54beb9dd1a4a866d9de983812c3286e",
   "canvas": [
@@ -15,6 +15,7 @@
   "playbackFps": 8,
   "frames": [
     {
+      "index": 1,
       "path": "public/assets/player/premium-v1/frames/hurt/roach_hurt_01.png",
       "sha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
       "alphaBounds": [
@@ -23,41 +24,61 @@
         255,
         256
       ],
-      "bytes": 41331,
-      "index": 1,
-      "scaleX": 1.0,
+      "anglesDeg": {
+        "rear_near": 0,
+        "mid_near": 0,
+        "front_near": 0,
+        "rear_far": 0,
+        "mid_far": 0,
+        "front_far": 0
+      },
       "xShiftPx": 0
     },
     {
-      "path": "public/assets/player/premium-v1/frames/hurt/roach_hurt_02.png",
-      "sha256": "cceeb25b2d42b4c6e0bdf61ece91fd102c3eb0a2c44dd6ffa5dd88fd7c305da4",
-      "alphaBounds": [
-        2,
-        84,
-        248,
-        256
-      ],
-      "bytes": 41329,
       "index": 2,
-      "scaleX": 0.97,
-      "xShiftPx": -3
-    },
-    {
-      "path": "public/assets/player/premium-v1/frames/hurt/roach_hurt_03.png",
-      "sha256": "1336c96baa6f30fdcba60167591b3b79657bae25a9221251cc9c3a356d556308",
+      "path": "public/assets/player/premium-v1/frames/hurt/roach_hurt_02.png",
+      "sha256": "b9afec691f6693cfd98b8b9cff698dd2bc876879c8302628a14d9838974fbfe2",
       "alphaBounds": [
         1,
         84,
         255,
         256
       ],
-      "bytes": 41331,
+      "anglesDeg": {
+        "rear_near": -11,
+        "mid_near": 10,
+        "front_near": -9,
+        "rear_far": 8,
+        "mid_far": -10,
+        "front_far": 8
+      },
+      "xShiftPx": 0
+    },
+    {
       "index": 3,
-      "scaleX": 1.0,
+      "path": "public/assets/player/premium-v1/frames/hurt/roach_hurt_03.png",
+      "sha256": "8d3b258ed8ca9c2fd5e6ae31853f8422894c13e3c3c8bbc3d91c1d728149d994",
+      "alphaBounds": [
+        1,
+        84,
+        255,
+        256
+      ],
+      "anglesDeg": {
+        "rear_near": 3,
+        "mid_near": -3,
+        "front_near": 3,
+        "rear_far": -2,
+        "mid_far": 2,
+        "front_far": -2
+      },
       "xShiftPx": 0
     }
   ],
-  "derivation": "deterministic horizontal compression/offset impact blockout; no regeneration",
-  "qaPurpose": "validate hurt impact timing/readability only",
-  "promotionGate": "dedicated articulated hurt pass plus explicit gameplay QA"
+  "derivation": "deterministic articulation from locked idle identity; no character regeneration",
+  "articulationMethod": "six distal leg pivots with recoil/recovery pose; no character regeneration",
+  "technicalQa": "PASS_2026-09-23",
+  "visualApproval": "PENDING",
+  "qaPurpose": "premium HURT articulated impact/recovery candidate",
+  "promotionGate": "technical lifecycle articulation QA + explicit in-game visual approval"
 }
