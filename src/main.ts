@@ -11,9 +11,12 @@ new Phaser.Game({
   width: 960,
   height: 540,
   backgroundColor: '#070706',
-  pixelArt: true,
-  roundPixels: true,
-  antialias: false,
+
+  // Realistic runtime renderer lock: premium raster art must be sampled smoothly.
+  pixelArt: false,
+  roundPixels: false,
+  antialias: true,
+
   physics: {
     default: 'arcade',
     arcade: { gravity: { x: 0, y: 0 }, debug: false },
