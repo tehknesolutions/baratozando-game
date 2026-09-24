@@ -1,11 +1,12 @@
 export const PLAYABLE_V3_SCALE = Object.freeze({
   contractId: 'ROACH_WORLD_SCALE_V3',
-  // Runtime evidence from the complete Cellar showed the 64px / 0.25 candidate
-  // was too small to read as the playable hero. Promote the next calibrated
-  // candidate to a 96px canvas footprint while keeping one global uniform scale.
+  // Complete-Cellar runtime evidence showed 0.25 was unreadably small and 0.375
+  // improved presence but remained undersized against doors, crates and props.
+  // Promote the next controlled candidate to a 128px footprint. Physics/spawn
+  // contracts remain unchanged; only the single global visual scale moves.
   sourceCanvasPx: 256,
-  targetGameplayCanvasPx: 96,
-  worldScale: 0.375,
+  targetGameplayCanvasPx: 128,
+  worldScale: 0.5,
   uniform: true,
   sceneLocalScaleAllowed: false,
 } as const);
