@@ -17,6 +17,7 @@ const tests = [
   'PlayableV3AssetContract.test.js',
   'PlayableV3RuntimeDefault.test.js',
   'PlayableV3Scale.test.js',
+  'SafeSpawnResolver.test.js',
 ];
 
 for (const test of tests) {
