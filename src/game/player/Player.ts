@@ -12,6 +12,7 @@ import { WallMobilityController } from './WallMobilityController.js';
 import type { SurfaceType } from '../world/SurfaceType.js';
 import { PREMIUM_PLAYER } from '../../assets/assetKeys.js';
 import { ROACH_WORLD_SCALE } from './PlayableV3Scale.js';
+import { PLAYER_PHYSICS_CONTRACT } from './PlayerPhysicsContract.js';
 
 function approach(current: number, target: number, maxDelta: number): number {
   if (current < target) return Math.min(current + maxDelta, target);
@@ -54,14 +55,14 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     this.timers = new MovementTimers(this.movement);
     scene.add.existing(this);
     scene.physics.add.existing(this);
-    this.setOrigin(0.5, 1);
+    this.setOrigin(PLAYER_PHYSICS_CONTRACT.feetAnchorX, PLAYER_PHYSICS_CONTRACT.feetAnchorY);
     if (premiumVisual) this.setScale(ROACH_WORLD_SCALE);
     this.setCollideWorldBounds(true);
     this.setGravityY(this.movement.gravity);
     this.setMaxVelocity(900, this.movement.maxFallSpeed);
     const body = this.body as any;
-    body.setSize(30, 18, false);
-    body.setOffset(17, 42);
+    body.setSize(PLAYER_PHYSICS_CONTRACT.bodyWidth, PLAYER_PHYSICS_CONTRACT.bodyHeight, false);
+    body.setOffset(PLAYER_PHYSICS_CONTRACT.bodyOffsetX, PLAYER_PHYSICS_CONTRACT.bodyOffsetY);
     this.checkpoint = { x, y };
     this.animator = new PlayerAnimationController(this, premiumVisual);
   }
