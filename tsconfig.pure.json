@@ -22,6 +22,8 @@
     "src/game/player/PlayableV3RuntimeDefault.test.ts",
     "src/game/player/PlayableV3Scale.ts",
     "src/game/player/PlayableV3Scale.test.ts",
+    "src/game/player/SafeSpawnResolver.ts",
+    "src/game/player/SafeSpawnResolver.test.ts",
     "src/game/threat/ThreatChaseController.ts",
     "src/game/threat/ThreatChaseController.test.ts",
     "src/game/horror/HorrorReactiveState.ts",

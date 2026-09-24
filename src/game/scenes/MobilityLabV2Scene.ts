@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import { KeyboardInputAdapter } from '../input/KeyboardInputAdapter.js';
 import { Player, type WallContact } from '../player/Player.js';
+import { resolveSafeSpawn } from '../player/SafeSpawnResolver.js';
 import { MOBILITY_LAB_V2, type MobilitySurface } from '../world/MobilityLabV2Layout.js';
 import { MobilityLabArtDirector } from '../visual/MobilityLabArtDirector.js';
 import { resolveMobilityTutorial } from '../visual/MobilityTutorial.js';
@@ -31,8 +32,10 @@ export class MobilityLabV2Scene extends Phaser.Scene {
       this.surfaces.push({ spec, block });
     }
 
+    const safeSpawn = resolveSafeSpawn(L.spawn, L.surfaces, { bodyHeight: 18, clearance: 2 });
     const input = new KeyboardInputAdapter(this);
-    this.player = new Player(this, L.spawn.x, L.spawn.y, input, { mobilityV2: true, premiumVisual: true });
+    this.player = new Player(this, safeSpawn.x, safeSpawn.y, input, { mobilityV2: true, premiumVisual: true });
+    this.player.setCheckpoint(safeSpawn.x, safeSpawn.y);
     this.player.setDepth(50);
     for (const { block } of this.surfaces) this.physics.add.collider(this.player, block);
     this.player.setWallContactProvider(() => this.resolveWallContact());
