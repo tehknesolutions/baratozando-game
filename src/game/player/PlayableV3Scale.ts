@@ -1,12 +1,11 @@
 export const PLAYABLE_V3_SCALE = Object.freeze({
   contractId: 'ROACH_WORLD_SCALE_V3',
-  // Complete-Cellar runtime evidence showed 0.25 was unreadably small and 0.375
-  // improved presence but remained undersized against doors, crates and props.
-  // Promote the next controlled candidate to a 128px footprint. Physics/spawn
-  // contracts remain unchanged; only the single global visual scale moves.
+  // Stable runtime baseline. V3-03 now owns render/physics decoupling, so scale
+  // calibration remains presentation-only. 0.50 is retained as a later
+  // regression probe and is not the baseline until runtime validation passes.
   sourceCanvasPx: 256,
-  targetGameplayCanvasPx: 128,
-  worldScale: 0.5,
+  targetGameplayCanvasPx: 96,
+  worldScale: 0.375,
   uniform: true,
   sceneLocalScaleAllowed: false,
 } as const);
