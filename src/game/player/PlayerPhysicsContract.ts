@@ -1,11 +1,12 @@
 export const PLAYER_PHYSICS_CONTRACT = Object.freeze({
   contractId: 'PLAYER_PHYSICS_V3',
-  // Physics geometry is deliberately independent from premium render scale.
-  // These values are authoritative gameplay-space dimensions, not texture dimensions.
-  bodyWidth: 64,
-  bodyHeight: 32,
-  bodyOffsetX: 0,
-  bodyOffsetY: 0,
+  // Runtime-proven geometry from the stable 0.375 Player implementation.
+  // These gameplay-space values are authoritative and must never derive from
+  // premium texture dimensions or render scale.
+  bodyWidth: 30,
+  bodyHeight: 18,
+  bodyOffsetX: 17,
+  bodyOffsetY: 42,
   feetAnchorX: 0.5,
   feetAnchorY: 1,
 } as const);
