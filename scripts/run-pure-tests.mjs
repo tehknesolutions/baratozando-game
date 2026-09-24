@@ -16,6 +16,7 @@ const tests = [
   'HorrorReactiveState.test.js',
   'PlayableV3AssetContract.test.js',
   'PlayableV3RuntimeDefault.test.js',
+  'PlayableV3Scale.test.js',
 ];
 
 for (const test of tests) {

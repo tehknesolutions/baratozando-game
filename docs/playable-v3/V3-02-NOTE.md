@@ -1,0 +1,1 @@
+The 0.25 value is a deterministic first lock derived from 256px premium source canvas to the established 64px gameplay footprint. It is not considered visually approved until the Cellar runtime gate is inspected.
