@@ -12,6 +12,7 @@ export class MobilityLabV2Scene extends Phaser.Scene {
   private surfaces: Array<{ spec: MobilitySurface; block: any }> = [];
   private hud!: any;
   private prompt!: any;
+  private readabilityField!: Phaser.GameObjects.Ellipse;
 
   constructor() { super('mobility-lab-v2'); }
 
@@ -36,12 +37,19 @@ export class MobilityLabV2Scene extends Phaser.Scene {
     this.player = new Player(this, safeSpawn.x, safeSpawn.y, input, { mobilityV2: true, premiumVisual: true });
     this.player.setCheckpoint(safeSpawn.x, safeSpawn.y);
     this.player.setDepth(50);
+
+    // A broad, extremely low-alpha warm field separates the roach from nearby
+    // dark materials without reading as an aura, outline or gameplay marker.
+    this.readabilityField = this.add.ellipse(safeSpawn.x, safeSpawn.y - 13, 150, 82, 0x8b542f, 0.055)
+      .setDepth(49)
+      .setBlendMode(Phaser.BlendModes.ADD);
     this.player.roachVisual?.setDepth(51);
+
     for (const { block } of this.surfaces) this.physics.add.collider(this.player, block);
     this.player.setWallContactProvider(() => this.resolveWallContact());
 
-    this.cameras.main.startFollow(this.player, true, 0.09, 0.08);
-    this.cameras.main.setDeadzone(220, 170);
+    this.cameras.main.startFollow(this.player, true, 0.105, 0.09);
+    this.cameras.main.setDeadzone(180, 145);
 
     this.hud = this.add.text(18, 18, '', {
       fontFamily: 'monospace', fontSize: '14px', color: '#e7c493', backgroundColor: '#090807bb', padding: { x: 7, y: 5 },
@@ -61,6 +69,13 @@ export class MobilityLabV2Scene extends Phaser.Scene {
     this.player.updatePlayer(time, delta);
     if (this.player.y > MOBILITY_LAB_V2.height - 8) this.player.requestRespawn();
 
+    this.readabilityField.setPosition(
+      this.player.x + this.player.facing * 8,
+      this.player.y - 13,
+    );
+    const speed = Math.abs(Number((this.player.body as any)?.velocity?.x ?? 0));
+    this.readabilityField.setAlpha(speed > 170 ? 0.065 : 0.05);
+
     this.prompt.setText(resolveMobilityTutorial(this.player.x, this.player.y));
     const contact = this.resolveWallContact();
     const side = contact.touchingLeft ? 'L' : contact.touchingRight ? 'R' : '—';
@@ -74,9 +89,10 @@ export class MobilityLabV2Scene extends Phaser.Scene {
       `VISUAL ${visual?.visible ?? false} SCALE ${Number(visual?.scaleX ?? 0).toFixed(3)} TEX ${visual?.texture?.key ?? '—'}`,
     ]);
 
-    const vy = (this.player.body as any)?.velocity?.y ?? 0;
-    const yBias = this.player.state === 'WALL_CLIMB' ? -70 : vy > 170 ? 55 : 0;
-    this.cameras.main.setFollowOffset(-this.player.facing * 56, yBias);
+    const vy = Number(body?.velocity?.y ?? 0);
+    const xLead = this.player.facing * (speed > 170 ? 78 : 62);
+    const yBias = this.player.state === 'WALL_CLIMB' ? -78 : vy > 170 ? 60 : vy < -170 ? -28 : 0;
+    this.cameras.main.setFollowOffset(-xLead, yBias);
   }
 
   private resolveWallContact(): WallContact {
