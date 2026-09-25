@@ -10,6 +10,7 @@ import { CellarReadabilityDirector } from '../visual/CellarReadabilityDirector.j
 import { CELLAR_LAYERS } from '../visual/CellarLayerModel.js';
 import { CellarParallaxDirector } from '../visual/CellarParallaxDirector.js';
 import { CellarForegroundDirector } from '../visual/CellarForegroundDirector.js';
+import { CELLAR_CAMERA, CellarCameraDirector } from '../visual/CellarCameraDirector.js';
 
 export class MobilityLabV2Scene extends Phaser.Scene {
   private player!: Player;
@@ -50,8 +51,8 @@ export class MobilityLabV2Scene extends Phaser.Scene {
     for (const { block } of this.surfaces) this.physics.add.collider(this.player, block);
     this.player.setWallContactProvider(() => this.resolveWallContact());
 
-    this.cameras.main.startFollow(this.player, true, 0.105, 0.09);
-    this.cameras.main.setDeadzone(180, 145);
+    this.cameras.main.startFollow(this.player, true, CELLAR_CAMERA.lerp.x, CELLAR_CAMERA.lerp.y);
+    CellarCameraDirector.configure(this.cameras.main);
 
     this.hud = this.add.text(18, 18, '', {
       fontFamily: 'monospace', fontSize: '14px', color: '#e7c493', backgroundColor: '#090807bb', padding: { x: 7, y: 5 },
@@ -74,8 +75,11 @@ export class MobilityLabV2Scene extends Phaser.Scene {
     CellarForegroundDirector.update(this.foreground, cameraX);
 
     const body = this.player.body as any;
-    const speed = Math.abs(Number(body?.velocity?.x ?? 0));
+    const vx = Number(body?.velocity?.x ?? 0);
+    const vy = Number(body?.velocity?.y ?? 0);
+    const speed = Math.abs(vx);
     CellarReadabilityDirector.updatePlayerField(this.readabilityField, this.player.x, this.player.y, this.player.facing, speed);
+    CellarCameraDirector.update(this.cameras.main, this.player.facing, vx, vy, this.player.state);
 
     this.prompt.setText(resolveMobilityTutorial(this.player.x, this.player.y));
     const contact = this.resolveWallContact();
@@ -84,15 +88,10 @@ export class MobilityLabV2Scene extends Phaser.Scene {
     const visual = this.player.roachVisual;
     this.hud.setText([
       `STATE ${this.player.state}   ASAS ${this.player.flapsRemaining}/2   PAREDE ${side} ${climb}`,
-      `POS ${this.player.x.toFixed(1)},${this.player.y.toFixed(1)}  VEL ${Number(body?.velocity?.x ?? 0).toFixed(1)},${Number(body?.velocity?.y ?? 0).toFixed(1)}`,
+      `POS ${this.player.x.toFixed(1)},${this.player.y.toFixed(1)}  VEL ${vx.toFixed(1)},${vy.toFixed(1)}`,
       `PHYS VIS ${this.player.visible} BODY ${body?.enable ?? '—'} SIZE ${Number(body?.width ?? 0).toFixed(0)}x${Number(body?.height ?? 0).toFixed(0)}`,
       `VISUAL ${visual?.visible ?? false} SCALE ${Number(visual?.scaleX ?? 0).toFixed(3)} TEX ${visual?.texture?.key ?? '—'}`,
     ]);
-
-    const vy = Number(body?.velocity?.y ?? 0);
-    const xLead = this.player.facing * (speed > 170 ? 78 : 62);
-    const yBias = this.player.state === 'WALL_CLIMB' ? -78 : vy > 170 ? 60 : vy < -170 ? -28 : 0;
-    this.cameras.main.setFollowOffset(-xLead, yBias);
   }
 
   private resolveWallContact(): WallContact {
