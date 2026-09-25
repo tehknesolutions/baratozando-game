@@ -6,6 +6,8 @@ import { MOBILITY_LAB_V2, type MobilitySurface } from '../world/MobilityLabV2Lay
 import { MobilityLabArtDirector } from '../visual/MobilityLabArtDirector.js';
 import { resolveMobilityTutorial } from '../visual/MobilityTutorial.js';
 import { resolveWallContactFromGeometry } from '../player/WallContactSensor.js';
+import { CellarReadabilityDirector } from '../visual/CellarReadabilityDirector.js';
+import { CELLAR_LAYERS } from '../visual/CellarLayerModel.js';
 
 export class MobilityLabV2Scene extends Phaser.Scene {
   private player!: Player;
@@ -36,14 +38,9 @@ export class MobilityLabV2Scene extends Phaser.Scene {
     const input = new KeyboardInputAdapter(this);
     this.player = new Player(this, safeSpawn.x, safeSpawn.y, input, { mobilityV2: true, premiumVisual: true });
     this.player.setCheckpoint(safeSpawn.x, safeSpawn.y);
-    this.player.setDepth(50);
-
-    // A broad, extremely low-alpha warm field separates the roach from nearby
-    // dark materials without reading as an aura, outline or gameplay marker.
-    this.readabilityField = this.add.ellipse(safeSpawn.x, safeSpawn.y - 13, 150, 82, 0x8b542f, 0.055)
-      .setDepth(49)
-      .setBlendMode(Phaser.BlendModes.ADD);
-    this.player.roachVisual?.setDepth(51);
+    this.player.setDepth(CELLAR_LAYERS.characterPlane.depth - 1);
+    this.readabilityField = CellarReadabilityDirector.createPlayerField(this, safeSpawn.x, safeSpawn.y);
+    this.player.roachVisual?.setDepth(CELLAR_LAYERS.characterPlane.depth);
 
     for (const { block } of this.surfaces) this.physics.add.collider(this.player, block);
     this.player.setWallContactProvider(() => this.resolveWallContact());
@@ -53,34 +50,36 @@ export class MobilityLabV2Scene extends Phaser.Scene {
 
     this.hud = this.add.text(18, 18, '', {
       fontFamily: 'monospace', fontSize: '14px', color: '#e7c493', backgroundColor: '#090807bb', padding: { x: 7, y: 5 },
-    }).setScrollFactor(0).setDepth(100);
+    }).setScrollFactor(0).setDepth(CELLAR_LAYERS.presentation.depth);
 
     this.prompt = this.add.text(480, 470,
       resolveMobilityTutorial(this.player.x, this.player.y), {
         fontFamily: 'monospace', fontSize: '12px', color: '#c6aa85', backgroundColor: '#090807cc', padding: { x: 8, y: 6 },
-      }).setOrigin(0.5).setScrollFactor(0).setDepth(100);
+      }).setOrigin(0.5).setScrollFactor(0).setDepth(CELLAR_LAYERS.presentation.depth);
 
     this.add.text(L.goal.x, L.goal.y - 18, 'TOPO', {
       fontFamily: 'monospace', fontSize: '12px', color: '#ffb45e',
-    }).setOrigin(0.5).setDepth(20);
+    }).setOrigin(0.5).setDepth(CELLAR_LAYERS.gameplayPlane.depth + 3);
   }
 
   update(time: number, delta: number): void {
     this.player.updatePlayer(time, delta);
     if (this.player.y > MOBILITY_LAB_V2.height - 8) this.player.requestRespawn();
 
-    this.readabilityField.setPosition(
-      this.player.x + this.player.facing * 8,
-      this.player.y - 13,
+    const body = this.player.body as any;
+    const speed = Math.abs(Number(body?.velocity?.x ?? 0));
+    CellarReadabilityDirector.updatePlayerField(
+      this.readabilityField,
+      this.player.x,
+      this.player.y,
+      this.player.facing,
+      speed,
     );
-    const speed = Math.abs(Number((this.player.body as any)?.velocity?.x ?? 0));
-    this.readabilityField.setAlpha(speed > 170 ? 0.065 : 0.05);
 
     this.prompt.setText(resolveMobilityTutorial(this.player.x, this.player.y));
     const contact = this.resolveWallContact();
     const side = contact.touchingLeft ? 'L' : contact.touchingRight ? 'R' : '—';
     const climb = contact.surface ?? '—';
-    const body = this.player.body as any;
     const visual = this.player.roachVisual;
     this.hud.setText([
       `STATE ${this.player.state}   ASAS ${this.player.flapsRemaining}/2   PAREDE ${side} ${climb}`,
