@@ -5,18 +5,23 @@ import { CellarAtmosphere } from './CellarAtmosphere.js';
 import { CellarCinematicComposition } from './CellarCinematicComposition.js';
 import { CellarNarrativeDressing } from './CellarNarrativeDressing.js';
 import { CellarAmbientMotion } from './CellarAmbientMotion.js';
+import { CELLAR_LAYERS } from './CellarLayerModel.js';
 
 export class MobilityLabArtDirector {
   static build(scene: any, layout: MobilityLabV2Layout): void {
-    scene.add.rectangle(layout.width / 2, layout.height / 2, layout.width, layout.height, 0x080706, 1).setDepth(-20);
-    CellarAtmosphere.addDepthHaze(scene, layout.width, layout.height, -17);
+    const far = CELLAR_LAYERS.farDarkness.depth;
+    const rear = CELLAR_LAYERS.rearArchitecture.depth;
+    const gameplay = CELLAR_LAYERS.gameplayPlane.depth;
+
+    scene.add.rectangle(layout.width / 2, layout.height / 2, layout.width, layout.height, 0x080706, 1).setDepth(far);
+    CellarAtmosphere.addDepthHaze(scene, layout.width, layout.height, far + 1);
 
     const textureBySurface = new Map(V.surfaceMaterials);
     for (const surface of layout.surfaces) {
       if (surface.role === 'boundary') continue;
       const texture = textureBySurface.get(surface.id);
       if (!texture) continue;
-      const surfaceDepth = surface.role === 'recovery' ? 0 : 2;
+      const surfaceDepth = surface.role === 'recovery' ? gameplay : gameplay + 2;
       CellarAtmosphere.addContactShadow(
         scene,
         surface.x + surface.width * 0.5,
@@ -34,38 +39,39 @@ export class MobilityLabArtDirector {
     }
 
     for (const prop of V.props) {
+      const propDepth = gameplay + Math.max(1, prop.depth);
       CellarAtmosphere.addContactShadow(
         scene,
         prop.x,
         prop.y + 16 * prop.scale,
         68 * prop.scale,
         13 * prop.scale,
-        prop.depth - 0.08,
+        propDepth - 0.08,
         0.20,
       );
       scene.add.image(prop.x, prop.y, prop.texture)
         .setScale(prop.scale * CELLAR_TEXTURE_DISPLAY_SCALE)
         .setRotation(prop.rotation)
         .setAlpha(prop.alpha)
-        .setDepth(prop.depth);
+        .setDepth(propDepth);
     }
 
-    scene.add.ellipse(530, 610, 520, 300, 0x000000, 0.18).setDepth(-2);
-    scene.add.ellipse(1050, 430, 620, 330, 0x000000, 0.15).setDepth(-2);
+    scene.add.ellipse(530, 610, 520, 300, 0x000000, 0.18).setDepth(rear + 3);
+    scene.add.ellipse(1050, 430, 620, 330, 0x000000, 0.15).setDepth(rear + 3);
 
     CellarAtmosphere.addSoftLight(scene, {
       x: 1500, y: 190, width: 620, height: 300,
       color: 0xd88945, alpha: 0.14,
-      depth: -1.4, scrollFactor: 0.72,
+      depth: rear + 5, scrollFactor: CELLAR_LAYERS.rearArchitecture.parallax,
     });
     CellarAtmosphere.addSoftLight(scene, {
       x: 640, y: 430, width: 520, height: 260,
       color: 0x6f8794, alpha: 0.07,
-      depth: -1.3, scrollFactor: 0.58,
+      depth: rear + 4, scrollFactor: CELLAR_LAYERS.rearArchitecture.parallax,
     });
     CellarCinematicComposition.addMobilityLab(scene);
     CellarNarrativeDressing.addMobilityLab(scene);
     CellarAmbientMotion.addMobilityLab(scene);
-        CellarAtmosphere.addScreenVignette(scene, 36);
+    CellarAtmosphere.addScreenVignette(scene, CELLAR_LAYERS.presentation.depth);
   }
 }
