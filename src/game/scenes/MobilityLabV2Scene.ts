@@ -9,6 +9,7 @@ import { resolveWallContactFromGeometry } from '../player/WallContactSensor.js';
 import { CellarReadabilityDirector } from '../visual/CellarReadabilityDirector.js';
 import { CELLAR_LAYERS } from '../visual/CellarLayerModel.js';
 import { CellarParallaxDirector } from '../visual/CellarParallaxDirector.js';
+import { CellarForegroundDirector } from '../visual/CellarForegroundDirector.js';
 
 export class MobilityLabV2Scene extends Phaser.Scene {
   private player!: Player;
@@ -17,6 +18,7 @@ export class MobilityLabV2Scene extends Phaser.Scene {
   private prompt!: any;
   private readabilityField!: Phaser.GameObjects.Ellipse;
   private visualGroups!: CellarVisualGroups;
+  private foreground!: Phaser.GameObjects.Container;
 
   constructor() { super('mobility-lab-v2'); }
 
@@ -26,6 +28,7 @@ export class MobilityLabV2Scene extends Phaser.Scene {
     this.cameras.main.setBounds(0, 0, L.width, L.height);
     this.cameras.main.setBackgroundColor('#070706');
     this.visualGroups = MobilityLabArtDirector.build(this, L);
+    this.foreground = CellarForegroundDirector.build(this);
 
     for (const spec of L.surfaces) {
       const color = spec.surface === 'ROUGH_CLIMB' ? 0x4a3428 : spec.role === 'recovery' ? 0x26221e : 0x34302a;
@@ -64,9 +67,11 @@ export class MobilityLabV2Scene extends Phaser.Scene {
     this.player.updatePlayer(time, delta);
     if (this.player.y > MOBILITY_LAB_V2.height - 8) this.player.requestRespawn();
 
-    const parallax = CellarParallaxDirector.resolve(this.cameras.main.scrollX);
+    const cameraX = this.cameras.main.scrollX;
+    const parallax = CellarParallaxDirector.resolve(cameraX);
     this.visualGroups.far.setX(parallax.farX);
     this.visualGroups.rear.setX(parallax.rearX);
+    CellarForegroundDirector.update(this.foreground, cameraX);
 
     const body = this.player.body as any;
     const speed = Math.abs(Number(body?.velocity?.x ?? 0));
