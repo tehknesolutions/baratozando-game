@@ -1,0 +1,41 @@
+{
+  "version": "premium-v3",
+  "format": "png-transparent",
+  "canonicalScale": 0.5,
+  "registration": { "originX": 0.5, "originY": 1.0, "canvas": "uniform-per-channel" },
+  "physicsAuthority": false,
+  "channels": {
+    "body": { "alwaysVisible": true, "bakedOpenWings": false },
+    "wings": { "defaultVisible": false, "legalStates": ["WING_FLAP", "GLIDE"] }
+  },
+  "states": {
+    "IDLE": { "frames": 8, "fps": 6, "body": true, "wings": false },
+    "WALK": { "frames": 8, "fps": 8, "body": true, "wings": false },
+    "RUN": { "frames": 8, "fps": 12, "body": true, "wings": false },
+    "JUMP": { "frames": 6, "fps": 10, "body": true, "wings": false },
+    "FALL": { "frames": 6, "fps": 8, "body": true, "wings": false },
+    "WING_FLAP": { "frames": 6, "fps": 14, "body": true, "wings": true },
+    "GLIDE": { "frames": 6, "fps": 6, "body": true, "wings": true },
+    "WALL_CLING": { "frames": 6, "fps": 6, "body": true, "wings": false },
+    "WALL_CLIMB": { "frames": 8, "fps": 10, "body": true, "wings": false },
+    "WALL_JUMP": { "frames": 6, "fps": 12, "body": true, "wings": false },
+    "DODGE": { "frames": 6, "fps": 14, "body": true, "wings": false },
+    "HURT": { "frames": 6, "fps": 8, "body": true, "wings": false },
+    "DEATH": { "frames": 8, "fps": 8, "body": true, "wings": false },
+    "RESPAWN": { "frames": 8, "fps": 6, "body": true, "wings": false }
+  },
+  "paths": {
+    "body": "public/assets/player/premium-v3/body/<state>/frame-XX.png",
+    "wings": "public/assets/player/premium-v3/wings/<mode>/frame-XX.png"
+  },
+  "acceptance": [
+    "all body frames have transparent backgrounds",
+    "body frames never contain exposed open wings",
+    "wing frames contain wings only",
+    "registration does not jitter between frames",
+    "legs visibly change pose in WALK RUN and WALL_CLIMB",
+    "antennae visibly change pose across locomotion",
+    "leaving WING_FLAP or GLIDE hides wing channel immediately",
+    "visual assets never mutate collider or player transform"
+  ]
+}
