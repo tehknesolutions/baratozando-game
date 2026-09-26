@@ -27,6 +27,19 @@
     "src/game/threat/ThreatChaseController.ts",
     "src/game/threat/ThreatChaseController.test.ts",
     "src/game/horror/HorrorReactiveState.ts",
-    "src/game/horror/HorrorReactiveState.test.ts"
+    "src/game/horror/HorrorReactiveState.test.ts",
+    "src/game/visual/CellarLayerModel.ts",
+    "src/game/visual/CellarLayerModel.test.ts",
+    "src/game/visual/CellarReadabilityDirector.ts",
+    "src/game/visual/CellarReadabilityDirector.test.ts",
+    "src/game/visual/CellarParallaxDirector.ts",
+    "src/game/visual/CellarParallaxDirector.test.ts",
+    "src/game/visual/CellarForegroundDirector.ts",
+    "src/game/visual/CellarForegroundDirector.test.ts",
+    "src/game/visual/CellarCameraDirector.ts",
+    "src/game/visual/CellarCameraDirector.test.ts",
+    "src/game/visual/CellarSetDressingContract.ts",
+    "src/game/visual/CellarSetDressingContract.test.ts",
+    "src/game/visual/PlayableV3Gate.test.ts"
   ]
 }
